@@ -13,8 +13,8 @@ public class ELitems implements ItemReg {
     public ELitems() {
         registerItem("protium", protium);
         registerItem("deuterium", deuterium);
-        registerItem("oxygen", oxygen);
         registerItem("tritium", tritium);
+        registerItem("oxygen", oxygen);
     }
 
     private static void registerItem(String itemName, Item item) {
