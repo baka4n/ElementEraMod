@@ -1,6 +1,7 @@
 {
   "item.elementera.protium": "protium",
   "item.elementera.deuterium": "deuterium",
+  "item.elementera.tritium": "tritium",
   "item.elementera.oxygen": "oxygen",
   "itemGroup.elementera.gas": "gas"
 }

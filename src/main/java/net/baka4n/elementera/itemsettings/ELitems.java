@@ -8,14 +8,16 @@ public class ELitems implements ItemReg {
     public static final Protium protium = new Protium();
     public static final Deuterium deuterium = new Deuterium();
     public static final Oxygen oxygen = new Oxygen();
+    public static final Tritium tritium = new Tritium();
 
     public ELitems() {
-        registeriTEM("protium", protium);
-        registeriTEM("deuterium", deuterium);
-        registeriTEM("oxygen", oxygen);
+        registerItem("protium", protium);
+        registerItem("deuterium", deuterium);
+        registerItem("oxygen", oxygen);
+        registerItem("tritium", tritium);
     }
 
-    private static void registeriTEM(String itemName, Item item) {
+    private static void registerItem(String itemName, Item item) {
         ItemReg.registerItem(Elementera.modid, itemName, item);
     }
 }

@@ -1,6 +1,7 @@
 {
-  "item.elementera.protium": "氕",
+  "item.elementera.protium": "氢",
   "item.elementera.deuterium": "氘",
+  "item.elementera.tritium": "氚",
   "item.elementera.oxygen": "氧",
   "itemGroup.elementera.gas": "气体"
 }
