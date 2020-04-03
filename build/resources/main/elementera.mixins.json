@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.baka4n.elementera.elementmixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "ElementMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

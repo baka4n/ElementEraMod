@@ -6,6 +6,7 @@ import net.baka4n.elementera.itemsettings.Deuterium;
 import net.baka4n.elementera.itemsettings.Protium;
 import net.baka4n.elementera.itemsettings.Oxygen;
 
+import net.baka4n.elementera.proxy.ElementProxies;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
@@ -18,21 +19,10 @@ public class Elementera implements ModInitializer {
 	public static final String modid = "elementera";
 	public static final Logger logger = LogManager.getLogger(modid);
 	public static Elementera INSTANCE;
-	public static final Protium protium = new Protium(new Item.Settings()
-			.maxCount(16)
-			.group(Gas.Gas));
-	public static final Oxygen oxygen = new Oxygen(new Item.Settings()
-			.maxCount(16)
-			.group(Gas.Gas));
-	public static final Deuterium deuterium = new Deuterium(new Item.Settings()
-			.maxCount(16)
-			.group(Gas.Gas));
 	@Override
 	public void onInitialize() {
 		INSTANCE = this;
-		Registry.register(Registry.ITEM, new Identifier(modid, "protium"), protium);
-		Registry.register(Registry.ITEM, new Identifier(modid, "oxygen"), oxygen);
-		Registry.register(Registry.ITEM, new Identifier(modid, "deuterium"), deuterium);
+		new ElementProxies();
 		System.out.println(modid);
 		System.out.println("hello minecraft!welcome to element era mod!");
 	}
