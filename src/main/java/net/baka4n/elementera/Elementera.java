@@ -1,16 +1,9 @@
 package net.baka4n.elementera;
 // TODO: 2020/4/3 重新拾取fabric编写
 // TODO: 2020/4/4 这个是当时脑洞的时候尝试开发的，具体bbs可查
-import net.baka4n.elementera.itemgroup.Gas;
-import net.baka4n.elementera.itemsettings.Deuterium;
-import net.baka4n.elementera.itemsettings.Protium;
-import net.baka4n.elementera.itemsettings.Oxygen;
 
 import net.baka4n.elementera.proxy.ElementProxies;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.item.Item;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
