@@ -2,6 +2,15 @@
   "item.elementera.protium": "protium",
   "item.elementera.deuterium": "deuterium",
   "item.elementera.tritium": "tritium",
+  "item.helium": "helium",
+  "item.helium_3": "helium_3",
+  "item.helium_4": "helium_4",
+  "item.helium_5": "helium_5",
+  "item.helium_6": "helium_6",
+  "item.helium_7": "helium_7",
+  "item.helium_8": "helium_8",
+  "item.helium_9": "helium_9",
+  "item.helium-10": "helium_10",
   "item.elementera.oxygen": "oxygen",
   "itemGroup.elementera.gas": "gas"
 }
