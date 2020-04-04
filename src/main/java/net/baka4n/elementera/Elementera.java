@@ -16,7 +16,7 @@ public class Elementera implements ModInitializer {
 	public void onInitialize() {
 		INSTANCE = this;
 		new ElementProxies();
-		System.out.println(modid);
-		System.out.println("hello minecraft!welcome to element era mod!");
+		logger.info("elementProxies success");
+		logger.info(modid);
 	}
 }

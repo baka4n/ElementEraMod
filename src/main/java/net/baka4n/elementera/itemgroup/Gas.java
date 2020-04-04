@@ -1,6 +1,5 @@
 package net.baka4n.elementera.itemgroup;
 
-import net.baka4n.elementera.Elementera;
 import net.baka4n.elementera.itemsettings.ELitems;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
