@@ -1,4 +1,4 @@
-package net.baka4n.elementera.itemsettings;
+package net.baka4n.elementera.common.itemsettings;
 
 import net.baka4n.elementera.Elementera;
 import net.baka4n.elementera.registryhandler.ItemReg;
@@ -54,6 +54,9 @@ public class ELitems implements ItemReg {
     public static final Carbon carbon_20 = new Carbon();
     public static final Carbon carbon_21 = new Carbon();
     public static final Carbon carbon_22 = new Carbon();
+    public static final Nitrogen nitrogen_10 = new Nitrogen();
+    public static final Nitrogen nitrogen_11 = new Nitrogen();
+    public static final Nitrogen nitrogen_25 = new Nitrogen();
     public static final Oxygen oxygen = new Oxygen();
 
     public ELitems() {
@@ -104,6 +107,9 @@ public class ELitems implements ItemReg {
         registerItem("carbon_20", carbon_20);
         registerItem("carbon_21", carbon_21);
         registerItem("carbon_22", carbon_22);
+        registerItem("nitrogen_10", nitrogen_10);
+        registerItem("nitrogen_11", nitrogen_11);
+        registerItem("nitrogen_25", nitrogen_25);
         registerItem("oxygen", oxygen);
     }
 

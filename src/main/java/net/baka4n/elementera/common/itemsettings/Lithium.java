@@ -1,12 +1,13 @@
-package net.baka4n.elementera.itemsettings;
+package net.baka4n.elementera.common.itemsettings;
 
 import net.baka4n.elementera.itemgroup.Group;
 import net.minecraft.item.Item;
 
-public class Helium extends Item {
-    public Helium() {
+public class Lithium extends Item {
+    public Lithium() {
         super(new Settings()
-                .group(Group.Gas)
+                .group(Group.Metal)
                 .maxCount(16));
     }
+
 }

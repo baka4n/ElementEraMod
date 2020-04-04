@@ -1,4 +1,4 @@
-package net.baka4n.elementera.blocksettings;
+package net.baka4n.elementera.common.blocksettings;
 
 import net.baka4n.elementera.Elementera;
 import net.baka4n.elementera.registryhandler.BlockReg;
@@ -9,7 +9,7 @@ public class ELblocks implements BlockReg {
 
 
     public ELblocks() {
-        // TODO: 2020/4/4 第一种注册方式
+        // TODO: 2020/4/4 一种注册方式
         /*
         registerBlock("name",
                 "itemname",
