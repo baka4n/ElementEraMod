@@ -4,6 +4,8 @@ import net.baka4n.elementera.Elementera;
 import net.baka4n.elementera.registryhandler.ItemReg;
 import net.minecraft.item.Item;
 
+// TODO: 2020/4/4 添加物品中
+// TODO: 2020/4/4 先把物品补全然后再思考其他的
 public class ELitems implements ItemReg {
     public static final Protium protium = new Protium();
     public static final Deuterium deuterium = new Deuterium();
@@ -19,6 +21,10 @@ public class ELitems implements ItemReg {
     public static final Helium helium_10 = new Helium();
     public static final Lithium lithium_6 = new Lithium();
     public static final Lithium lithium = new Lithium();
+    public static final Beryllium beryllium_7 = new Beryllium();
+    public static final Beryllium beryllium = new Beryllium();
+    public static final Beryllium beryllium_9 = new Beryllium();
+    public static final Beryllium beryllium_10 = new Beryllium();
     public static final Oxygen oxygen = new Oxygen();
 
     public ELitems() {
@@ -36,6 +42,10 @@ public class ELitems implements ItemReg {
         registerItem("helium_10", helium_10);
         registerItem("lithium_6", lithium_6);
         registerItem("lithium", lithium);
+        registerItem("beryllium_7", beryllium_7);
+        registerItem("beryllium", beryllium);
+        registerItem("beryllium_9", beryllium_9);
+        registerItem("beryllium_10", beryllium_10);
         registerItem("oxygen", oxygen);
     }
 

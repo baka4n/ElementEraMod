@@ -13,6 +13,10 @@
   "item.elementera.helium_10": "helium_10",
   "item.elementera.lithium_6": "lithium_6",
   "item.elementera.lithium": "lithium",
+  "item.elementera.beryllium_7": "beryllium_7",
+  "item.elementera.beryllium": "beryllium",
+  "item.elementera.beryllium_9": "beryllium_9",
+  "item.elementera.beryllium_10": "beryllium_10",
   "item.elementera.oxygen": "oxygen",
   "itemGroup.elementera.gas": "gas"
 }
