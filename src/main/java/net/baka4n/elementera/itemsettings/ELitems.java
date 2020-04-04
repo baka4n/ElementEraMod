@@ -17,6 +17,8 @@ public class ELitems implements ItemReg {
     public static final Helium helium_8 = new Helium();
     public static final Helium helium_9 = new Helium();
     public static final Helium helium_10 = new Helium();
+    public static final Lithium lithium_6 = new Lithium();
+    public static final Lithium lithium = new Lithium();
     public static final Oxygen oxygen = new Oxygen();
 
     public ELitems() {
@@ -32,6 +34,8 @@ public class ELitems implements ItemReg {
         registerItem("helium_8", helium_8);
         registerItem("helium_9", helium_9);
         registerItem("helium_10", helium_10);
+        registerItem("lithium_6", lithium_6);
+        registerItem("lithium", lithium);
         registerItem("oxygen", oxygen);
     }
 
