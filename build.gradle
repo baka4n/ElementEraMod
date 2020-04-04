@@ -27,12 +27,12 @@ processResources {
 	inputs.property "version", project.version
 
 	from(sourceSets.main.resources.srcDirs) {
-		include "fabric.mod.json"
+		include "elementera.mod.json"
 		expand "version": project.version
 	}
 
 	from(sourceSets.main.resources.srcDirs) {
-		exclude "fabric.mod.json"
+		exclude "elementera.mod.json"
 	}
 }
 
