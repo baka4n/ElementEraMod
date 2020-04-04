@@ -27,7 +27,7 @@ public class ELitems implements ItemReg {
         registerItem("tritium", tritium);
         registerItem("helium_2", helium_2);
         registerItem("helium_3", helium_3);
-        registerItem("helium_4", helium);
+        registerItem("helium", helium);
         registerItem("helium_5", helium_5);
         registerItem("helium_6", helium_6);
         registerItem("helium_7", helium_7);
