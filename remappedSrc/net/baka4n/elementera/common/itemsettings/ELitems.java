@@ -1,4 +1,4 @@
-package net.baka4n.elementera.common.itemsettings;
+package net.baka4n.elementera.itemsettings;
 
 import net.baka4n.elementera.Elementera;
 import net.baka4n.elementera.registryhandler.ItemReg;

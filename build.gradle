@@ -13,8 +13,8 @@ group = project.maven_group
 dependencies {
 	//to change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:20w14a"
-    mappings "net.fabricmc:yarn:20w14a+build.2:v2"
-    modImplementation "net.fabricmc:fabric-loader:0.7.9+build.190"
+    mappings "net.fabricmc:yarn:20w14a+build.4:v2"
+    modImplementation "net.fabricmc:fabric-loader:0.7.10+build.191"
             
     //Fabric api
     modImplementation "net.fabricmc.fabric-api:fabric-api:0.5.7+build.314-1.16"
