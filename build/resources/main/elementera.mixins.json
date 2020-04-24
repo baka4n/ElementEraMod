@@ -1,12 +1,16 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.baka4n.elementera.elementmixin",
+  "package": "io.github.elementera.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
   ],
   "client": [
-    "ElementMixin"
+    "ElementMixin",
+    "SelectWorldScreenMixin",
+    "MultiplayerScreenMixin",
+    "GameOptionsScreenMixin",
+    "LanguageOptionsScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,7 +1,8 @@
-# Fabric Element Era Mod
+# Fabric Example Mod
 
-Minecraft version 20w14a
-该模组还在开发版本，是一个前置api，写入一些基本的化学元素，和化学物质和简单的机器(开发中。。咕咕咕)
+## Setup
+
+upload to 20w16a . I will update to 20w17a(waitting).
 
 ## License
 

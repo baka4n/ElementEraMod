@@ -1,10 +1,14 @@
 # gradle
 
 .gradle/
+build/
 out/
 classes/
-build/libs/*-dev.jar
-build/libs/*-sources.jar
+
+# eclipse
+
+*.launch
+
 # idea
 
 .idea/
