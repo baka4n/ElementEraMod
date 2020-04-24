@@ -1,10 +1,8 @@
 package io.github.elementera.mixin;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
-import net.minecraft.client.resource.language.I18n;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.TranslatableText;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,19 +18,16 @@ public class MultiplayerScreenMixin extends Screen {
     private final Screen parent;
 
     /**
-     * @ahthor baka4n
-     * @param mouseX
+     *
+     * @param matrixStack
      * @param mouseY
-     * @param delta
+     * @param i
+     * @param f
      * @param info
-     * @Nullable render  return mixin in call back info.
      */
     @Inject(method = "render", at = @At("RETURN"))
     @Nullable
-    protected void render(int mouseX, int mouseY, float delta, CallbackInfo info) {
-        TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
-        textRenderer.draw(I18n.translate("mouseX") + mouseX, 5, 5, 0xFFFFFFFF);
-        textRenderer.draw(I18n.translate("mouseY") + mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+    protected void render(MatrixStack matrixStack, int mouseY, int i, float f, CallbackInfo info) {
     }
 
     public MultiplayerScreenMixin(Screen parent) {

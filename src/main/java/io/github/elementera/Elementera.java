@@ -70,6 +70,14 @@ class ModItems implements Loggers {
 		registerItem("carbon_17", C17); registerItem("carbon_18", C18);
 		registerItem("carbon_19", C19); registerItem("carbon_20", C20);
 		registerItem("carbon_21", C21); registerItem("carbon_22", C22);
+		registerItem("nitrogen_10", N10); registerItem("nitrogen_11", N11);
+		registerItem("nitrogen_12", N12); registerItem("nitrogen_13", N13);
+		registerItem("nitrogen_14", N14); registerItem("nitrogen_15", N15);
+		registerItem("nitrogen_16", N16); registerItem("nitrogen_17", N17);
+		registerItem("nitrogen_18", N18); registerItem("nitrogen_19", N19);
+		registerItem("nitrogen_20", N20); registerItem("nitrogen_21", N21);
+		registerItem("nitrogen_22", N22); registerItem("nitrogen_23", N23);
+		registerItem("nitrogen_24", N24); registerItem("nitrogen_25", N25);
 		itemreg.info("register all item success!");
 	}
 	private static void registerItem(String itemName, Item item) {

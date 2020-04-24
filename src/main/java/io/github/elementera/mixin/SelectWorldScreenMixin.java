@@ -1,10 +1,8 @@
 package io.github.elementera.mixin;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
-import net.minecraft.client.resource.language.I18n;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.TranslatableText;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -24,16 +22,15 @@ public class SelectWorldScreenMixin extends Screen {
     }
 
     /**
-     * @author baka4n
-     * @param mouseX
+     *
+     * @param matrixStack
      * @param mouseY
-     * @param delta
+     * @param i
+     * @param f
      * @param info
      */
     @Inject(method = "render", at = @At("RETURN"))
-    protected void render(int mouseX, int mouseY, float delta, CallbackInfo info) {
-        TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
-        textRenderer.draw(I18n.translate("mouseX") + mouseX, 5, 5, 0xFFFFFFFF);
-        textRenderer.draw(I18n.translate("mouseY") + mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+    protected void render(MatrixStack matrixStack, int mouseY, int i, float f, CallbackInfo info) {
+
     }
 }

@@ -2,7 +2,7 @@
 
 ## Setup
 
-upload to 20w16a . I will update to 20w17a(waitting).
+update t0 20w17a edit mixin class in 4/24/2020
 
 ## License
 

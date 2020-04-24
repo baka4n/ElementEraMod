@@ -3,7 +3,6 @@ package io.github.elementera.mixin;
 import com.google.common.util.concurrent.Runnables;
 import io.github.elementera.gui.*;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.CreditsScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -12,8 +11,10 @@ import net.minecraft.client.gui.screen.world.SelectWorldScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.toast.SystemToast;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.realms.RealmsBridge;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.world.level.storage.LevelStorage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -44,19 +45,16 @@ public class ElementMixin extends Screen {
 	private int copyrightTextWidth;
 
 	/**
-	 * @ahthor baka4n
-	 * @param mouseX
+	 * @author baka4n
+	 * @param matrixStack
 	 * @param mouseY
-	 * @param delta
+	 * @param i
+	 * @param f
 	 * @param info
-	 * @Nullable render  return mixin in call back info.
 	 */
 	@Inject(method = "render", at = @At("RETURN"))
 	@Nullable
-	protected void render(int mouseX, int mouseY, float delta, CallbackInfo info) {
-		TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
-		textRenderer.draw(I18n.translate("mouseX") + mouseX, 5, 5, 0xFFFFFFFF);
-		textRenderer.draw(I18n.translate("mouseY") + mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+	protected void render(MatrixStack matrixStack, int mouseY, int i, float f, CallbackInfo info) {
 	}
 
 	/**
@@ -80,21 +78,21 @@ public class ElementMixin extends Screen {
 	@Overwrite
 	@Nullable
 	private void initWidgetsNormal(@Nullable int y,@Nullable int spacingY) {
-		this.addButton(new ButtonWidget(this.width / 2 - 100, y, 200, 20, I18n.translate("elementera.ElementEra"), (action) -> {
+		this.addButton(new ButtonWidget(this.width / 2 - 100, y, 200, 20, new TranslatableText("elementera.ElementEra"), (action) -> {
 			MinecraftClient.getInstance().openScreen(new Authors(this));
 
 			logger.warn(I18n.translate("authors"));
 			logger.warn(I18n.translate("open.authors"));
 		}));
-		this.addButton(new ButtonWidget(this.width / 2 - 100, y + spacingY * 1, 100, 20, I18n.translate("menu.singleplayer", new Object[0]), (buttonWidget) -> {
+		this.addButton(new ButtonWidget(this.width / 2 - 100, y + spacingY * 1, 100, 20, new TranslatableText("menu.singleplayer"), (buttonWidget) -> {
 			logger.warn(I18n.translate("singleplayer"));
 			this.client.openScreen(new SelectWorldScreen(this));
 		}));
-		this.addButton(new ButtonWidget(this.width / 2, y + spacingY * 1, 100, 20, I18n.translate("menu.multiplayer", new Object[0]), (buttonWidget) -> {
+		this.addButton(new ButtonWidget(this.width / 2, y + spacingY * 1, 100, 20, new TranslatableText("menu.multiplayer"), (buttonWidget) -> {
 			logger.warn(I18n.translate("multiplayer"));
 			this.client.openScreen(new MultiplayerScreen(this));
 		}));
-		this.addButton(new ButtonWidget(this.width / 2 - 100, y + spacingY * 2, 200, 20, I18n.translate("menu.online", new Object[0]), (buttonWidget) -> {
+		this.addButton(new ButtonWidget(this.width / 2 - 100, y + spacingY * 2, 200, 20, new TranslatableText("menu.online"), (buttonWidget) -> {
 			logger.warn(I18n.translate("online"));
 			this.switchToRealms();
 		}));

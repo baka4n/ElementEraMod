@@ -4,7 +4,6 @@ package io.github.elementera;
 import net.minecraft.item.Item;
 
 import static io.github.elementera.Public.*;
-import static io.github.elementera.Public.NONMETALS;
 
 public class ModItemSetting extends Item {
     public ModItemSetting() {

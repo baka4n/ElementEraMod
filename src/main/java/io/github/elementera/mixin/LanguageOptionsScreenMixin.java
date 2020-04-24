@@ -2,17 +2,16 @@ package io.github.elementera.mixin;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.TextRenderer;
+
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.options.GameOptionsScreen;
 import net.minecraft.client.gui.screen.options.LanguageOptionsScreen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.options.GameOptions;
-import net.minecraft.client.resource.language.I18n;
 
 import net.minecraft.client.resource.language.LanguageManager;
 
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.TranslatableText;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -42,7 +41,7 @@ public class LanguageOptionsScreenMixin extends GameOptionsScreen {
 
     @Inject(at=@At("RETURN"), method = "init()V")
     protected void init(CallbackInfo info) {
-        this.searchBox = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, 6, 200, 20, this.searchBox, I18n.translate("selectWorld.search", new Object[0]));
+        this.searchBox = new TextFieldWidget(this.textRenderer, this.width / 2 - 100, 6, 200, 20, this.searchBox, new TranslatableText("selectWorld.search"));
 
         this.children.add(this.searchBox);
         this.setInitialFocus(this.searchBox);
@@ -50,11 +49,7 @@ public class LanguageOptionsScreenMixin extends GameOptionsScreen {
     }
 
     @Inject(method = "render", at=@At("RETURN"))
-    public void render(int mouseX, int mouseY, float delta, CallbackInfo info) {
-        TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
-        textRenderer.draw(I18n.translate("mouseX") + mouseX, 5, 5, 0xFFFFFFFF);
-        textRenderer.draw(I18n.translate("mouseY") + mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
-        this.searchBox.render(mouseX, mouseY, delta);
+    public void render(MatrixStack matrixStack, int mouseY, int i, float f, CallbackInfo info) {
     }
 
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {

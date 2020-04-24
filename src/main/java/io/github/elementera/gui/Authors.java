@@ -1,11 +1,11 @@
 package io.github.elementera.gui;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.resource.language.I18n;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.LiteralText;
+import net.minecraft.text.TranslatableText;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,28 +27,26 @@ public class Authors extends Screen {
                 8 * this.height / 9,
                 100,
                 20,
-                I18n.translate("authors.back"), (action) -> {
+                new TranslatableText("authors.back"), (action) -> {
             logger.warn(I18n.translate("close.authors"));
             this.screen.onClose();
         }));
     }
     @Override
-    public void render(int mouseX, int mouseY, float delta) {
-        renderBackground();
-        TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
-        textRenderer.draw(I18n.translate("mouseX") + mouseX, 5, 5, 0xFFFFFFFF);
-        textRenderer.draw(I18n.translate("mouseY") + mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
-
-        renderTooltip(I18n
-                        .translate("authors.info"),
+    public void render(MatrixStack matrixStack, int mouseY, int i, float f) {
+        renderBackground(matrixStack, i);
+        renderTooltip(matrixStack,
+                new TranslatableText("authors.info"),
                 this.width / 100,
                 this.height / 6);
-        renderTooltip("baka4n",
+        renderTooltip(matrixStack,
+                new TranslatableText("baka4n"),
                 21 * this.width / 100,
                 this.height / 6);
-        renderTooltip("squidCraft() -> Team",
+        renderTooltip(matrixStack,
+                new TranslatableText("squidCraft() -> Team"),
                 41 * this.width / 100,
                 this.height / 6);
-        super.render(mouseX, mouseY, delta);
+        super.render(matrixStack, mouseY, i, f);
     }
 }
