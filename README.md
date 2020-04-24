@@ -1,4 +1,4 @@
-# Fabric Example Mod
+# Element Era Mod
 
 ## Setup
 
