@@ -19,17 +19,13 @@ import static io.github.elementera.Public.*;
 import static net.minecraft.item.Items.*;
 
 public class Elementera implements ModInitializer {
-	interface OnInitialize {
-		Logger logger = LogManager.getLogger("OnInitialize");
-	}
+	interface OnInitialize { Logger logger = LogManager.getLogger("OnInitialize");}
 	@Override
 	public void onInitialize() {
-		proxy();
-		OnInitialize.logger.info("element era mods OnInitialize!");
+		proxy();OnInitialize.logger.info("element era mods OnInitialize!");
 	}
 	public static void proxy(String... args) {
-		new Proxies();
-		OnInitialize.logger.info("proxy oninitialize");
+		new Proxies();OnInitialize.logger.info("proxy oninitialize");
 		new Public();
 	}
 }
@@ -43,15 +39,12 @@ class Proxies implements Loggers {
 	public Proxies() {
 		modItem();
 	}
-	public static void modItem(String... args) {
-		new ModItems();
-		proxys.info("moditem register");
+	public static void modItem(String... args) { new ModItems();proxys.info("moditem register");
 	}
 }
 
 class ModItems implements Loggers {
 	public ModItems() {
-
 		registerItem("protium", PROTIUM); registerItem("helium_4", He4);
 		registerItem("lithium_7", Li7); registerItem("beryllium_8", Be8);
 		registerItem("carbon_12", C12);
@@ -159,8 +152,7 @@ class Public implements Loggers {
 	public static final Item N25 = new N25();
 	public static final String MODID = "elementera";
 	public static final ItemGroup GAS = FabricItemGroupBuilder.create(
-			new Identifier(MODID, "gas"))
-			.icon(() -> new ItemStack(AIR))
+			new Identifier(MODID, "gas")).icon(() -> new ItemStack(AIR))
 			.appendItems(itemStacks -> {
 				itemStacks.add(new ItemStack(PROTIUM));itemStacks.add(new ItemStack(He4));
 				itemStacks.add(new ItemStack(N14));
@@ -178,21 +170,17 @@ class Public implements Loggers {
 				itemStacks.add(new ItemStack(N20));itemStacks.add(new ItemStack(N21));
 				itemStacks.add(new ItemStack(N22));itemStacks.add(new ItemStack(N23));
 				itemStacks.add(new ItemStack(N24));itemStacks.add(new ItemStack(N25));
-			})
-			.build();
+			}).build();
 	public static final ItemGroup METALS = FabricItemGroupBuilder.create(
-			new Identifier(MODID, "metals"))
-			.icon(() -> new ItemStack(IRON_INGOT))
+			new Identifier(MODID, "metals")).icon(() -> new ItemStack(IRON_INGOT))
 			.appendItems(itemStacks -> {
 				itemStacks.add(new ItemStack(Li7));itemStacks.add(new ItemStack(Be8));
 
 				itemStacks.add(new ItemStack(Li6));itemStacks.add(new ItemStack(Be7));
 				itemStacks.add(new ItemStack(Be9));itemStacks.add(new ItemStack(Be10));
-			})
-			.build();
+			}).build();
 	public static final ItemGroup NONMETALS = FabricItemGroupBuilder.create(
-			new Identifier(MODID, "nonmetals"))
-			.icon(() -> new ItemStack(FLINT))
+			new Identifier(MODID, "nonmetals")).icon(() -> new ItemStack(FLINT))
 			.appendItems(itemStacks -> {
 				itemStacks.add(new ItemStack(B6));itemStacks.add(new ItemStack(B7));
 				itemStacks.add(new ItemStack(B7));itemStacks.add(new ItemStack(B8));
@@ -209,10 +197,8 @@ class Public implements Loggers {
 				itemStacks.add(new ItemStack(C17));itemStacks.add(new ItemStack(C18));
 				itemStacks.add(new ItemStack(C19));itemStacks.add(new ItemStack(C20));
 				itemStacks.add(new ItemStack(C21));itemStacks.add(new ItemStack(C22));
-			})
-			.build();
+			}).build();
 	public Public() {
-
 		publics.info("nonmetals have a " + NONMETALS.getIndex());publics.info("metals have a " + METALS.getIndex());
 		publics.info("gas have a " + GAS.getIndex());publics.info("public static final");
 	}
