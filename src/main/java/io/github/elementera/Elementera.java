@@ -213,9 +213,7 @@ class Public implements Loggers {
 			.build();
 	public Public() {
 
-		publics.info("nonmetals have a " + NONMETALS.getIndex());
-		publics.info("metals have a " + METALS.getIndex());
-		publics.info("gas have a " + GAS.getIndex());
-		publics.info("public static final");
+		publics.info("nonmetals have a " + NONMETALS.getIndex());publics.info("metals have a " + METALS.getIndex());
+		publics.info("gas have a " + GAS.getIndex());publics.info("public static final");
 	}
 }
