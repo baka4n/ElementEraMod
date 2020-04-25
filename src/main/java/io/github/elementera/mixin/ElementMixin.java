@@ -1,8 +1,10 @@
 package io.github.elementera.mixin;
 
 import com.google.common.util.concurrent.Runnables;
+import io.github.elementera.Elementera;
 import io.github.elementera.gui.*;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.CreditsScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -53,31 +55,31 @@ public class ElementMixin extends Screen {
 	 * @param info
 	 */
 	@Inject(method = "render", at = @At("RETURN"))
-	@Nullable
 	protected void render(MatrixStack matrixStack, int mouseY, int i, float f, CallbackInfo info) {
+		textRenderer.draw(matrixStack, I18n.translate("mouseX") + ": " + mouseY, 5, 5, 0xFFFFFFFF);
+		textRenderer.draw(matrixStack, I18n.translate("mouseY") + ": " + i, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+		super.render(matrixStack, mouseY, i, f);
 	}
 
 	/**
 	 * @author baka4n
 	 * @param info
-	 * @Nullable int call back info head mixin
+	 * int call back info head mixin
 	 */
 	@Inject(at = @At("HEAD"), method = "init()V")
-	@Nullable
 	private void init(CallbackInfo info) {
-
+		super.init();
 	}
 
 	/**
 	 * @author baka4n
-	 * @Nullable Overwrite initWidgetsNormal
-	 * @Nullable by TitleScreen.class int y!
-	 * @Nullable by spacingY;
-	 * @Nullable add Button authors move button to other by minecraft;
+	 * Overwrite initWidgetsNormal
+	 * by TitleScreen.class int y!
+	 * by spacingY;
+	 * add Button authors move button to other by minecraft;
 	 */
 	@Overwrite
-	@Nullable
-	private void initWidgetsNormal(@Nullable int y,@Nullable int spacingY) {
+	private void initWidgetsNormal(int y, int spacingY) {
 		this.addButton(new ButtonWidget(this.width / 2 - 100, y, 200, 20, new TranslatableText("elementera.ElementEra"), (action) -> {
 			MinecraftClient.getInstance().openScreen(new Authors(this));
 
@@ -100,10 +102,9 @@ public class ElementMixin extends Screen {
 
 	/**
 	 * @author baka4n
-	 * @Nullable add extends void switchToRealms
+	 * add extends void switchToRealms
 	 */
 	@Overwrite
-	@Nullable
 	private void switchToRealms() {
 		RealmsBridge realmsBridge = new RealmsBridge();
 		realmsBridge.switchToRealms(this);
@@ -156,10 +157,9 @@ public class ElementMixin extends Screen {
 
 	/**
 	 * @author baka4n
-	 * @Nullable if realmsNotificationGui no have in genuine to remove
+	 *if realmsNotificationGui no have in genuine to remove
 	 */
 	@Overwrite
-	@Nullable
 	public void removed() {
 		if (this.realmsNotificationGui != null) {
 			this.realmsNotificationGui.removed();
@@ -169,10 +169,9 @@ public class ElementMixin extends Screen {
 
 	/**
 	 * @author baka4n
-	 * @Nullable delete
+	 * delete
 	 */
 	@Overwrite
-	@Nullable
 	private void onDemoDeletionConfirmed(boolean delete) {
 		if (delete) {
 			try {

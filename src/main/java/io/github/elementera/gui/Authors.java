@@ -1,5 +1,7 @@
 package io.github.elementera.gui;
 
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.resource.language.I18n;
@@ -35,18 +37,12 @@ public class Authors extends Screen {
     @Override
     public void render(MatrixStack matrixStack, int mouseY, int i, float f) {
         renderBackground(matrixStack, i);
-        renderTooltip(matrixStack,
-                new TranslatableText("authors.info"),
-                this.width / 100,
-                this.height / 6);
-        renderTooltip(matrixStack,
-                new TranslatableText("baka4n"),
-                21 * this.width / 100,
-                this.height / 6);
-        renderTooltip(matrixStack,
-                new TranslatableText("squidCraft() -> Team"),
-                41 * this.width / 100,
-                this.height / 6);
+        TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
+        textRenderer.draw(matrixStack, I18n.translate("mouseX") + ": " + mouseY, 5, 5, 0xFFFFFFFF);
+        textRenderer.draw(matrixStack, I18n.translate("mouseY") + ": " + i, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+        renderTooltip(matrixStack, new TranslatableText("authors.info"), this.width / 100, this.height / 6);
+        renderTooltip(matrixStack, new TranslatableText("baka4n"), 21 * this.width / 100, this.height / 6);
+        renderTooltip(matrixStack, new TranslatableText("squidCraft() -> Team"), 41 * this.width / 100, this.height / 6);
         super.render(matrixStack, mouseY, i, f);
     }
 }

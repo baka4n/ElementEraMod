@@ -1,7 +1,9 @@
 package io.github.elementera.mixin;
 
+import io.github.elementera.Elementera;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
+import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.TranslatableText;
 import org.jetbrains.annotations.Nullable;
@@ -26,8 +28,10 @@ public class MultiplayerScreenMixin extends Screen {
      * @param info
      */
     @Inject(method = "render", at = @At("RETURN"))
-    @Nullable
     protected void render(MatrixStack matrixStack, int mouseY, int i, float f, CallbackInfo info) {
+        textRenderer.draw(matrixStack, I18n.translate("mouseX") + ": " + mouseY, 5, 5, 0xFFFFFFFF);
+        textRenderer.draw(matrixStack, I18n.translate("mouseY") + ": " + i, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+        super.render(matrixStack, mouseY, i, f);
     }
 
     public MultiplayerScreenMixin(Screen parent) {

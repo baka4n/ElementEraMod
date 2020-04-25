@@ -1,8 +1,8 @@
-# Element Era Mod
+# Fabric Example Mod
 
 ## Setup
 
-update t0 20w17a edit mixin class in 4/24/2020
+For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
 
 ## License
 

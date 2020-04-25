@@ -3,6 +3,8 @@ package io.github.elementera;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -11,6 +13,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.List;
@@ -18,23 +21,28 @@ import java.util.List;
 import static io.github.elementera.Public.*;
 import static net.minecraft.item.Items.*;
 
+/**
+ * @author baka4n
+ * @Nullable classes
+ */
+@Nullable
 public class Elementera implements ModInitializer {
+	public static final TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
 	interface OnInitialize { Logger logger = LogManager.getLogger("OnInitialize");}
 	@Override
 	public void onInitialize() {
 		proxy();OnInitialize.logger.info("element era mods OnInitialize!");
 	}
+
 	public static void proxy(String... args) {
 		new Proxies();OnInitialize.logger.info("proxy oninitialize");
 		new Public();
 	}
 }
 interface Loggers {
-	Logger proxys = LogManager.getLogger("proxy");
-	Logger itemreg= LogManager.getLogger("items register");
+	Logger proxys = LogManager.getLogger("proxy"); Logger itemreg= LogManager.getLogger("items register");
 	Logger publics = LogManager.getLogger("public load");
 }
-
 class Proxies implements Loggers {
 	public Proxies() {
 		modItem();
@@ -42,7 +50,6 @@ class Proxies implements Loggers {
 	public static void modItem(String... args) { new ModItems();proxys.info("moditem register");
 	}
 }
-
 class ModItems implements Loggers {
 	public ModItems() {
 		registerItem("protium", PROTIUM); registerItem("helium_4", He4);
@@ -92,7 +99,6 @@ class ModItems implements Loggers {
 		ItemsRegister.registerTool(MODID, toolName, axe, hoe, pickaxe, shovel, sword);
 	}
 }
-
 class ItemsRegister implements Loggers {
 	public static void registerItem(String modid,String itemName,Item item) {
 		Registry.register(Registry.ITEM, new Identifier(modid, itemName), item);
@@ -124,7 +130,6 @@ class ItemsRegister implements Loggers {
 		});
 	}
 }
-
 class Public implements Loggers {
 	public static final Item PROTIUM = new Protium();public static final Item DEUTERIUM = new Deuterium();
 	public static final Item TRITIUM = new Tritium();public static final Item He2 = new He2();
