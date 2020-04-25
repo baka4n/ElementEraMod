@@ -13,7 +13,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,9 +22,8 @@ import static net.minecraft.item.Items.*;
 
 /**
  * @author baka4n
- * @Nullable classes
+ * classes
  */
-@Nullable
 public class Elementera implements ModInitializer {
 	public static final TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
 	interface OnInitialize { Logger logger = LogManager.getLogger("OnInitialize");}
@@ -39,10 +37,7 @@ public class Elementera implements ModInitializer {
 		new Public();
 	}
 }
-interface Loggers {
-	Logger proxys = LogManager.getLogger("proxy"); Logger itemreg= LogManager.getLogger("items register");
-	Logger publics = LogManager.getLogger("public load");
-}
+
 class Proxies implements Loggers {
 	public Proxies() {
 		modItem();
@@ -85,16 +80,20 @@ class ModItems implements Loggers {
 		registerItem("nitrogen_20", N20); registerItem("nitrogen_21", N21);
 		registerItem("nitrogen_22", N22); registerItem("nitrogen_23", N23);
 		registerItem("nitrogen_24", N24); registerItem("nitrogen_25", N25);
+		registerItem("oxygen_13", O13); registerItem("oxygen_14", O14);
+		registerItem("oxygen_15", O15); registerItem("oxygen_16", O16);
+		registerItem("oxygen_17", O17); registerItem("oxygen_18", O18);
+		registerItem("oxygen_19", O19); registerItem("oxygen_20", O20);
+		registerItem("oxygen_21", O21); registerItem("oxygen_22", O22);
+		registerItem("oxygen_23", O23); registerItem("oxygen_24", O24);
 		itemreg.info("register all item success!");
 	}
 	private static void registerItem(String itemName, Item item) {
 		ItemsRegister.registerItem(MODID, itemName, item);
 	}
-
 	private static void registerArmor(String armorName, Item helmet, Item chestplate, Item leggings, Item boots) {
 		ItemsRegister.registerArmor(MODID, armorName, helmet, chestplate, leggings, boots);
 	}
-
 	private static void registerTool(String toolName, Item axe, Item hoe, Item pickaxe, Item shovel, Item sword) {
 		ItemsRegister.registerTool(MODID, toolName, axe, hoe, pickaxe, shovel, sword);
 	}
@@ -162,13 +161,19 @@ class Public implements Loggers {
 	public static final Item N19 = new N19();public static final Item N20 = new N20();
 	public static final Item N21 = new N21();public static final Item N22 = new N22();
 	public static final Item N23 = new N23();public static final Item N24 = new N24();
-	public static final Item N25 = new N25();
+	public static final Item N25 = new N25();public static final Item O13 = new O13();
+	public static final Item O14 = new O14();public static final Item O15 = new O15();
+	public static final Item O16 = new O16();public static final Item O17 = new O17();
+	public static final Item O18 = new O18();public static final Item O19 = new O19();
+	public static final Item O20 = new O20();public static final Item O21 = new O21();
+	public static final Item O22 = new O22();public static final Item O23 = new O23();
+	public static final Item O24 = new O24();
 	public static final String MODID = "elementera";
 	public static final ItemGroup GAS = FabricItemGroupBuilder.create(
 			new Identifier(MODID, "gas")).icon(() -> new ItemStack(AIR))
 			.appendItems(itemStacks -> {
 				itemStacks.add(new ItemStack(PROTIUM));itemStacks.add(new ItemStack(He4));
-				itemStacks.add(new ItemStack(N14));
+				itemStacks.add(new ItemStack(N14));itemStacks.add(new ItemStack(O16));
 
 				itemStacks.add(new ItemStack(DEUTERIUM));itemStacks.add(new ItemStack(TRITIUM));
 				itemStacks.add(new ItemStack(He2));itemStacks.add(new ItemStack(He3));
@@ -183,6 +188,10 @@ class Public implements Loggers {
 				itemStacks.add(new ItemStack(N20));itemStacks.add(new ItemStack(N21));
 				itemStacks.add(new ItemStack(N22));itemStacks.add(new ItemStack(N23));
 				itemStacks.add(new ItemStack(N24));itemStacks.add(new ItemStack(N25));
+				itemStacks.add(new ItemStack(O17));itemStacks.add(new ItemStack(O18));
+				itemStacks.add(new ItemStack(O19));itemStacks.add(new ItemStack(O20));
+				itemStacks.add(new ItemStack(O21));itemStacks.add(new ItemStack(O22));
+				itemStacks.add(new ItemStack(O23));itemStacks.add(new ItemStack(O24));
 			}).build();
 	public static final ItemGroup METALS = FabricItemGroupBuilder.create(
 			new Identifier(MODID, "metals")).icon(() -> new ItemStack(IRON_INGOT))

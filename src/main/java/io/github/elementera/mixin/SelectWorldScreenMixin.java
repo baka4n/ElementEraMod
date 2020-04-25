@@ -1,6 +1,5 @@
 package io.github.elementera.mixin;
 
-import io.github.elementera.MyLogger;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
 import net.minecraft.client.resource.language.I18n;
@@ -13,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(SelectWorldScreen.class)
-public class SelectWorldScreenMixin extends Screen implements MyLogger {
+public class SelectWorldScreenMixin extends Screen {
 
     @Shadow
     protected final Screen parent;
