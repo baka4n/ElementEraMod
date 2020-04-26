@@ -46,13 +46,23 @@ public class Public implements Loggers {
 	public static final Item O18 = new O18();public static final Item O19 = new O19();
 	public static final Item O20 = new O20();public static final Item O21 = new O21();
 	public static final Item O22 = new O22();public static final Item O23 = new O23();
-	public static final Item O24 = new O24();
+	public static final Item O24 = new O24();public static final Item F14 = new F14();
+	public static final Item F15 = new F15();public static final Item F16 = new F16();
+	public static final Item F17 = new F17();public static final Item F18 = new F18();
+	public static final Item F19 = new F19();public static final Item F20 = new F20();
+	public static final Item F21 = new F21();public static final Item F22 = new F22();
+	public static final Item F23 = new F23();public static final Item F24 = new F24();
+	public static final Item F25 = new F25();public static final Item F26 = new F26();
+	public static final Item F27 = new F27();public static final Item F28 = new F28();
+	public static final Item F29 = new F29();public static final Item F30 = new F30();
+	public static final Item F31 = new F31();
 	public static final String MODID = "elementera";
 	public static final ItemGroup GAS = FabricItemGroupBuilder.create(
 			new Identifier(MODID, "gas")).icon(() -> new ItemStack(AIR))
 			.appendItems(itemStacks -> {
 				itemStacks.add(new ItemStack(PROTIUM));itemStacks.add(new ItemStack(He4));
 				itemStacks.add(new ItemStack(N14));itemStacks.add(new ItemStack(O16));
+				itemStacks.add(new ItemStack(F19));
 
 				itemStacks.add(new ItemStack(DEUTERIUM));itemStacks.add(new ItemStack(TRITIUM));
 				itemStacks.add(new ItemStack(He2));itemStacks.add(new ItemStack(He3));
@@ -71,6 +81,15 @@ public class Public implements Loggers {
 				itemStacks.add(new ItemStack(O19));itemStacks.add(new ItemStack(O20));
 				itemStacks.add(new ItemStack(O21));itemStacks.add(new ItemStack(O22));
 				itemStacks.add(new ItemStack(O23));itemStacks.add(new ItemStack(O24));
+				itemStacks.add(new ItemStack(F14));itemStacks.add(new ItemStack(F15));
+				itemStacks.add(new ItemStack(F16));itemStacks.add(new ItemStack(F17));
+				itemStacks.add(new ItemStack(F18));itemStacks.add(new ItemStack(F20));
+				itemStacks.add(new ItemStack(F21));itemStacks.add(new ItemStack(F22));
+				itemStacks.add(new ItemStack(F23));itemStacks.add(new ItemStack(F24));
+				itemStacks.add(new ItemStack(F25));itemStacks.add(new ItemStack(F26));
+				itemStacks.add(new ItemStack(F27));itemStacks.add(new ItemStack(F28));
+				itemStacks.add(new ItemStack(F29));itemStacks.add(new ItemStack(F30));
+				itemStacks.add(new ItemStack(F31));
 			}).build();
 	public static final ItemGroup METALS = FabricItemGroupBuilder.create(
 			new Identifier(MODID, "metals")).icon(() -> new ItemStack(IRON_INGOT))

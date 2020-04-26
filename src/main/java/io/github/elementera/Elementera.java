@@ -42,7 +42,7 @@ class ModItems implements Loggers {
 	public ModItems() {
 		registerItem("protium", PROTIUM); registerItem("helium_4", He4);
 		registerItem("lithium_7", Li7); registerItem("beryllium_8", Be8);
-		registerItem("carbon_12", C12);
+		registerItem("carbon_12", C12); registerItem("fluorine_19", F19);
 
 		registerItem("helium_5", He5); registerItem("deuterium", DEUTERIUM);
 		registerItem("tritium", TRITIUM); registerItem("helium_2", He2);
@@ -79,6 +79,15 @@ class ModItems implements Loggers {
 		registerItem("oxygen_19", O19); registerItem("oxygen_20", O20);
 		registerItem("oxygen_21", O21); registerItem("oxygen_22", O22);
 		registerItem("oxygen_23", O23); registerItem("oxygen_24", O24);
+		registerItem("fluorine_14", F14); registerItem("fluorine_15", F15);
+		registerItem("fluorine_16", F16); registerItem("fluorine_17", F17);
+		registerItem("fluorine_18", F18); registerItem("fluorine_20", F20);
+		registerItem("fluorine_21", F21); registerItem("fluorine_22", F22);
+		registerItem("fluorine_23", F23); registerItem("fluorine_24", F24);
+		registerItem("fluorine_25", F25); registerItem("fluorine_26", F26);
+		registerItem("fluorine_27", F27); registerItem("fluorine_28", F28);
+		registerItem("fluorine_29", F29); registerItem("fluorine_30", F30);
+		registerItem("fluorine_31", F31);
 		itemreg.info("register all item success!");
 	}
 	private static void registerItem(String itemName, Item item) {
