@@ -1,8 +1,8 @@
-package io.github.elementera;
+package io.github.elementera.items;
 
 import net.minecraft.item.Item;
 
-import static io.github.elementera.Public.METALS;
+import static io.github.elementera.items.Public.METALS;
 
 class Be7 extends Item {
     public Be7() { super(new Settings().group(METALS).maxCount(16)); }

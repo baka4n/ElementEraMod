@@ -1,8 +1,8 @@
-package io.github.elementera;
+package io.github.elementera.items;
 
 import net.minecraft.item.Item;
 
-import static io.github.elementera.Public.GAS;
+import static io.github.elementera.items.Public.GAS;
 
 class N10 extends Item {
     public N10() { super(new Settings().group(GAS).maxCount(16)); }

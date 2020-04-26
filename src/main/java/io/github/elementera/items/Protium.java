@@ -1,9 +1,9 @@
-package io.github.elementera;
+package io.github.elementera.items;
 
 
 import net.minecraft.item.Item;
 
-import static io.github.elementera.Public.*;
+import static io.github.elementera.items.Public.*;
 
 public class Protium extends Item {
     public Protium() { super(new Item.Settings().group(GAS).maxCount(16)); }

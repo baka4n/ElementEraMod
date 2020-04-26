@@ -1,8 +1,8 @@
-package io.github.elementera;
+package io.github.elementera.items;
 
 import net.minecraft.item.Item;
 
-import static io.github.elementera.Public.NONMETALS;
+import static io.github.elementera.items.Public.NONMETALS;
 
 class B6 extends Item {
     public B6() { super(new Settings().group(NONMETALS).maxCount(16)); }
