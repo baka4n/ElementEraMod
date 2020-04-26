@@ -1,13 +1,9 @@
 package io.github.elementera.mixin;
 
 import com.google.common.util.concurrent.Runnables;
-import io.github.elementera.Elementera;
 import io.github.elementera.gui.*;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.screen.CreditsScreen;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.TitleScreen;
+import net.minecraft.client.gui.screen.*;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -15,19 +11,12 @@ import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.toast.SystemToast;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.realms.RealmsBridge;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.*;
 import net.minecraft.world.level.storage.LevelStorage;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
+import org.apache.logging.log4j.*;
+import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 import java.io.IOException;
 
 /**
@@ -36,16 +25,18 @@ import java.io.IOException;
  * @Nullable inject
  */
 @Mixin(TitleScreen.class)
-@Nullable
 public class ElementMixin extends Screen {
 	public Logger logger = LogManager.getLogger("ElementMixin");
-	@Shadow
-	private Screen realmsNotificationGui;
-	@Shadow
-	private int copyrightTextX;
-	@Shadow
-	private int copyrightTextWidth;
-
+	@Shadow private Screen realmsNotificationGui;
+	@Shadow private int copyrightTextX;
+	@Shadow private int copyrightTextWidth;
+	/**
+	 * @author baka4n
+	 * @param title
+	 */
+	protected ElementMixin(Text title) {
+		super(title);
+	}
 	/**
 	 * @author baka4n
 	 * @param matrixStack
@@ -108,15 +99,6 @@ public class ElementMixin extends Screen {
 	private void switchToRealms() {
 		RealmsBridge realmsBridge = new RealmsBridge();
 		realmsBridge.switchToRealms(this);
-	}
-
-	/**
-	 * @author baka4n
-	 * @param title
-	 */
-	@Nullable
-	protected ElementMixin(Text title) {
-		super(title);
 	}
 	/**
 	 * @author baka4n

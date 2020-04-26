@@ -1,38 +1,46 @@
 package io.github.elementera.mixin;
 
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.world.SelectWorldScreen;
+import net.minecraft.client.gui.screen.world.*;
+import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.text.TranslatableText;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import net.minecraft.text.*;
+import org.spongepowered.asm.mixin.*;
+
+import java.util.List;
 
 @Mixin(SelectWorldScreen.class)
 public class SelectWorldScreenMixin extends Screen {
-
-    @Shadow
     protected final Screen parent;
+    @Shadow private List<Text> tooltipText;
+    @Shadow private WorldListWidget levelList;
+    @Shadow protected TextFieldWidget searchBox;
 
     public SelectWorldScreenMixin(Screen parent) {
         super(new TranslatableText("selectWorld.title", new Object[0]));
         this.parent = parent;
     }
+
     /**
-     *
-     * @param matrixStack
+     * @author baka4n
+     * @param matrices
+     * @param mouseX
      * @param mouseY
-     * @param i
-     * @param f
-     * @param info
+     * @param delta
+     * <p> minecraft render</p>
      */
-    @Inject(method = "render", at = @At("RETURN"))
-    protected void render(MatrixStack matrixStack, int mouseY, int i, float f, CallbackInfo info) {
-        textRenderer.draw(matrixStack, I18n.translate("mouseX") + ": " + mouseY, 5, 5, 0xFFFFFFFF);
-        textRenderer.draw(matrixStack, I18n.translate("mouseY") + ": " + i, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
-        super.render(matrixStack, mouseY, i, f);
+    @Overwrite
+    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
+        this.tooltipText = null;
+        this.levelList.render(matrices, mouseX, mouseY, delta);
+        this.searchBox.render(matrices, mouseX, mouseY, delta);
+        this.method_27534(matrices, this.textRenderer, this.title, this.width / 2, 8, 16777215);
+        textRenderer.draw(matrices, I18n.translate("mouseX") + ": " + mouseX, 5, 5, 0xFFFFFFFF);
+        textRenderer.draw(matrices, I18n.translate("mouseY") + ": " + mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+        super.render(matrices, mouseX, mouseY, delta);
+        if (this.tooltipText != null) {
+            this.renderTooltip(matrices, this.tooltipText, mouseX, mouseY);
+        }
     }
 }

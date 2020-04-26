@@ -1,10 +1,9 @@
 package io.github.elementera.items;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
+import org.apache.logging.log4j.*;
 
 import static net.minecraft.item.Items.*;
 
@@ -122,4 +121,7 @@ public class Public implements Loggers {
 		publics.info("nonmetals have a " + NONMETALS.getIndex());publics.info("metals have a " + METALS.getIndex());
 		publics.info("gas have a " + GAS.getIndex());publics.info("public static final");
 	}
+}
+interface Loggers {
+	Logger publics = LogManager.getLogger("public load");
 }

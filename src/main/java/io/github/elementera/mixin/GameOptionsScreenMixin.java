@@ -1,14 +1,11 @@
 package io.github.elementera.mixin;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import net.fabricmc.api.*;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.options.GameOptionsScreen;
 import net.minecraft.client.options.GameOptions;
 import net.minecraft.text.Text;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.*;
 
 @Mixin(GameOptionsScreen.class)
 @Environment(EnvType.CLIENT)

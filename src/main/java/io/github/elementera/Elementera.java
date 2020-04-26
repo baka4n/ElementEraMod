@@ -7,10 +7,8 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import java.util.Collection;
-import java.util.List;
+import org.apache.logging.log4j.*;
+import java.util.*;
 import static io.github.elementera.items.Public.*;
 
 /**
