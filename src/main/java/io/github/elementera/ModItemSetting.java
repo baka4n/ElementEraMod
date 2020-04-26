@@ -5,12 +5,8 @@ import net.minecraft.item.Item;
 
 import static io.github.elementera.Public.*;
 
-public class ModItemSetting extends Item {
-    public ModItemSetting() {
-        super(new Item.Settings()
-            .group(GAS)
-            .maxCount(16));
-    }
+public class ModItemSetting {
+    
 }
 class Protium extends Item {
     public Protium() { super(new Item.Settings().group(GAS).maxCount(16)); }
