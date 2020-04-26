@@ -2,7 +2,6 @@ package io.github.elementera.mixin;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.options.GameOptionsScreen;
 import net.minecraft.client.options.GameOptions;
