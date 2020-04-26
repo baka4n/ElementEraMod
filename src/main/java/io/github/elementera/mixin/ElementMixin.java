@@ -18,6 +18,9 @@ import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.io.IOException;
+import java.util.Objects;
+
+import static io.github.elementera.config.Config.properties;
 
 /**
  * @author baka4n
@@ -71,24 +74,69 @@ public class ElementMixin extends Screen {
 	 */
 	@Overwrite
 	private void initWidgetsNormal(int y, int spacingY) {
-		this.addButton(new ButtonWidget(this.width / 2 - 100, y, 200, 20, new TranslatableText("elementera.ElementEra"), (action) -> {
-			MinecraftClient.getInstance().openScreen(new Authors(this));
-
-			logger.warn(I18n.translate("authors"));
-			logger.warn(I18n.translate("open.authors"));
-		}));
-		this.addButton(new ButtonWidget(this.width / 2 - 100, y + spacingY * 1, 100, 20, new TranslatableText("menu.singleplayer"), (buttonWidget) -> {
-			logger.warn(I18n.translate("singleplayer"));
-			this.client.openScreen(new SelectWorldScreen(this));
-		}));
-		this.addButton(new ButtonWidget(this.width / 2, y + spacingY * 1, 100, 20, new TranslatableText("menu.multiplayer"), (buttonWidget) -> {
-			logger.warn(I18n.translate("multiplayer"));
-			this.client.openScreen(new MultiplayerScreen(this));
-		}));
-		this.addButton(new ButtonWidget(this.width / 2 - 100, y + spacingY * 2, 200, 20, new TranslatableText("menu.online"), (buttonWidget) -> {
-			logger.warn(I18n.translate("online"));
-			this.switchToRealms();
-		}));
+		if (properties.getProperty("editGui").equals("yes")) {
+			if (properties.getProperty("author_hide").equals("no")) {
+				int inty;
+				if (properties.getProperty("author_this_y").equals("y")) { inty = y; } else { inty = Integer.parseInt(properties.getProperty("author_this_y")); }
+				this.addButton(new ButtonWidget(
+						Integer.parseInt(properties.getProperty("author_this_a")) * this.width / Integer.parseInt(properties.getProperty("author_this_b")) + Integer.parseInt(properties.getProperty("author_this_c")),
+						inty,
+						Integer.parseInt(properties.getProperty("author_button_width")),
+						Integer.parseInt(properties.getProperty("author_button_height")),
+						new TranslatableText("elementera.ElementEra"), (action) -> {
+					MinecraftClient.getInstance().openScreen(new Authors(this));
+					logger.warn(I18n.translate("authors"));
+					logger.warn(I18n.translate("open.authors"));
+				}));
+			}
+			this.addButton(new ButtonWidget(
+					Integer.parseInt(properties.getProperty("sing_player_this_a")) * this.width / Integer.parseInt(properties.getProperty("sing_player_this_b")) + Integer.parseInt(properties.getProperty("sing_player_this_c")),
+					Integer.parseInt(properties.getProperty("sing_player_this_y")),
+					Integer.parseInt(properties.getProperty("sing_player_button_width")),
+					Integer.parseInt(properties.getProperty("sing_player_button_height")),
+					new TranslatableText("menu.singleplayer"),
+					(buttonWidget) -> {
+				logger.warn(I18n.translate("singleplayer"));
+				this.client.openScreen(new SelectWorldScreen(this));
+			}));
+			this.addButton(new ButtonWidget(
+					Integer.parseInt(properties.getProperty("multiplayer_this_a")) * this.width / Integer.parseInt(properties.getProperty("multiplayer_this_b")) + Integer.parseInt(properties.getProperty("multiplayer_this_c")),
+					Integer.parseInt(properties.getProperty("multiplayer_this_y")),
+					Integer.parseInt(properties.getProperty("multiplayer_button_width")),
+					Integer.parseInt(properties.getProperty("multiplayer_button_height")),
+					new TranslatableText("menu.multiplayer"), (buttonWidget) -> {
+				logger.warn(I18n.translate("multiplayer"));
+				this.client.openScreen(new MultiplayerScreen(this));
+			}));
+			this.addButton(new ButtonWidget(
+					Integer.parseInt(properties.getProperty("online_this_a")) * this.width / Integer.parseInt(properties.getProperty("online_this_b")) + Integer.parseInt(properties.getProperty("online_this_c")),
+					Integer.parseInt(properties.getProperty("online_this_y")),
+					Integer.parseInt(properties.getProperty("online_button_width")),
+					Integer.parseInt(properties.getProperty("online_button_height")),
+					new TranslatableText("menu.online"), (buttonWidget) -> {
+				logger.warn(I18n.translate("online"));
+				this.switchToRealms();
+			}));
+		} else {
+			this.addButton(new ButtonWidget(
+					this.width / 2 - 100, y, 200, 20, new TranslatableText("elementera.ElementEra"), (action) -> {
+				MinecraftClient.getInstance().openScreen(new Authors(this));
+				logger.warn(I18n.translate("authors"));
+				logger.warn(I18n.translate("open.authors"));
+			}));
+			this.addButton(new ButtonWidget(this.width / 2 - 100, y + spacingY * 1, 100, 20, new TranslatableText("menu.singleplayer"), (buttonWidget) -> {
+				logger.warn(I18n.translate("singleplayer"));
+				this.client.openScreen(new SelectWorldScreen(this));
+			}));
+			this.addButton(new ButtonWidget(this.width / 2, y + spacingY * 1, 100, 20, new TranslatableText("menu.multiplayer"), (buttonWidget) -> {
+				logger.warn(I18n.translate("multiplayer"));
+				this.client.openScreen(new MultiplayerScreen(this));
+			}));
+			this.addButton(new ButtonWidget(this.width / 2 - 100, y + spacingY * 2, 200, 20, new TranslatableText("menu.online"), (buttonWidget) -> {
+				logger.warn(I18n.translate("online"));
+				this.switchToRealms();
+			}));
+		}
 	}
 
 	/**
