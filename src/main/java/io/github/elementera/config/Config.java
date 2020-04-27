@@ -7,11 +7,11 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
-import java.util.stream.Stream;
+
 
 public class Config implements Loggers {
     public static final Properties properties = new Properties();
-    public Config() throws IOException {
+    public Config()  {
         try { properties.load(new BufferedInputStream(new FileInputStream("config.ee"))); }
         catch (FileNotFoundException e) {
             List<String> strings = Arrays.asList(
@@ -61,9 +61,7 @@ public class Config implements Loggers {
                                 "\nSave Configs File." +
                                 "\n a * this.width / b + c this height = = this_y" +
                                 "\nthis button width and this button height");
-            }
-            catch (FileNotFoundException f) { f.printStackTrace(); }
-            catch (IOException i) { i.printStackTrace(); }
+            } catch (IOException f) { f.printStackTrace(); }
         }
         catch (IOException i) { i.printStackTrace(); }
     }

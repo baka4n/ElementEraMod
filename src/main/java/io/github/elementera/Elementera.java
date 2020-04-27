@@ -1,19 +1,15 @@
 package io.github.elementera;
 
 import io.github.elementera.config.Config;
-import io.github.elementera.items.*;
+import io.github.elementera.items.Public;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.block.Block;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.TextRenderer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.*;
 
-import java.io.IOException;
-import java.util.*;
 import static io.github.elementera.items.Public.*;
 
 /**
@@ -21,30 +17,26 @@ import static io.github.elementera.items.Public.*;
  * classes
  */
 public class Elementera implements ModInitializer {
-	public static final TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;
 	interface OnInitialize { Logger logger = LogManager.getLogger("OnInitialize");}
 	@Override
 	public void onInitialize() {
 		proxy();OnInitialize.logger.info("element era mods OnInitialize!");
 	}
 
-	public static void proxy(String... args) {
+	public static void proxy() {
 		new Proxies();OnInitialize.logger.info("proxy oninitialize");
 		new Public();
-		try {
-			new Config();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		new Config();
 	}
 }
 
 class Proxies implements Loggers {
 	public Proxies() {
-		modItem();
+		modItem(); modBlock();
 	}
-	public static void modItem(String... args) { new ModItems();proxys.info("moditem register");
-	}
+	public static void modItem() { new ModItems();proxys.info("moditem register"); }
+
+	public static void modBlock() { new ModBlocks(); proxys.info("modblock register");}
 }
 class ModItems implements Loggers {
 	public ModItems() {
@@ -177,14 +169,6 @@ class ModItems implements Loggers {
 		Registry.register(Registry.ITEM, new Identifier(modid, toolName+"_shovel"), shovel);
 		Registry.register(Registry.ITEM, new Identifier(modid, toolName+"_sword"), sword);
 		itemreg.info("register " + toolName);
-	}
-
-	public static void registerAll(Collection<Item> c, List<String> itemNames) {
-		c.forEach(items -> {
-			itemNames.forEach(string -> {
-				Registry.register(Registry.ITEM, new Identifier(MODID, string), items);
-			});
-		});
 	}
 }
 class ModBlocks implements Loggers {

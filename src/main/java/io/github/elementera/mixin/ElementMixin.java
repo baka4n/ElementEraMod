@@ -18,7 +18,6 @@ import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.io.IOException;
-import java.util.Objects;
 
 import static io.github.elementera.config.Config.properties;
 
@@ -33,26 +32,16 @@ public class ElementMixin extends Screen {
 	@Shadow private Screen realmsNotificationGui;
 	@Shadow private int copyrightTextX;
 	@Shadow private int copyrightTextWidth;
-	/**
-	 * @author baka4n
-	 * @param title
-	 */
 	protected ElementMixin(Text title) {
 		super(title);
 	}
 	/**
 	 * @author baka4n
-	 * @param matrixStack
-	 * @param mouseY
-	 * @param i
-	 * @param f
-	 * @param info
 	 */
 	@Inject(method = "render", at = @At("RETURN"))
 	protected void render(MatrixStack matrixStack, int mouseY, int i, float f, CallbackInfo info) {
 		textRenderer.draw(matrixStack, I18n.translate("mouseX") + ": " + mouseY, 5, 5, 0xFFFFFFFF);
 		textRenderer.draw(matrixStack, I18n.translate("mouseY") + ": " + i, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
-		super.render(matrixStack, mouseY, i, f);
 	}
 
 	/**
@@ -97,7 +86,8 @@ public class ElementMixin extends Screen {
 					new TranslatableText("menu.singleplayer"),
 					(buttonWidget) -> {
 				logger.warn(I18n.translate("singleplayer"));
-				this.client.openScreen(new SelectWorldScreen(this));
+						assert this.client != null;
+						this.client.openScreen(new SelectWorldScreen(this));
 			}));
 			this.addButton(new ButtonWidget(
 					Integer.parseInt(properties.getProperty("multiplayer_this_a")) * this.width / Integer.parseInt(properties.getProperty("multiplayer_this_b")) + Integer.parseInt(properties.getProperty("multiplayer_this_c")),
@@ -106,6 +96,7 @@ public class ElementMixin extends Screen {
 					Integer.parseInt(properties.getProperty("multiplayer_button_height")),
 					new TranslatableText("menu.multiplayer"), (buttonWidget) -> {
 				logger.warn(I18n.translate("multiplayer"));
+				assert this.client != null;
 				this.client.openScreen(new MultiplayerScreen(this));
 			}));
 			this.addButton(new ButtonWidget(
@@ -124,12 +115,14 @@ public class ElementMixin extends Screen {
 				logger.warn(I18n.translate("authors"));
 				logger.warn(I18n.translate("open.authors"));
 			}));
-			this.addButton(new ButtonWidget(this.width / 2 - 100, y + spacingY * 1, 100, 20, new TranslatableText("menu.singleplayer"), (buttonWidget) -> {
+			this.addButton(new ButtonWidget(this.width / 2 - 100, y + spacingY, 100, 20, new TranslatableText("menu.singleplayer"), (buttonWidget) -> {
 				logger.warn(I18n.translate("singleplayer"));
+				assert this.client != null;
 				this.client.openScreen(new SelectWorldScreen(this));
 			}));
-			this.addButton(new ButtonWidget(this.width / 2, y + spacingY * 1, 100, 20, new TranslatableText("menu.multiplayer"), (buttonWidget) -> {
+			this.addButton(new ButtonWidget(this.width / 2, y + spacingY, 100, 20, new TranslatableText("menu.multiplayer"), (buttonWidget) -> {
 				logger.warn(I18n.translate("multiplayer"));
+				assert this.client != null;
 				this.client.openScreen(new MultiplayerScreen(this));
 			}));
 			this.addButton(new ButtonWidget(this.width / 2 - 100, y + spacingY * 2, 200, 20, new TranslatableText("menu.online"), (buttonWidget) -> {
@@ -153,6 +146,7 @@ public class ElementMixin extends Screen {
 	 */
 	@Overwrite
 	private boolean areRealmsNotificationsEnabled() {
+		assert this.client != null;
 		return this.client.options.realmsNotifications && this.realmsNotificationGui != null;
 	}
 
@@ -178,6 +172,7 @@ public class ElementMixin extends Screen {
 			return true;
 		} else {
 			if (mouseX > (double)this.copyrightTextX && mouseX < (double)(this.copyrightTextX + this.copyrightTextWidth) && mouseY > (double)(this.height - 10) && mouseY < (double)this.height) {
+				assert this.client != null;
 				this.client.openScreen(new CreditsScreen(false, Runnables.doNothing()));
 			}
 
@@ -205,6 +200,7 @@ public class ElementMixin extends Screen {
 	private void onDemoDeletionConfirmed(boolean delete) {
 		if (delete) {
 			try {
+				assert this.client != null;
 				LevelStorage.Session session = this.client.getLevelStorage().createSession("Demo_World");
 				Throwable var3 = null;
 
@@ -233,6 +229,7 @@ public class ElementMixin extends Screen {
 			}
 		}
 
+		assert this.client != null;
 		this.client.openScreen(this);
 	}
 }

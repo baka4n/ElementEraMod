@@ -24,10 +24,6 @@ public class SelectWorldScreenMixin extends Screen {
 
     /**
      * @author baka4n
-     * @param matrices
-     * @param mouseX
-     * @param mouseY
-     * @param delta
      * <p> minecraft render</p>
      */
     @Overwrite

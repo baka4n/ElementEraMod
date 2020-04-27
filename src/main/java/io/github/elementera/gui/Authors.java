@@ -13,7 +13,7 @@ public class Authors extends Screen {
 
     public Logger logger= LogManager.getLogger("test");
     //Authors info
-    private Screen screen;
+    private final Screen screen;
     public Authors(Screen screen) {
         super(new LiteralText(""));
         this.screen = screen;
@@ -41,6 +41,5 @@ public class Authors extends Screen {
         renderTooltip(matrixStack, new TranslatableText("authors.info"), this.width / 100, this.height / 6);
         renderTooltip(matrixStack, new TranslatableText("baka4n"), 21 * this.width / 100, this.height / 6);
         renderTooltip(matrixStack, new TranslatableText("squidCraft() -> Team"), 41 * this.width / 100, this.height / 6);
-        super.render(matrixStack, mouseY, i, f);
     }
 }

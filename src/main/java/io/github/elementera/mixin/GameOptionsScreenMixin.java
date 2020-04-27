@@ -10,9 +10,7 @@ import org.spongepowered.asm.mixin.*;
 @Mixin(GameOptionsScreen.class)
 @Environment(EnvType.CLIENT)
 public class GameOptionsScreenMixin extends Screen {
-    @Shadow
     protected final Screen parent;
-    @Shadow
     protected final GameOptions gameOptions;
 
     protected GameOptionsScreenMixin(Screen parent, GameOptions gameOptions, Text title) {
@@ -25,6 +23,7 @@ public class GameOptionsScreenMixin extends Screen {
      */
     @Overwrite
     public void removed() {
+        assert this.client != null;
         this.client.options.write();
     }
 
@@ -33,6 +32,7 @@ public class GameOptionsScreenMixin extends Screen {
      */
     @Overwrite
     public void onClose() {
+        assert this.client != null;
         this.client.openScreen(this.parent);
     }
 

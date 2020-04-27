@@ -11,27 +11,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MultiplayerScreen.class)
 public class MultiplayerScreenMixin extends Screen {
-
-    @Shadow
-    private final Screen parent;
-
     /**
-     *
-     * @param matrixStack
-     * @param mouseY
-     * @param i
-     * @param f
-     * @param info
+     * @author baka4n
      */
     @Inject(method = "render", at = @At("RETURN"))
     protected void render(MatrixStack matrixStack, int mouseY, int i, float f, CallbackInfo info) {
         textRenderer.draw(matrixStack, I18n.translate("mouseX") + ": " + mouseY, 5, 5, 0xFFFFFFFF);
         textRenderer.draw(matrixStack, I18n.translate("mouseY") + ": " + i, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
-        super.render(matrixStack, mouseY, i, f);
     }
 
-    public MultiplayerScreenMixin(Screen parent) {
+    public MultiplayerScreenMixin() {
         super(new TranslatableText("multiplayer.title", new Object[0]));
-        this.parent = parent;
     }
 }
