@@ -1,79 +1,137 @@
 package io.github.elementera;
 
 import io.github.elementera.config.Config;
+import io.github.elementera.config.RemoveItemConfig;
+import io.github.elementera.energy.ElementAmpere;
 import io.github.elementera.items.Public;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import org.apache.logging.log4j.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.io.*;
+
+import static io.github.elementera.Proxies.registerItem;
+import static io.github.elementera.config.RemoveItemConfig.pr;
 import static io.github.elementera.items.Public.*;
+import static java.lang.Boolean.parseBoolean;
+import static java.lang.Thread.sleep;
+
+/*import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;*/
 
 /**
  * @author baka4n
  * classes
  */
 public class Elementera implements ModInitializer {
-	interface OnInitialize { Logger logger = LogManager.getLogger("OnInitialize");}
+	public static final Logger logger = LogManager.getLogger("OnInitializes");
+
 	@Override
 	public void onInitialize() {
-		proxy();OnInitialize.logger.info("element era mods OnInitialize!");
-	}
-
-	public static void proxy() {
-		new Proxies();OnInitialize.logger.info("proxy oninitialize");
-		new Public();
-		new Config();
-	}
+		proxy();
+		logger.info("element era mods OnInitializes!"); }
+	public static void proxy() { new Proxies(); logger.info("proxy oninitialize"); }
 }
 
 class Proxies implements Loggers {
 	public Proxies() {
-		modItem(); modBlock();
+		modBlock(); config(); publicS(); energy();
+		removeItemConfig();
+		if (removeItemConfig()) {
+			modItem();
+		}
 	}
 	public static void modItem() { new ModItems();proxys.info("moditem register"); }
-
 	public static void modBlock() { new ModBlocks(); proxys.info("modblock register");}
+	public static void config() { new Config(); proxys.info("config register"); }
+	public static boolean removeItemConfig() {  new RemoveItemConfig();
+		return true;
+	}
+	public static void publicS() { new Public(); proxys.info("public register"); }
+	public static void registerItem(String itemName, Item item) {
+		ItemsRegister.registerItem(MODID, itemName, item);
+	}
+	public static void energy() {
+		new ElementAmpere();
+		proxys.info("ampere register");
+		tick(
+				3000L,
+				"config" + File.separator + File.separator +  "fabric" + File.separator + File.separator + "energy"+ File.separator + File.separator + "BoPt.ee",
+				3000L
+		);
+	}
+
+	public static void tick(long timeInterval, String filename, long c) {
+		Runnable runnable = () -> {
+			do {
+				boolean bool = true;
+				try {
+					ElementAmpere.p.load(new BufferedInputStream(new FileInputStream(filename)));
+				} catch (FileNotFoundException e) {
+					bool = false;
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally {
+					if (bool) ElementAmpere.tick(timeInterval, "BoPt", c);
+				}
+				try {
+					sleep(timeInterval);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			} while (true);
+		};
+		Thread thread = new Thread(runnable);
+		thread.start();
+	}
+
+/*
+	public static void registerArmor(String armorName, Item helmet, Item chestplate, Item leggings, Item boots) { ItemsRegister.registerArmor(MODID, armorName, helmet, chestplate, leggings, boots); }
+	public static void registerTool(String toolName, Item axe, Item hoe, Item pickaxe, Item shovel, Item sword) { ItemsRegister.registerTool(MODID, toolName, axe, hoe, pickaxe, shovel, sword); }
+	public static void registerBlock(String blockName, Block block, Item.Settings settings) { BlockRegister.registerBlock(MODID, blockName, block, settings); }
+	public static void registerContainer(Identifier identifier, Block block, Item.Settings settings) { BlockRegister.registerContainer(identifier, block, settings); }
+*/
 }
 class ModItems implements Loggers {
-	public ModItems() {
-		registerItem("protium", PROTIUM);
-		registerItem("helium_4", He4);
-		registerItem("lithium_7", Li7);
-		registerItem("beryllium_8", Be8);
-		registerItem("carbon_12", C12);
-		registerItem("fluorine_19", F19);
 
-		registerItem("helium_5", He5);
-		registerItem("deuterium", DEUTERIUM);
-		registerItem("tritium", TRITIUM);
-		registerItem("helium_2", He2);
-		registerItem("helium_3", He3);
-		registerItem("helium_6", He6);
-		registerItem("helium_7", He7);
-		registerItem("helium_8", He8);
-		registerItem("helium_9", He9);
-		registerItem("helium_10", He10);
-		registerItem("lithium_6", Li6);
-		registerItem("beryllium_7", Be7);
-		registerItem("beryllium_9", Be9);
-		registerItem("beryllium_10", Be10);
-		registerItem("boron_6", B6);
-		registerItem("boron_7", B7);
-		registerItem("boron_8", B8);
-		registerItem("boron_9", B9);
-		registerItem("boron_10", B10);
-		registerItem("boron_11", B11);
-		registerItem("boron_12", B12);
-		registerItem("boron_13", B13);
-		registerItem("boron_14", B14);
-		registerItem("boron_15", B15);
-		registerItem("boron_16", B16);
-		registerItem("boron_17", B17);
-		registerItem("boron_18", B18);
+	public ModItems() {
+		if (parseBoolean(pr.getProperty("protium"))) registerItem("protium", PROTIUM);
+		if (parseBoolean(pr.getProperty("helium_4"))) registerItem("helium_4", He4);
+		if (parseBoolean(pr.getProperty("lithium_7"))) registerItem("lithium_7", Li7);
+		if (parseBoolean(pr.getProperty("beryllium_8"))) registerItem("beryllium_8", Be8);
+		if (parseBoolean(pr.getProperty("carbon_12"))) registerItem("carbon_12", C12);
+		if (parseBoolean(pr.getProperty("fluorine_19"))) registerItem("fluorine_19", F19);
+
+		if (parseBoolean(pr.getProperty("helium_5"))) registerItem("helium_5", He5);
+		if (parseBoolean(pr.getProperty("deuterium"))) registerItem("deuterium", DEUTERIUM);
+		if (parseBoolean(pr.getProperty("tritium"))) registerItem("tritium", TRITIUM);
+		if (parseBoolean(pr.getProperty("helium_2"))) registerItem("helium_2", He2);
+		if (parseBoolean(pr.getProperty("helium_3"))) registerItem("helium_3", He3);
+		if (parseBoolean(pr.getProperty("helium_6"))) registerItem("helium_6", He6);
+		if (parseBoolean(pr.getProperty("helium_7"))) registerItem("helium_7", He7);
+		if (parseBoolean(pr.getProperty("helium_8"))) registerItem("helium_8", He8);
+		if (parseBoolean(pr.getProperty("helium_9"))) registerItem("helium_9", He9);
+		if (parseBoolean(pr.getProperty("helium_10"))) registerItem("helium_10", He10);
+		if (parseBoolean(pr.getProperty("lithium_6"))) registerItem("lithium_6", Li6);
+		if (parseBoolean(pr.getProperty("beryllium_7"))) registerItem("beryllium_7", Be7);
+		if (parseBoolean(pr.getProperty("beryllium_9"))) registerItem("beryllium_9", Be9);
+		if (parseBoolean(pr.getProperty("beryllium_10"))) registerItem("beryllium_10", Be10);
+		if (parseBoolean(pr.getProperty("boron_6"))) registerItem("boron_6", B6);
+		if (parseBoolean(pr.getProperty("boron_7"))) registerItem("boron_7", B7);
+		if (parseBoolean(pr.getProperty("boron_8"))) registerItem("boron_8", B8);
+		if (parseBoolean(pr.getProperty("boron_9"))) registerItem("boron_9", B9);
+		if (parseBoolean(pr.getProperty("boron_10"))) registerItem("boron_10", B10);
+		if (parseBoolean(pr.getProperty("boron_11"))) registerItem("boron_11", B11);
+		if (parseBoolean(pr.getProperty("boron_12"))) registerItem("boron_12", B12);
+		if (parseBoolean(pr.getProperty("boron_13"))) registerItem("boron_13", B13);
+		if (parseBoolean(pr.getProperty("boron_14"))) registerItem("boron_14", B14);
+		if (parseBoolean(pr.getProperty("boron_15"))) registerItem("boron_15", B15);
+		if (parseBoolean(pr.getProperty("boron_16"))) registerItem("boron_16", B16);
+		if (parseBoolean(pr.getProperty("boron_17"))) registerItem("boron_17", B17);
+		if (parseBoolean(pr.getProperty("boron_18"))) registerItem("boron_18", B18);
 		registerItem("boron_19", B19);
 		registerItem("carbon_8", C8);
 		registerItem("carbon_9", C9);
@@ -136,25 +194,13 @@ class ModItems implements Loggers {
 		registerItem("fluorine_31", F31);
 		itemreg.info("register all item success!");
 	}
-
-	private static void registerItem(String itemName, Item item) {
-		ItemsRegister.registerItem(MODID, itemName, item);
-	}
-
-	private static void registerArmor(String armorName, Item helmet, Item chestplate, Item leggings, Item boots) {
-		ItemsRegister.registerArmor(MODID, armorName, helmet, chestplate, leggings, boots);
-	}
-
-	private static void registerTool(String toolName, Item axe, Item hoe, Item pickaxe, Item shovel, Item sword) {
-		ItemsRegister.registerTool(MODID, toolName, axe, hoe, pickaxe, shovel, sword);
-	}
 }class ItemsRegister implements Loggers {
 	public static void registerItem(String modid,String itemName,Item item) {
 		Registry.register(Registry.ITEM, new Identifier(modid, itemName), item);
 		itemreg.info("register " + itemName);
 	}
 
-	public static void registerArmor(String modid, String armorName, Item helmet, Item chestplate, Item leggings, Item boots) {
+	/*public static void registerArmor(String modid, String armorName, Item helmet, Item chestplate, Item leggings, Item boots) {
 		Registry.register(Registry.ITEM, new Identifier(modid, armorName+"_helmet"), helmet);
 		Registry.register(Registry.ITEM, new Identifier(modid, armorName+"_chestplate"), chestplate);
 		Registry.register(Registry.ITEM, new Identifier(modid, armorName+"_leggings"), leggings);
@@ -169,29 +215,21 @@ class ModItems implements Loggers {
 		Registry.register(Registry.ITEM, new Identifier(modid, toolName+"_shovel"), shovel);
 		Registry.register(Registry.ITEM, new Identifier(modid, toolName+"_sword"), sword);
 		itemreg.info("register " + toolName);
-	}
+	}*/
 }
 class ModBlocks implements Loggers {
 	public ModBlocks() {
-
 	}
-	private void registerBlock(String blockName, Block block, Item.Settings settings) {
-		BlockRegister.registerBlock(MODID, blockName, block, settings);
-	}
-	private void registerContainer(Identifier identifier, Block block, Item.Settings settings) {
-		BlockRegister.registerContainer(identifier, block, settings);
-	}
-}class BlockRegister implements Loggers {
-	public static void registerBlock(String modid, String blockName, Block block, Item.Settings settings) {
+}/*class BlockRegister implements Loggers {
+	*//*public static void registerBlock(String modid, String blockName, Block block, Item.Settings settings) {
 		Registry.register(Registry.BLOCK, new Identifier(modid, blockName), block);
 		blockreg.info("regblock " + blockName);
 		Registry.register(Registry.ITEM, new Identifier(modid, blockName), new BlockItem(block, settings));
 		blockreg.info("regblockitem" + blockName);
 	}
-
 	public static void registerContainer(Identifier identifier, Block block, Item.Settings settings) {
 		Registry.register(Registry.BLOCK, identifier, block);
 		Registry.register(Registry.ITEM, identifier, new BlockItem(block, settings));
 		blockreg.info("register container!");
-	}
-}
+	}*//*
+}*/

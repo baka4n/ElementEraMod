@@ -8,6 +8,9 @@ import org.apache.logging.log4j.*;
 import static net.minecraft.item.Items.*;
 
 public class Public implements Loggers {
+	public static void main(String[] args) {
+
+	}
 	public static final Item PROTIUM = new Protium();public static final Item DEUTERIUM = new Deuterium();
 	public static final Item TRITIUM = new Tritium();public static final Item He2 = new He2();
 	public static final Item He3 = new He3();public static final Item He4 = new He4();

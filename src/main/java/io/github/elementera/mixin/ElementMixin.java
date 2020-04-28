@@ -1,25 +1,34 @@
 package io.github.elementera.mixin;
 
-import com.google.common.util.concurrent.Runnables;
-import io.github.elementera.gui.*;
+import io.github.elementera.gui.Authors;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.*;
+import net.minecraft.client.gui.screen.CreditsScreen;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.toast.SystemToast;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.realms.RealmsBridge;
-import net.minecraft.text.*;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.world.level.storage.LevelStorage;
-import org.apache.logging.log4j.*;
-import org.spongepowered.asm.mixin.*;
-import org.spongepowered.asm.mixin.injection.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
 import java.io.IOException;
 
+import static com.google.common.util.concurrent.Runnables.doNothing;
 import static io.github.elementera.config.Config.properties;
+import static java.lang.Integer.parseInt;
+import static net.minecraft.client.resource.language.I18n.translate;
 
 /**
  * @author baka4n
@@ -40,8 +49,12 @@ public class ElementMixin extends Screen {
 	 */
 	@Inject(method = "render", at = @At("RETURN"))
 	protected void render(MatrixStack matrixStack, int mouseY, int i, float f, CallbackInfo info) {
-		textRenderer.draw(matrixStack, I18n.translate("mouseX") + ": " + mouseY, 5, 5, 0xFFFFFFFF);
-		textRenderer.draw(matrixStack, I18n.translate("mouseY") + ": " + i, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+		if ("no".equals(properties.getProperty("titleScreen_mouseX_hide"))) {
+			textRenderer.draw(matrixStack, translate("mouseX") + ": " + mouseY, 5, 5, 0xFFFFFFFF);
+		}
+		if ("no".equals(properties.getProperty("titleScreen_mouseY_hide"))) {
+			textRenderer.draw(matrixStack, translate("mouseY") + ": " + i, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+		}
 	}
 
 	/**
@@ -66,67 +79,67 @@ public class ElementMixin extends Screen {
 		if (properties.getProperty("editGui").equals("yes")) {
 			if (properties.getProperty("author_hide").equals("no")) {
 				int inty;
-				if (properties.getProperty("author_this_y").equals("y")) { inty = y; } else { inty = Integer.parseInt(properties.getProperty("author_this_y")); }
+				if (properties.getProperty("author_this_y").equals("y")) { inty = y; } else { inty = parseInt(properties.getProperty("author_this_y")); }
 				this.addButton(new ButtonWidget(
-						Integer.parseInt(properties.getProperty("author_this_a")) * this.width / Integer.parseInt(properties.getProperty("author_this_b")) + Integer.parseInt(properties.getProperty("author_this_c")),
+						parseInt(properties.getProperty("author_this_a")) * this.width / parseInt(properties.getProperty("author_this_b")) + parseInt(properties.getProperty("author_this_c")),
 						inty,
-						Integer.parseInt(properties.getProperty("author_button_width")),
-						Integer.parseInt(properties.getProperty("author_button_height")),
+						parseInt(properties.getProperty("author_button_width")),
+						parseInt(properties.getProperty("author_button_height")),
 						new TranslatableText("elementera.ElementEra"), (action) -> {
 					MinecraftClient.getInstance().openScreen(new Authors(this));
-					logger.warn(I18n.translate("authors"));
-					logger.warn(I18n.translate("open.authors"));
+					logger.warn(translate("authors"));
+					logger.warn(translate("open.authors"));
 				}));
 			}
 			this.addButton(new ButtonWidget(
-					Integer.parseInt(properties.getProperty("sing_player_this_a")) * this.width / Integer.parseInt(properties.getProperty("sing_player_this_b")) + Integer.parseInt(properties.getProperty("sing_player_this_c")),
-					Integer.parseInt(properties.getProperty("sing_player_this_y")),
-					Integer.parseInt(properties.getProperty("sing_player_button_width")),
-					Integer.parseInt(properties.getProperty("sing_player_button_height")),
+					parseInt(properties.getProperty("sing_player_this_a")) * this.width / parseInt(properties.getProperty("sing_player_this_b")) + parseInt(properties.getProperty("sing_player_this_c")),
+					parseInt(properties.getProperty("sing_player_this_y")),
+					parseInt(properties.getProperty("sing_player_button_width")),
+					parseInt(properties.getProperty("sing_player_button_height")),
 					new TranslatableText("menu.singleplayer"),
 					(buttonWidget) -> {
-				logger.warn(I18n.translate("singleplayer"));
+				logger.warn(translate("singleplayer"));
 						assert this.client != null;
 						this.client.openScreen(new SelectWorldScreen(this));
 			}));
 			this.addButton(new ButtonWidget(
-					Integer.parseInt(properties.getProperty("multiplayer_this_a")) * this.width / Integer.parseInt(properties.getProperty("multiplayer_this_b")) + Integer.parseInt(properties.getProperty("multiplayer_this_c")),
-					Integer.parseInt(properties.getProperty("multiplayer_this_y")),
-					Integer.parseInt(properties.getProperty("multiplayer_button_width")),
-					Integer.parseInt(properties.getProperty("multiplayer_button_height")),
+					parseInt(properties.getProperty("multiplayer_this_a")) * this.width / parseInt(properties.getProperty("multiplayer_this_b")) + parseInt(properties.getProperty("multiplayer_this_c")),
+					parseInt(properties.getProperty("multiplayer_this_y")),
+					parseInt(properties.getProperty("multiplayer_button_width")),
+					parseInt(properties.getProperty("multiplayer_button_height")),
 					new TranslatableText("menu.multiplayer"), (buttonWidget) -> {
-				logger.warn(I18n.translate("multiplayer"));
+				logger.warn(translate("multiplayer"));
 				assert this.client != null;
 				this.client.openScreen(new MultiplayerScreen(this));
 			}));
 			this.addButton(new ButtonWidget(
-					Integer.parseInt(properties.getProperty("online_this_a")) * this.width / Integer.parseInt(properties.getProperty("online_this_b")) + Integer.parseInt(properties.getProperty("online_this_c")),
-					Integer.parseInt(properties.getProperty("online_this_y")),
-					Integer.parseInt(properties.getProperty("online_button_width")),
-					Integer.parseInt(properties.getProperty("online_button_height")),
+					parseInt(properties.getProperty("online_this_a")) * this.width / parseInt(properties.getProperty("online_this_b")) + parseInt(properties.getProperty("online_this_c")),
+					parseInt(properties.getProperty("online_this_y")),
+					parseInt(properties.getProperty("online_button_width")),
+					parseInt(properties.getProperty("online_button_height")),
 					new TranslatableText("menu.online"), (buttonWidget) -> {
-				logger.warn(I18n.translate("online"));
+				logger.warn(translate("online"));
 				this.switchToRealms();
 			}));
 		} else {
 			this.addButton(new ButtonWidget(
 					this.width / 2 - 100, y, 200, 20, new TranslatableText("elementera.ElementEra"), (action) -> {
 				MinecraftClient.getInstance().openScreen(new Authors(this));
-				logger.warn(I18n.translate("authors"));
-				logger.warn(I18n.translate("open.authors"));
+				logger.warn(translate("authors"));
+				logger.warn(translate("open.authors"));
 			}));
 			this.addButton(new ButtonWidget(this.width / 2 - 100, y + spacingY, 100, 20, new TranslatableText("menu.singleplayer"), (buttonWidget) -> {
-				logger.warn(I18n.translate("singleplayer"));
+				logger.warn(translate("singleplayer"));
 				assert this.client != null;
 				this.client.openScreen(new SelectWorldScreen(this));
 			}));
 			this.addButton(new ButtonWidget(this.width / 2, y + spacingY, 100, 20, new TranslatableText("menu.multiplayer"), (buttonWidget) -> {
-				logger.warn(I18n.translate("multiplayer"));
+				logger.warn(translate("multiplayer"));
 				assert this.client != null;
 				this.client.openScreen(new MultiplayerScreen(this));
 			}));
 			this.addButton(new ButtonWidget(this.width / 2 - 100, y + spacingY * 2, 200, 20, new TranslatableText("menu.online"), (buttonWidget) -> {
-				logger.warn(I18n.translate("online"));
+				logger.warn(translate("online"));
 				this.switchToRealms();
 			}));
 		}
@@ -173,7 +186,7 @@ public class ElementMixin extends Screen {
 		} else {
 			if (mouseX > (double)this.copyrightTextX && mouseX < (double)(this.copyrightTextX + this.copyrightTextWidth) && mouseY > (double)(this.height - 10) && mouseY < (double)this.height) {
 				assert this.client != null;
-				this.client.openScreen(new CreditsScreen(false, Runnables.doNothing()));
+				this.client.openScreen(new CreditsScreen(false, doNothing()));
 			}
 
 			return false;
