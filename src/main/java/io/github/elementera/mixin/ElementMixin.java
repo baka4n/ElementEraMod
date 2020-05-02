@@ -2,25 +2,18 @@ package io.github.elementera.mixin;
 
 import io.github.elementera.gui.Authors;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.CreditsScreen;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.TitleScreen;
+import net.minecraft.client.gui.screen.*;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.toast.SystemToast;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.realms.RealmsBridge;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.*;
 import net.minecraft.world.level.storage.LevelStorage;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
+import org.apache.logging.log4j.*;
+import org.spongepowered.asm.mixin.*;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.io.IOException;
@@ -48,12 +41,12 @@ public class ElementMixin extends Screen {
 	 * @author baka4n
 	 */
 	@Inject(method = "render", at = @At("RETURN"))
-	protected void render(MatrixStack matrixStack, int mouseY, int i, float f, CallbackInfo info) {
+	protected void render(MatrixStack matrices, int mouseX, int mouseY, float delta, CallbackInfo info) {
 		if ("no".equals(properties.getProperty("titleScreen_mouseX_hide"))) {
-			textRenderer.draw(matrixStack, translate("mouseX") + ": " + mouseY, 5, 5, 0xFFFFFFFF);
+			textRenderer.draw(matrices, translate("mouseX") + ": " + mouseX, 5, 5, 0xFFFFFFFF);
 		}
 		if ("no".equals(properties.getProperty("titleScreen_mouseY_hide"))) {
-			textRenderer.draw(matrixStack, translate("mouseY") + ": " + i, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+			textRenderer.draw(matrices, translate("mouseY") + ": " + mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
 		}
 	}
 

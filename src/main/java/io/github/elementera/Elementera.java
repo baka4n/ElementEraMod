@@ -63,7 +63,6 @@ class Proxies implements Loggers {
 				3000L
 		);
 	}
-
 	public static void tick(long timeInterval, String filename, long c) {
 		Runnable runnable = () -> {
 			do {

@@ -99,6 +99,8 @@
   "authors.back": "close",
   "authors.info": "authors:",
   "authors": "authors",
+  "config.edit": "config edit",
+  "config.edit.message": "test config message",
   "singleplayer": "singleplayer",
   "multiplayer": "multiplayer",
   "online": "online",
@@ -111,5 +113,9 @@
   "decay.decays": "decays",
 
   "mouseX": "mouseX",
-  "mouseY": "mouseY"
+  "mouseY": "mouseY",
+
+  "items.disable": "ban items in you mod packs or servers",
+  "hydrogen.disable.all": "hydrogen choose enable(game will restart)",
+  "helium.disable.all": "helium choose enable(game will restart)"
 }

@@ -99,6 +99,8 @@
   "authors.back": "返回",
   "authors.info": "作者名单",
   "authors": "作者名单",
+  "config.edit": "配置文件设定",
+  "config.edit.message": "打开配置文件调试日志",
   "singleplayer": "单人游戏调试信息",
   "multiplayer": "多人游戏调试信息",
   "online": "在线按钮调试信息",
@@ -111,5 +113,9 @@
   "decay.decays": "衰变",
 
   "mouseX": "鼠标位置X",
-  "mouseY": "鼠标位置Y"
+  "mouseY": "鼠标位置Y",
+
+  "items.disable": "选择取消物品生成在你的整合包或者服务器中",
+  "hydrogen.disable.all": "是否取消氢气物品生成(重启生效)",
+  "helium.disable.all": "是否取消氦同位素生成(重启后生效)"
 }
