@@ -1,0 +1,30 @@
+{
+  "mappings": {
+    "io/github/elementera/mixin/MultiplayerScreenMixin": {
+      "render": "Lnet/minecraft/class_500;method_25394(Lnet/minecraft/class_4587;IIF)V"
+    },
+    "io/github/elementera/mixin/ElementMixin": {
+      "init()V": "Lnet/minecraft/class_442;method_25426()V",
+      "render": "Lnet/minecraft/class_442;method_25394(Lnet/minecraft/class_4587;IIF)V"
+    },
+    "io/github/elementera/mixin/LanguageOptionsScreenMixin": {
+      "init()V": "Lnet/minecraft/class_426;method_25426()V",
+      "render": "Lnet/minecraft/class_426;method_25394(Lnet/minecraft/class_4587;IIF)V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "io/github/elementera/mixin/MultiplayerScreenMixin": {
+        "render": "Lnet/minecraft/class_500;method_25394(Lnet/minecraft/class_4587;IIF)V"
+      },
+      "io/github/elementera/mixin/ElementMixin": {
+        "init()V": "Lnet/minecraft/class_442;method_25426()V",
+        "render": "Lnet/minecraft/class_442;method_25394(Lnet/minecraft/class_4587;IIF)V"
+      },
+      "io/github/elementera/mixin/LanguageOptionsScreenMixin": {
+        "init()V": "Lnet/minecraft/class_426;method_25426()V",
+        "render": "Lnet/minecraft/class_426;method_25394(Lnet/minecraft/class_4587;IIF)V"
+      }
+    }
+  }
+}

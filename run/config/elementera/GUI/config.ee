@@ -1,0 +1,34 @@
+#Save Configs File.
+#Tue Apr 28 19:23:48 CST 2020
+author_this_c=-100
+author_this_b=2
+multiplayer_this_c=0
+author_this_a=1
+sing_player_button_width=100
+BoPt_tick=3000
+multiplayer_this_b=2
+multiplayer_this_a=1
+titleScreen_mouseX_hide=no
+author_hide=no
+titleScreen_mouseY_hide=no
+sing_player_button_height=20
+online_this_c=-100
+online_button_width=200
+online_this_b=2
+sing_player_this_c=-100
+online_this_a=1
+sing_player_this_b=2
+sing_player_this_a=1
+eula=true
+multiplayer_button_height=20
+author_button_height=20
+multiplayer_button_width=100
+author_this_y=y
+editGui=no
+author_button_width=200
+multiplayer_this_y=100
+online_button_height=20
+online_this_y=120
+authors=this is a authors button size
+sing_player_this_y=100
+title=you can edit titleScreen but You can't block the words fabric and mojang

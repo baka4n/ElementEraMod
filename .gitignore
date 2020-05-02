@@ -1,29 +1,6 @@
-# gradle
-
-.gradle/
-build/
-out/
-classes/
-
-# eclipse
-
-*.launch
-
-# idea
-
-.idea/
-*.iml
-*.ipr
-*.iws
-
-# vscode
-
-.settings/
-.vscode/
-bin/
-.classpath
-.project
-
 # fabric
-
-run/
+run/.mixin.out
+run/backups
+run/resourcepacks
+run/saves
+run/logs
