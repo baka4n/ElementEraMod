@@ -13,7 +13,7 @@ Select Dev and not dev for download version, and dev is for developers.
 # dependent
 
 Fabric Loader 0.8.2
-Fabric 0.10.1+build.336-1.16
+Fabric Api 0.10.1+build.336-1.16
 
 # Notice
 
