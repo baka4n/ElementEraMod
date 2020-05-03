@@ -40,6 +40,7 @@ public class ElementAmpere implements Loggers {
         // basic of the power! ampere max lang 3000L
         Runnable runnable = () -> {
             String string = p.getProperty(Key);
+            if (Integer.parseInt(string) >= 90000L) string = String.valueOf(90000L);
             long a = Long.parseLong(string);
             do {
                 if (a >= c) {

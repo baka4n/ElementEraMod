@@ -30,9 +30,9 @@ public class LanguageOptionsScreenMixin extends GameOptionsScreen {
      * @author baka4n
      */
     @Inject(method = "render", at=@At("RETURN"))
-    public void render(MatrixStack matrixStack, int mouseY, int i, float f, CallbackInfo info) {
-        textRenderer.draw(matrixStack, I18n.translate("mouseX") + ": " + mouseY, 5, 5, 0xFFFFFFFF);
-        textRenderer.draw(matrixStack, I18n.translate("mouseY") + ": " + i, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+    public void render(MatrixStack matrixStack, int mouseX, int mouseY, float f, CallbackInfo info) {
+        a(matrixStack, "mouseX", mouseX, 5, 5, 0xFFFFFFFF);
+        a(matrixStack, "mouseY", mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
     }
-
+    private void a(MatrixStack m, String s,int k, int x, int y, int c) { this.textRenderer.draw(m, I18n.translate(s)+":" + k , x, y, c); }
 }

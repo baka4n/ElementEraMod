@@ -32,11 +32,12 @@ public class SelectWorldScreenMixin extends Screen {
         this.levelList.render(matrices, mouseX, mouseY, delta);
         this.searchBox.render(matrices, mouseX, mouseY, delta);
         this.drawStringWithShadow(matrices, this.textRenderer, this.title, this.width / 2, 8, 16777215);
-        textRenderer.draw(matrices, I18n.translate("mouseX") + ": " + mouseX, 5, 5, 0xFFFFFFFF);
-        textRenderer.draw(matrices, I18n.translate("mouseY") + ": " + mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+        a(matrices, "mouseX", mouseX, 5, 5, 0xFFFFFFFF);
+        a(matrices, "mouseY", mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
         super.render(matrices, mouseX, mouseY, delta);
         if (this.tooltipText != null) {
             this.renderTooltip(matrices, this.tooltipText, mouseX, mouseY);
         }
     }
+    private void a(MatrixStack m, String s,int k, int x, int y, int c) { this.textRenderer.draw(m, I18n.translate(s)+":" + k , x, y, c); }
 }
