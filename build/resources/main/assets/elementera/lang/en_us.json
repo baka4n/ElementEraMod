@@ -119,5 +119,6 @@
   "hydrogen.disable.all": "hydrogen choose enable(game will restart)",
   "helium.disable.all": "helium choose enable(game will restart)",
   "lithium.disable.all": "lithium choose enable(game will restart)",
-  "beryllium.disable.all": "beryllium choose enable(game will restart)"
+  "beryllium.disable.all": "beryllium choose enable(game will restart)",
+  "boron.disable.all": "borons choose enable(game will restart)"
 }

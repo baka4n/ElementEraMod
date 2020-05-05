@@ -1,16 +1,17 @@
 package io.github.elementera.items;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import org.apache.logging.log4j.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static net.minecraft.item.Items.*;
 
 public class Public implements Loggers {
-	public static void main(String[] args) {
-
-	}
+	public static void main(String[] args) { }
 	public static final Item PROTIUM = new Protium();public static final Item DEUTERIUM = new Deuterium();
 	public static final Item TRITIUM = new Tritium();public static final Item He2 = new He2();
 	public static final Item He3 = new He3();public static final Item He4 = new He4();

@@ -1,14 +1,10 @@
 package io.github.elementera.gui;
 
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.text.LiteralText;
-import net.minecraft.text.TranslatableText;
-
-import static io.github.elementera.gui.Authors.logger;
+import net.minecraft.text.*;
+import static io.github.elementera.gui.ItemDisable.OpenGui;
 
 public class ConfigEditGui extends Screen {
     private final Screen screen;
@@ -16,6 +12,7 @@ public class ConfigEditGui extends Screen {
         super(new LiteralText(""));
         this.screen = screen;
     }
+    public void MYButton(int x, int y, int widget, int height, String string, ButtonWidget.PressAction onPress) { this.addButton(new ButtonWidget(x, y, widget, height, new TranslatableText(string), onPress)); }
     @Override
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float f) {
         renderBackground(matrixStack, mouseX);
@@ -24,16 +21,7 @@ public class ConfigEditGui extends Screen {
     }
     @Override
     protected void init() {
-        this.addButton(new ButtonWidget(3 * this.width / 4,
-                8 * this.height / 9,
-                100,
-                20,
-                new TranslatableText("authors.back"), (buttonWidget) -> {
-            logger.warn(I18n.translate("close.authors"));
-            this.screen.onClose();
-        }));
-        this.addButton(new ButtonWidget( 10, 10, 200, 20,
-                new TranslatableText("items.disable"),
-                (buttonWidget) -> MinecraftClient.getInstance().openScreen(new ItemDisable(this))));
+        MYButton(3 * this.width / 4, 8 * this.height / 9, 100, 20, "authors.back", (buttonWidget) -> this.screen.onClose());
+        MYButton(10, 10, 200, 20, "items.disable", (buttonWidget) -> OpenGui(new ItemDisable(this)));
     }
 }

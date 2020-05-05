@@ -119,5 +119,6 @@
   "hydrogen.disable.all": "是否取消氢气物品生成(重启生效)",
   "helium.disable.all": "是否取消氦同位素生成(重启后生效)",
   "lithium.disable.all": "是否取消锂同位素生成(重启后生效)",
-  "beryllium.disable.all": "是否取消铍同位素生成(重启后生效)"
+  "beryllium.disable.all": "是否取消铍同位素生成(重启后生效)",
+  "boron.disable.all": "是否取消硼同位素生成(重启后生效)"
 }

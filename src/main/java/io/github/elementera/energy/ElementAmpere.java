@@ -1,32 +1,28 @@
 package io.github.elementera.energy;
 
 import io.github.elementera.Loggers;
-
+import io.github.elementera.config.MyProperties;
 import java.io.*;
-import java.util.Properties;
-
+import static io.github.elementera.config.Config.*;
 import static java.lang.Thread.sleep;
 
 public class ElementAmpere implements Loggers {
     public static final long b = 1L;
-    public static final Properties p = new Properties();
+    public static final MyProperties p = new MyProperties();
     public ElementAmpere() {
         writter();
     }
 
     public static void writter() {
-        File name = new File("config");
-        File file = new File("config" + File.separator + File.separator +  "fabric");
-        File ampFile = new File("config" + File.separator + File.separator +  "fabric" + File.separator + File.separator + "energy");
-        if (!name.exists() && !name.isDirectory()) name.mkdir();
-        if (!file.exists() && !file.isDirectory()) file.mkdir();
-        if (!ampFile.exists() && !ampFile.isDirectory()) ampFile.mkdir();
+        mkDirs("config");
+        mkDirs("config" + s +  "fabric");
+        mkDirs("config" + s +  "fabric" + s + "energy");
         try {
-            p.load(new BufferedInputStream(new FileInputStream("config" + File.separator + File.separator +  "fabric" + File.separator + File.separator + "energy"+ File.separator + File.separator + "BoPt.ee")));
+            p.load(new BufferedInputStream(new FileInputStream("config" + s +  "fabric" + s + "energy"+ s + "BoPt.ee")));
         } catch (FileNotFoundException e) {
             p.put("BoPt", "0");
             try {
-                FileOutputStream outputStream = new FileOutputStream("config" + File.separator + File.separator +  "fabric" + File.separator + File.separator + "energy"+ File.separator + File.separator + "BoPt.ee");
+                FileOutputStream outputStream = new FileOutputStream("config" + s +  "fabric" + s + "energy"+ s + "BoPt.ee");
                 p.store(new BufferedOutputStream(outputStream),
                         "Save Configs File.");
             }
@@ -64,7 +60,7 @@ public class ElementAmpere implements Loggers {
 
     public static void output(String string,long a){
         try {
-            FileOutputStream outputStream = new FileOutputStream("config" + File.separator + File.separator +  "fabric" + File.separator + File.separator + "energy"+ File.separator + File.separator + "BoPt.ee");
+            FileOutputStream outputStream = new FileOutputStream("config" + s +  "fabric" + s + "energy"+ s + "BoPt.ee");
             p.setProperty(string, String.valueOf(a));
             p.store(outputStream, "Save Configs File.");
         } catch (Exception e) {

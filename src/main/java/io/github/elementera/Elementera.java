@@ -11,8 +11,12 @@ import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
+import static io.github.elementera.Elementera.log;
 import static io.github.elementera.Proxies.registerItem;
 import static io.github.elementera.config.RemoveItemConfig.pr;
 import static io.github.elementera.items.Public.*;
@@ -27,39 +31,37 @@ import net.minecraft.item.BlockItem;*/
  * classes
  */
 public class Elementera implements ModInitializer {
-	public static final Logger logger = LogManager.getLogger("OnInitializes");
-
+	public static void log(String s1, String s2) {
+		Logger logger = LogManager.getLogger(s1); logger.info(s2);
+	}
+	public static final String s = "OnInitializes";
 	@Override
 	public void onInitialize() {
 		proxy();
-		logger.info("element era mods OnInitializes!"); }
-	public static void proxy() { new Proxies(); logger.info("proxy oninitialize"); }
+		log(s, "element era mods OnInitializes!");
+	}
+	public static void proxy() { new Proxies(); log(s, "proxy oninitialize"); }
 }
-
-class Proxies implements Loggers {
+class Proxies {
+	public static final String s = "proxy";
 	public Proxies() {
 		modBlock(); config(); publicS(); energy();
-		removeItemConfig();
-		if (removeItemConfig()) {
-			modItem();
-		}
+		removeItemConfig();if (removeItemConfig()) modItem();
 	}
-	public static void modItem() { new ModItems();proxys.info("moditem register"); }
-	public static void modBlock() { new ModBlocks(); proxys.info("modblock register");}
-	public static void config() { new Config(); proxys.info("config register"); }
-	public static boolean removeItemConfig() {  new RemoveItemConfig();
-		return true;
-	}
-	public static void publicS() { new Public(); proxys.info("public register"); }
+	public static void modItem() { new ModItems(); log(s, "moditem register"); }
+	public static void modBlock() { new ModBlocks(); log(s, "modblock register");}
+	public static void config() { new Config(); log(s, "config register"); }
+	public static boolean removeItemConfig() {  new RemoveItemConfig(); return true; }
+	public static void publicS() { new Public(); log(s, "public register"); }
 	public static void registerItem(String itemName, Item item) {
 		ItemsRegister.registerItem(MODID, itemName, item);
 	}
 	public static void energy() {
 		new ElementAmpere();
-		proxys.info("ampere register");
+		log(s, "ampere register");
 		tick(
 				3000L,
-				"config" + File.separator + File.separator +  "fabric" + File.separator + File.separator + "energy"+ File.separator + File.separator + "BoPt.ee",
+				"config" + s +  "fabric" + s + "energy"+ s + "BoPt.ee",
 				3000L
 		);
 	}
@@ -86,7 +88,6 @@ class Proxies implements Loggers {
 		Thread thread = new Thread(runnable);
 		thread.start();
 	}
-
 /*
 	public static void registerArmor(String armorName, Item helmet, Item chestplate, Item leggings, Item boots) { ItemsRegister.registerArmor(MODID, armorName, helmet, chestplate, leggings, boots); }
 	public static void registerTool(String toolName, Item axe, Item hoe, Item pickaxe, Item shovel, Item sword) { ItemsRegister.registerTool(MODID, toolName, axe, hoe, pickaxe, shovel, sword); }
@@ -94,109 +95,62 @@ class Proxies implements Loggers {
 	public static void registerContainer(Identifier identifier, Block block, Item.Settings settings) { BlockRegister.registerContainer(identifier, block, settings); }
 */
 }
-class ModItems implements Loggers {
-
+class ModItems {
+	public static void chooseReg(String s1, Item i) { if (parseBoolean(pr.getProperty(s1))) registerItem(s1, i); }
 	public ModItems() {
-		if (parseBoolean(pr.getProperty("protium"))) registerItem("protium", PROTIUM);
-		if (parseBoolean(pr.getProperty("helium_4"))) registerItem("helium_4", He4);
-		if (parseBoolean(pr.getProperty("lithium_7"))) registerItem("lithium_7", Li7);
-		if (parseBoolean(pr.getProperty("beryllium_8"))) registerItem("beryllium_8", Be8);
-		if (parseBoolean(pr.getProperty("carbon_12"))) registerItem("carbon_12", C12);
-		if (parseBoolean(pr.getProperty("fluorine_19"))) registerItem("fluorine_19", F19);
+		chooseReg("protium", PROTIUM);chooseReg("helium_4", He4);
+		chooseReg("lithium_7", Li7);chooseReg("beryllium_8", Be8);
+		chooseReg("carbon_12", C12);chooseReg("fluorine_19", F19);
 
-		if (parseBoolean(pr.getProperty("helium_5"))) registerItem("helium_5", He5);
-		if (parseBoolean(pr.getProperty("deuterium"))) registerItem("deuterium", DEUTERIUM);
-		if (parseBoolean(pr.getProperty("tritium"))) registerItem("tritium", TRITIUM);
-		if (parseBoolean(pr.getProperty("helium_2"))) registerItem("helium_2", He2);
-		if (parseBoolean(pr.getProperty("helium_3"))) registerItem("helium_3", He3);
-		if (parseBoolean(pr.getProperty("helium_6"))) registerItem("helium_6", He6);
-		if (parseBoolean(pr.getProperty("helium_7"))) registerItem("helium_7", He7);
-		if (parseBoolean(pr.getProperty("helium_8"))) registerItem("helium_8", He8);
-		if (parseBoolean(pr.getProperty("helium_9"))) registerItem("helium_9", He9);
-		if (parseBoolean(pr.getProperty("helium_10"))) registerItem("helium_10", He10);
-		if (parseBoolean(pr.getProperty("lithium_6"))) registerItem("lithium_6", Li6);
-		if (parseBoolean(pr.getProperty("beryllium_7"))) registerItem("beryllium_7", Be7);
-		if (parseBoolean(pr.getProperty("beryllium_9"))) registerItem("beryllium_9", Be9);
-		if (parseBoolean(pr.getProperty("beryllium_10"))) registerItem("beryllium_10", Be10);
-		if (parseBoolean(pr.getProperty("boron_6"))) registerItem("boron_6", B6);
-		if (parseBoolean(pr.getProperty("boron_7"))) registerItem("boron_7", B7);
-		if (parseBoolean(pr.getProperty("boron_8"))) registerItem("boron_8", B8);
-		if (parseBoolean(pr.getProperty("boron_9"))) registerItem("boron_9", B9);
-		if (parseBoolean(pr.getProperty("boron_10"))) registerItem("boron_10", B10);
-		if (parseBoolean(pr.getProperty("boron_11"))) registerItem("boron_11", B11);
-		if (parseBoolean(pr.getProperty("boron_12"))) registerItem("boron_12", B12);
-		if (parseBoolean(pr.getProperty("boron_13"))) registerItem("boron_13", B13);
-		if (parseBoolean(pr.getProperty("boron_14"))) registerItem("boron_14", B14);
-		if (parseBoolean(pr.getProperty("boron_15"))) registerItem("boron_15", B15);
-		if (parseBoolean(pr.getProperty("boron_16"))) registerItem("boron_16", B16);
-		if (parseBoolean(pr.getProperty("boron_17"))) registerItem("boron_17", B17);
-		if (parseBoolean(pr.getProperty("boron_18"))) registerItem("boron_18", B18);
-		registerItem("boron_19", B19);
-		registerItem("carbon_8", C8);
-		registerItem("carbon_9", C9);
-		registerItem("carbon_10", C10);
-		registerItem("carbon_11", C11);
-		registerItem("carbon_13", C13);
-		registerItem("carbon_14", C14);
-		registerItem("carbon_15", C15);
-		registerItem("carbon_16", C16);
-		registerItem("carbon_17", C17);
-		registerItem("carbon_18", C18);
-		registerItem("carbon_19", C19);
-		registerItem("carbon_20", C20);
-		registerItem("carbon_21", C21);
-		registerItem("carbon_22", C22);
-		registerItem("nitrogen_10", N10);
-		registerItem("nitrogen_11", N11);
-		registerItem("nitrogen_12", N12);
-		registerItem("nitrogen_13", N13);
-		registerItem("nitrogen_14", N14);
-		registerItem("nitrogen_15", N15);
-		registerItem("nitrogen_16", N16);
-		registerItem("nitrogen_17", N17);
-		registerItem("nitrogen_18", N18);
-		registerItem("nitrogen_19", N19);
-		registerItem("nitrogen_20", N20);
-		registerItem("nitrogen_21", N21);
-		registerItem("nitrogen_22", N22);
-		registerItem("nitrogen_23", N23);
-		registerItem("nitrogen_24", N24);
-		registerItem("nitrogen_25", N25);
-		registerItem("oxygen_13", O13);
-		registerItem("oxygen_14", O14);
-		registerItem("oxygen_15", O15);
-		registerItem("oxygen_16", O16);
-		registerItem("oxygen_17", O17);
-		registerItem("oxygen_18", O18);
-		registerItem("oxygen_19", O19);
-		registerItem("oxygen_20", O20);
-		registerItem("oxygen_21", O21);
-		registerItem("oxygen_22", O22);
-		registerItem("oxygen_23", O23);
-		registerItem("oxygen_24", O24);
-		registerItem("fluorine_14", F14);
-		registerItem("fluorine_15", F15);
-		registerItem("fluorine_16", F16);
-		registerItem("fluorine_17", F17);
-		registerItem("fluorine_18", F18);
-		registerItem("fluorine_20", F20);
-		registerItem("fluorine_21", F21);
-		registerItem("fluorine_22", F22);
-		registerItem("fluorine_23", F23);
-		registerItem("fluorine_24", F24);
-		registerItem("fluorine_25", F25);
-		registerItem("fluorine_26", F26);
-		registerItem("fluorine_27", F27);
-		registerItem("fluorine_28", F28);
-		registerItem("fluorine_29", F29);
-		registerItem("fluorine_30", F30);
-		registerItem("fluorine_31", F31);
-		itemreg.info("register all item success!");
+		chooseReg("helium_5", He5);chooseReg("deuterium", DEUTERIUM);
+		chooseReg("tritium", TRITIUM);chooseReg("helium_2", He2);
+		chooseReg("helium_3", He3);chooseReg("helium_6", He6);
+		chooseReg("helium_7", He7);chooseReg("helium_8", He8);
+		chooseReg("helium_9", He9);chooseReg("helium_10", He10);
+		chooseReg("lithium_6", Li6);chooseReg("beryllium_7", Be7);
+		chooseReg("beryllium_9", Be9);chooseReg("beryllium_10", Be10);
+		chooseReg("boron_6", B6);chooseReg("boron_7", B7);
+		chooseReg("boron_8", B8);chooseReg("boron_9", B9);
+		chooseReg("boron_10", B10);chooseReg("boron_11", B11);
+		chooseReg("boron_12", B12);chooseReg("boron_13", B13);
+		chooseReg("boron_14", B14);chooseReg("boron_15", B15);
+		chooseReg("boron_16", B16);chooseReg("boron_17", B17);
+		chooseReg("boron_18", B18);chooseReg("boron_19", B19);
+		chooseReg("carbon_8", C8);chooseReg("carbon_9", C9);
+		chooseReg("carbon_10", C10);chooseReg("carbon_11", C11);
+		chooseReg("carbon_13", C13);chooseReg("carbon_14", C14);
+		chooseReg("carbon_15", C15);chooseReg("carbon_16", C16);
+		chooseReg("carbon_17", C17);chooseReg("carbon_18", C18);
+		chooseReg("carbon_19", C19);chooseReg("carbon_20", C20);
+		chooseReg("carbon_21", C21);chooseReg("carbon_22", C22);
+		chooseReg("nitrogen_10", N10);chooseReg("nitrogen_11", N11);
+		chooseReg("nitrogen_12", N12);chooseReg("nitrogen_13", N13);
+		chooseReg("nitrogen_14", N14);chooseReg("nitrogen_15", N15);
+		chooseReg("nitrogen_16", N16);chooseReg("nitrogen_17", N17);
+		chooseReg("nitrogen_18", N18);chooseReg("nitrogen_19", N19);
+		chooseReg("nitrogen_20", N20);chooseReg("nitrogen_21", N21);
+		chooseReg("nitrogen_22", N22);chooseReg("nitrogen_23", N23);
+		chooseReg("nitrogen_24", N24);chooseReg("nitrogen_25", N25);
+		chooseReg("oxygen_13", O13);chooseReg("oxygen_14", O14);
+		chooseReg("oxygen_15", O15);chooseReg("oxygen_16", O16);
+		chooseReg("oxygen_17", O17);chooseReg("oxygen_18", O18);
+		chooseReg("oxygen_19", O19);chooseReg("oxygen_20", O20);
+		chooseReg("oxygen_21", O21);chooseReg("oxygen_22", O22);
+		chooseReg("oxygen_23", O23);chooseReg("oxygen_24", O24);
+		chooseReg("fluorine_14", F14);chooseReg("fluorine_15", F15);
+		chooseReg("fluorine_16", F16);chooseReg("fluorine_17", F17);
+		chooseReg("fluorine_18", F18);chooseReg("fluorine_20", F20);
+		chooseReg("fluorine_21", F21);chooseReg("fluorine_22", F22);
+		chooseReg("fluorine_23", F23);chooseReg("fluorine_24", F24);
+		chooseReg("fluorine_25", F25);chooseReg("fluorine_26", F26);
+		chooseReg("fluorine_27", F27);chooseReg("fluorine_28", F28);
+		chooseReg("fluorine_29", F29);chooseReg("fluorine_30", F30);
+		chooseReg("fluorine_31", F31);log("items register", "register all item success!");
 	}
 }class ItemsRegister implements Loggers {
 	public static void registerItem(String modid,String itemName,Item item) {
 		Registry.register(Registry.ITEM, new Identifier(modid, itemName), item);
-		itemreg.info("register " + itemName);
+		log("items register", "register " + itemName);
 	}
 
 	/*public static void registerArmor(String modid, String armorName, Item helmet, Item chestplate, Item leggings, Item boots) {
@@ -204,7 +158,7 @@ class ModItems implements Loggers {
 		Registry.register(Registry.ITEM, new Identifier(modid, armorName+"_chestplate"), chestplate);
 		Registry.register(Registry.ITEM, new Identifier(modid, armorName+"_leggings"), leggings);
 		Registry.register(Registry.ITEM, new Identifier(modid, armorName+"_boots"), boots);
-		itemreg.info("register ", armorName);
+		log("items register", "register ", armorName);
 	}
 
 	public static void registerTool(String modid, String toolName, Item axe, Item hoe, Item pickaxe, Item shovel, Item sword) {
@@ -213,14 +167,14 @@ class ModItems implements Loggers {
 		Registry.register(Registry.ITEM, new Identifier(modid, toolName+"_pickaxe"), pickaxe);
 		Registry.register(Registry.ITEM, new Identifier(modid, toolName+"_shovel"), shovel);
 		Registry.register(Registry.ITEM, new Identifier(modid, toolName+"_sword"), sword);
-		itemreg.info("register " + toolName);
+		log("items register", "register " + toolName);
 	}*/
 }
 class ModBlocks implements Loggers {
 	public ModBlocks() {
 	}
 }/*class BlockRegister implements Loggers {
-	*//*public static void registerBlock(String modid, String blockName, Block block, Item.Settings settings) {
+	public static void registerBlock(String modid, String blockName, Block block, Item.Settings settings) {
 		Registry.register(Registry.BLOCK, new Identifier(modid, blockName), block);
 		blockreg.info("regblock " + blockName);
 		Registry.register(Registry.ITEM, new Identifier(modid, blockName), new BlockItem(block, settings));
@@ -230,5 +184,5 @@ class ModBlocks implements Loggers {
 		Registry.register(Registry.BLOCK, identifier, block);
 		Registry.register(Registry.ITEM, identifier, new BlockItem(block, settings));
 		blockreg.info("register container!");
-	}*//*
+	}
 }*/
