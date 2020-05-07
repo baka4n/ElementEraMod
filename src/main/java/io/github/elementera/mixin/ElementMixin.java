@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.io.IOException;
+import java.io.*;
 
 import static com.google.common.util.concurrent.Runnables.doNothing;
 import static io.github.elementera.config.Config.getProperties;
@@ -33,7 +33,7 @@ public abstract class ElementMixin extends Screen {
 	@Shadow private int copyrightTextWidth;
 	@Shadow public abstract void render(MatrixStack matrices, int mouseX, int mouseY, float delta);
 	protected ElementMixin(Text title) {
-		super(title);
+		super(new TranslatableText("narrator.screen.title"));
 	}
 	/**
 	 * @author baka4n
@@ -43,13 +43,16 @@ public abstract class ElementMixin extends Screen {
 		if ("no".equals(getProperties("titleScreen_mouseX_hide"))) draw(m, "mouseX", X, 5, 5);
 		if ("no".equals(getProperties("titleScreen_mouseY_hide"))) draw(m, "mouseY", Y, 5, 5 + textRenderer.fontHeight);
 	}
+
 	/**
 	 * @author baka4n
-	 * Overwrite initWidgetsNormal
-	 * by TitleScreen.class int y!
-	 * by spacingY;
-	 * add Button authors move button to other by minecraft;
-	 * if you follow eula you can edit this gui
+	 * @param y
+	 * @param spacingY
+	 * @reason Overwrite initWidgetsNormal.
+	   		by TitleScreen.class int y!
+				by spacingY;
+					add Button authors move button to other by minecraft;
+						if you follow eula you can edit this gui
 	 */
 	@Overwrite
 	private void initWidgetsNormal(int y, int spacingY) {
@@ -80,9 +83,10 @@ public abstract class ElementMixin extends Screen {
 			MYButton(this.width / 2 - 100, y + spacingY * 2, 200, 20, "menu.online", (buttonWidget) -> this.switchToRealms());
 		}
 	}
+
 	/**
 	 * @author baka4n
-	 * add extends void switchToRealms
+	 * @reason  add extends void switchToRealms
 	 */
 	@Overwrite
 	private void switchToRealms() {
@@ -90,6 +94,7 @@ public abstract class ElementMixin extends Screen {
 	}
 	/**
 	 * @author baka4n
+	 * @reason import for minecraft
 	 */
 	@Overwrite
 	private boolean areRealmsNotificationsEnabled() {
@@ -98,6 +103,7 @@ public abstract class ElementMixin extends Screen {
 	}
 	/**
 	 * @author baka4n
+	 * @reason import for minecraft
 	 */
 	@Overwrite
 	public void tick() {
@@ -108,6 +114,7 @@ public abstract class ElementMixin extends Screen {
 	}
 	/**
 	 * @author baka4n
+	 * @reason import for minecraft
 	 */
 	@Overwrite
 	public boolean mouseClicked(double mouseX, double mouseY, int button) {
@@ -125,7 +132,7 @@ public abstract class ElementMixin extends Screen {
 	}
 	/**
 	 * @author baka4n
-	 *if realmsNotificationGui no have in genuine to remove
+	 * @reason if realmsNotificationGui no have in genuine to remove
 	 */
 	@Overwrite
 	public void removed() {
@@ -133,10 +140,10 @@ public abstract class ElementMixin extends Screen {
 			this.realmsNotificationGui.removed();
 		}
 	}
-
 	/**
 	 * @author baka4n
 	 * @param delete
+	 * @reason import for minecraft
 	 */
 	@Overwrite
 	private void onDemoDeletionConfirmed(boolean delete) {

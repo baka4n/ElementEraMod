@@ -115,10 +115,16 @@
   "mouseX": "鼠标位置X",
   "mouseY": "鼠标位置Y",
 
+  "gui.last": "上一页",
+  "gui.next": "下一页",
   "items.disable": "选择取消物品生成在你的整合包或者服务器中",
   "hydrogen.disable.all": "是否取消氢气物品生成(重启生效)",
   "helium.disable.all": "是否取消氦同位素生成(重启后生效)",
   "lithium.disable.all": "是否取消锂同位素生成(重启后生效)",
   "beryllium.disable.all": "是否取消铍同位素生成(重启后生效)",
-  "boron.disable.all": "是否取消硼同位素生成(重启后生效)"
+  "boron.disable.all": "是否取消硼同位素生成(重启后生效)",
+  "carbon.disable.all": "是否取消碳同位素生成(重启后生效)",
+  "nitrogen.disable.all": "是否取消氮同位素生成(重启后生效)",
+  "oxygen.disable.all": "是否取消氧同位素生成(重启后生效)",
+  "fluorine.disable.all": "是否取消氟同位素生成(重启后生效)"
 }

@@ -25,22 +25,23 @@ public class SelectWorldScreenMixin extends Screen {
     /**
      * @author baka4n
      * <p> minecraft render</p>
-     * @param matrices
+     * @param m
      * @param mouseX
      * @param mouseY
      * @param delta
+     * @reason import for minecraft add mouseX and mouseY
      */
     @Overwrite
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
+    public void render(MatrixStack m, int mouseX, int mouseY, float delta) {
         this.tooltipText = null;
-        this.levelList.render(matrices, mouseX, mouseY, delta);
-        this.searchBox.render(matrices, mouseX, mouseY, delta);
-        this.drawStringWithShadow(matrices, this.textRenderer, this.title, this.width / 2, 8, 16777215);
-        a(matrices, "mouseX", mouseX, 5, 5, 0xFFFFFFFF);
-        a(matrices, "mouseY", mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
-        super.render(matrices, mouseX, mouseY, delta);
+        this.levelList.render(m, mouseX, mouseY, delta);
+        this.searchBox.render(m, mouseX, mouseY, delta);
+        this.drawCenteredText(m, this.textRenderer, this.title, this.width / 2, 8, 16777215);
+        a(m, "mouseX", mouseX, 5, 5, 0xFFFFFFFF);
+        a(m, "mouseY", mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+        super.render(m, mouseX, mouseY, delta);
         if (this.tooltipText != null) {
-            this.renderTooltip(matrices, this.tooltipText, mouseX, mouseY);
+            this.renderTooltip(m, this.tooltipText, mouseX, mouseY);
         }
     }
     private void a(MatrixStack m, String s,int k, int x, int y, int c) { this.textRenderer.draw(m, I18n.translate(s)+":" + k , x, y, c); }

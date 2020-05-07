@@ -20,6 +20,7 @@ public class GameOptionsScreenMixin extends Screen {
     }
     /**
      * @author baka4n
+     * @reason import for minecraft
      */
     @Overwrite
     public void removed() {
@@ -29,6 +30,7 @@ public class GameOptionsScreenMixin extends Screen {
 
     /**
      * @author baka4n
+     * @reason import for minecraft
      */
     @Overwrite
     public void onClose() {

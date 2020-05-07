@@ -1,5 +1,5 @@
 #Save Configs File.
-#Tue May 05 15:13:34 CST 2020
+#Wed May 06 14:11:27 CST 2020
 helium_2=true
 helium_3=true
 helium_4=true
@@ -15,7 +15,6 @@ beryllium_7=true
 beryllium_8=true
 beryllium_9=true
 beryllium_10=true
-boron_6=true
 boron_7=true
 boron_8=true
 boron_9=true
@@ -27,7 +26,6 @@ boron_15=true
 boron_16=true
 boron_17=true
 boron_18=true
-boron_19=true
 carbon_8=true
 carbon_9=true
 carbon_10=true
@@ -93,3 +91,5 @@ deuterium=true
 tritium=true
 protium=true
 boron_13=true
+boron_6=true
+boron_19=true

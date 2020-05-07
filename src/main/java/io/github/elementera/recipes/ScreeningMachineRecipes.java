@@ -1,6 +1,5 @@
-package io.github.elementera.recipes;
+/*package io.github.elementera.recipes;
 
-/*
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Recipe;

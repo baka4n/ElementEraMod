@@ -115,10 +115,16 @@
   "mouseX": "mouseX",
   "mouseY": "mouseY",
 
+  "gui.last": "last",
+  "gui.next": "next",
   "items.disable": "ban items in you mod packs or servers",
   "hydrogen.disable.all": "hydrogen choose enable(game will restart)",
   "helium.disable.all": "helium choose enable(game will restart)",
   "lithium.disable.all": "lithium choose enable(game will restart)",
   "beryllium.disable.all": "beryllium choose enable(game will restart)",
-  "boron.disable.all": "borons choose enable(game will restart)"
+  "boron.disable.all": "boron choose enable(game will restart)",
+  "carbon.disable.all": "carbon choose enable(game will restart)",
+  "nitrogen.disable.all": "nitrogen choose enable(game will restart)",
+  "oxygen.disable.all": "oxygen choose enable(game will restart)",
+  "fluorine.disable.all": "fluorine choose enable(game will restart)"
 }
