@@ -93,55 +93,32 @@ class Proxies {
 }
 class ModItems {
 	public static void chooseReg(String s1, Item i) { if (parseBoolean(pr.getProperty(s1))) registerItem(s1, i); }
+	public static void chooseRegTwo(String s1, String s2, Item i1, Item i2) { chooseReg(s1, i1); chooseReg(s2, i2); }
 	public ModItems() {
-		chooseReg("protium", PROTIUM);chooseReg("helium_4", He4);
-		chooseReg("lithium_7", Li7);chooseReg("beryllium_8", Be8);
-		chooseReg("carbon_12", C12);chooseReg("fluorine_19", F19);
-
-		chooseReg("helium_5", He5);chooseReg("deuterium", DEUTERIUM);
-		chooseReg("tritium", TRITIUM);chooseReg("helium_2", He2);
-		chooseReg("helium_3", He3);chooseReg("helium_6", He6);
-		chooseReg("helium_7", He7);chooseReg("helium_8", He8);
-		chooseReg("helium_9", He9);chooseReg("helium_10", He10);
-		chooseReg("lithium_6", Li6);chooseReg("beryllium_7", Be7);
-		chooseReg("beryllium_9", Be9);chooseReg("beryllium_10", Be10);
-		chooseReg("boron_6", B6);chooseReg("boron_7", B7);
-		chooseReg("boron_8", B8);chooseReg("boron_9", B9);
-		chooseReg("boron_10", B10);chooseReg("boron_11", B11);
-		chooseReg("boron_12", B12);chooseReg("boron_13", B13);
-		chooseReg("boron_14", B14);chooseReg("boron_15", B15);
-		chooseReg("boron_16", B16);chooseReg("boron_17", B17);
-		chooseReg("boron_18", B18);chooseReg("boron_19", B19);
-		chooseReg("carbon_8", C8);chooseReg("carbon_9", C9);
-		chooseReg("carbon_10", C10);chooseReg("carbon_11", C11);
-		chooseReg("carbon_13", C13);chooseReg("carbon_14", C14);
-		chooseReg("carbon_15", C15);chooseReg("carbon_16", C16);
-		chooseReg("carbon_17", C17);chooseReg("carbon_18", C18);
-		chooseReg("carbon_19", C19);chooseReg("carbon_20", C20);
-		chooseReg("carbon_21", C21);chooseReg("carbon_22", C22);
-		chooseReg("nitrogen_10", N10);chooseReg("nitrogen_11", N11);
-		chooseReg("nitrogen_12", N12);chooseReg("nitrogen_13", N13);
-		chooseReg("nitrogen_14", N14);chooseReg("nitrogen_15", N15);
-		chooseReg("nitrogen_16", N16);chooseReg("nitrogen_17", N17);
-		chooseReg("nitrogen_18", N18);chooseReg("nitrogen_19", N19);
-		chooseReg("nitrogen_20", N20);chooseReg("nitrogen_21", N21);
-		chooseReg("nitrogen_22", N22);chooseReg("nitrogen_23", N23);
-		chooseReg("nitrogen_24", N24);chooseReg("nitrogen_25", N25);
-		chooseReg("oxygen_13", O13);chooseReg("oxygen_14", O14);
-		chooseReg("oxygen_15", O15);chooseReg("oxygen_16", O16);
-		chooseReg("oxygen_17", O17);chooseReg("oxygen_18", O18);
-		chooseReg("oxygen_19", O19);chooseReg("oxygen_20", O20);
-		chooseReg("oxygen_21", O21);chooseReg("oxygen_22", O22);
-		chooseReg("oxygen_23", O23);chooseReg("oxygen_24", O24);
-		chooseReg("fluorine_14", F14);chooseReg("fluorine_15", F15);
-		chooseReg("fluorine_16", F16);chooseReg("fluorine_17", F17);
-		chooseReg("fluorine_18", F18);chooseReg("fluorine_20", F20);
-		chooseReg("fluorine_21", F21);chooseReg("fluorine_22", F22);
-		chooseReg("fluorine_23", F23);chooseReg("fluorine_24", F24);
-		chooseReg("fluorine_25", F25);chooseReg("fluorine_26", F26);
-		chooseReg("fluorine_27", F27);chooseReg("fluorine_28", F28);
-		chooseReg("fluorine_29", F29);chooseReg("fluorine_30", F30);
-		chooseReg("fluorine_31", F31);log("items register", "register all item success!");
+		chooseRegTwo("protium", "helium_4", PROTIUM, He4); chooseRegTwo("lithium_7", "beryllium_8", Li7, Be8);
+		chooseRegTwo("carbon_12", "fluorine_19", C12, F19);
+		chooseRegTwo("helium_5", "deuterium", He5, DEUTERIUM); chooseRegTwo("tritium", "helium_2", TRITIUM, He2);
+		chooseRegTwo("helium_3", "helium_6", He3, He6); chooseRegTwo("helium_7", "helium_8", He7, He8);
+		chooseRegTwo("helium_9", "helium_10", He9, He10); chooseRegTwo("lithium_6", "beryllium_7", Li6, Be7);
+		chooseRegTwo("beryllium_9", "beryllium_10", Be9, Be10); chooseRegTwo("boron_6", "boron_7", B6, B7);
+		chooseRegTwo("boron_8", "boron_9", B8, B9); chooseRegTwo("boron_10", "boron_11", B10, B11);
+		chooseRegTwo("boron_12", "boron_13", B12, B13); chooseRegTwo("boron_14", "boron_15", B14, B15);
+		chooseRegTwo("boron_16", "boron_17", B16, B17); chooseRegTwo("boron_18", "boron_19", B18, B19);
+		chooseRegTwo("carbon_8", "carbon_9", C8, C9); chooseRegTwo("carbon_10", "carbon_11", C10, C11);
+		chooseRegTwo("carbon_13", "carbon_14", C13, C14); chooseRegTwo("carbon_15", "carbon_16", C15, C16);
+		chooseRegTwo("carbon_17", "carbon_18", C17, C18); chooseRegTwo("carbon_19", "carbon_20", C19, C20);
+		chooseRegTwo("carbon_21", "carbon_22", C21, C22); chooseRegTwo("nitrogen_10", "nitrogen_11", N10, N11);
+		chooseRegTwo("nitrogen_12", "nitrogen_13", N12, N13); chooseRegTwo("nitrogen_14", "nitrogen_15", N14, N15);
+		chooseRegTwo("nitrogen_16", "nitrogen_17", N16, N17); chooseRegTwo("nitrogen_18", "nitrogen_19", N18, N19);
+		chooseRegTwo("nitrogen_20", "nitrogen_21", N20, N21); chooseRegTwo("nitrogen_22", "nitrogen_23", N22, N23);
+		chooseRegTwo("nitrogen_24", "nitrogen_25", N24, N25); chooseRegTwo("oxygen_13", "oxygen_14", O13, O14);
+		chooseRegTwo("oxygen_15", "oxygen_16", O15, O16); chooseRegTwo("oxygen_17", "oxygen_18", O17, O18);
+		chooseRegTwo("oxygen_19", "oxygen_20", O19, O20); chooseRegTwo("oxygen_21", "oxygen_22", O21, O22);
+		chooseRegTwo("oxygen_23", "oxygen_24", O23, O24); chooseRegTwo("fluorine_14", "fluorine_15", F14, F15);
+		chooseRegTwo("fluorine_16", "fluorine_17", F16, F17); chooseRegTwo("fluorine_18", "fluorine_20", F18, F20);
+		chooseRegTwo("fluorine_21", "fluorine_22", F21, F22); chooseRegTwo("fluorine_23", "fluorine_24", F23, F24);
+		chooseRegTwo("fluorine_25", "fluorine_26", F25, F26); chooseRegTwo("fluorine_27", "fluorine_28", F27, F28);
+		chooseRegTwo("fluorine_29", "fluorine_30", F29, F30); chooseReg("fluorine_31", F31);log("items register", "register all item success!");
 	}
 }class ItemsRegister implements Loggers {
 	public static void registerItem(String modid,String itemName,Item item) {
