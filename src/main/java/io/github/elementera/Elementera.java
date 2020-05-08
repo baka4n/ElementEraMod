@@ -1,11 +1,13 @@
 package io.github.elementera;
 
-import io.github.elementera.config.Config;
-import io.github.elementera.config.RemoveItemConfig;
+import io.github.elementera.config.*;
 import io.github.elementera.energy.ElementAmpere;
 import io.github.elementera.items.Public;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.item.Item;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.*;
+import net.minecraft.fluid.WaterFluid;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.*;
@@ -43,6 +45,7 @@ class Proxies {
 	public Proxies() {
 		modBlock(); config(); publicS(); energy();
 		removeItemConfig();if (removeItemConfig()) modItem();
+		fluids();
 	}
 	public static void modItem() { new ModItems(); log(s, "moditem register"); }
 	public static void modBlock() { new ModBlocks(); log(s, "modblock register");}
@@ -52,6 +55,8 @@ class Proxies {
 	public static void registerItem(String itemName, Item item) {
 		ItemsRegister.registerItem(MODID, itemName, item);
 	}
+
+	public static void fluids() { new ModFluids(); }
 	public static void energy() {
 		new ElementAmpere();
 		log(s, "ampere register");
@@ -94,11 +99,12 @@ class Proxies {
 class ModItems {
 	public static void chooseReg(String s1, Item i) { if (parseBoolean(pr.getProperty(s1))) registerItem(s1, i); }
 	public static void chooseRegTwo(String s1, String s2, Item i1, Item i2) { chooseReg(s1, i1); chooseReg(s2, i2); }
+	public static void chooseRegFour(String s1, String s2, String s3, String s4, Item i1, Item i2, Item i3, Item i4) { chooseRegTwo(s1, s2, i1, i2); chooseRegTwo(s3, s4, i3, i4); }
 	public ModItems() {
-		chooseRegTwo("protium", "helium_4", PROTIUM, He4); chooseRegTwo("lithium_7", "beryllium_8", Li7, Be8);
+		chooseRegFour("protium", "helium_4", "lithium_7", "beryllium_8", PROTIUM, He4, Li7, Be8);
 		chooseRegTwo("carbon_12", "fluorine_19", C12, F19);
-		chooseRegTwo("helium_5", "deuterium", He5, DEUTERIUM); chooseRegTwo("tritium", "helium_2", TRITIUM, He2);
-		chooseRegTwo("helium_3", "helium_6", He3, He6); chooseRegTwo("helium_7", "helium_8", He7, He8);
+		chooseRegFour("helium_5", "deuterium", "tritium", "helium_2", He5, DEUTERIUM, TRITIUM, He2);
+		chooseRegFour("helium_3", "helium_6", "helium_7", "helium_8", He3, He6, He7, He8);
 		chooseRegTwo("helium_9", "helium_10", He9, He10); chooseRegTwo("lithium_6", "beryllium_7", Li6, Be7);
 		chooseRegTwo("beryllium_9", "beryllium_10", Be9, Be10); chooseRegTwo("boron_6", "boron_7", B6, B7);
 		chooseRegTwo("boron_8", "boron_9", B8, B9); chooseRegTwo("boron_10", "boron_11", B10, B11);
@@ -120,7 +126,7 @@ class ModItems {
 		chooseRegTwo("fluorine_25", "fluorine_26", F25, F26); chooseRegTwo("fluorine_27", "fluorine_28", F27, F28);
 		chooseRegTwo("fluorine_29", "fluorine_30", F29, F30); chooseReg("fluorine_31", F31);log("items register", "register all item success!");
 	}
-}class ItemsRegister implements Loggers {
+}class ItemsRegister {
 	public static void registerItem(String modid,String itemName,Item item) {
 		Registry.register(Registry.ITEM, new Identifier(modid, itemName), item);
 		log("items register", "register " + itemName);
@@ -143,6 +149,7 @@ class ModItems {
 		log("items register", "register " + toolName);
 	}*/
 }
+
 class ModBlocks implements Loggers {
 	public ModBlocks() {
 	}
@@ -159,3 +166,21 @@ class ModBlocks implements Loggers {
 		blockreg.info("register container!");
 	}
 }*/
+class ModFluids {
+	public static WaterFluid FRESH_WATER = new WaterFluid.Still();
+	public static WaterFluid FLOWING_FRESH_WATER = new WaterFluid.Flowing();
+	public static Block FRESHWATER = new FluidBlock(FRESH_WATER, FabricBlockSettings.copy(Blocks.WATER)){};
+	public static final Item BUCKET_FRESHWATER = new BucketItem(FRESH_WATER, new Item.Settings().maxCount(1).group(ItemGroup.MISC));
+	public ModFluids() {
+		registerFluids("fresh_water", FRESH_WATER, FLOWING_FRESH_WATER, FRESHWATER, BUCKET_FRESHWATER);
+	}
+	public void registerFluids(String fluidID, WaterFluid stillFluid, WaterFluid flowingFluid, Block fluidBlock, Item item) {
+		registerFluid(MODID, fluidID, stillFluid, flowingFluid, fluidBlock, item);
+	}
+	public static void registerFluid(String modid, String fluidID, WaterFluid stillFluid, WaterFluid flowingFluid, Block fluidBlock, Item item) {
+		Registry.register(Registry.FLUID, new Identifier(modid, fluidID), stillFluid);
+		Registry.register(Registry.FLUID, new Identifier(modid, "flowing_" + fluidID), flowingFluid);
+		Registry.register(Registry.BLOCK, new Identifier(modid, fluidID), fluidBlock);
+		Registry.register(Registry.ITEM, new Identifier(modid, fluidID + "_bucket"), item);
+	}
+}

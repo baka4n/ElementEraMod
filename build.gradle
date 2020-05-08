@@ -13,15 +13,14 @@ group = project.maven_group
 dependencies {
 	//to change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:20w19a"
-	mappings "net.fabricmc:yarn:20w19a+build.4:v2"
+	mappings "net.fabricmc:yarn:20w19a+build.6:v2"
 	modImplementation "net.fabricmc:fabric-loader:0.8.2+build.194"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:0.10.5+build.341-1.16"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:0.10.7+build.344-1.16"
 
 	// Mod Compile Only, development used, client un load it.
 	compileOnly 'org.jetbrains:annotations:18.0.0'
-
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
 }
@@ -71,11 +70,10 @@ publishing {
 			}
 		}
 	}
-
 	// select the repositories you want to publish to
 	repositories {
 		// uncomment to publish to the local maven
 		// mavenLocal()
-		// maven {url "https://maven.modmuss50.me/me/shedaniel/RoughlyEnoughItems/"}
+		// maven {url "https://maven.fabricmc.net/me/shedaniel/RoughlyEnoughItems/"}
 	}
 }

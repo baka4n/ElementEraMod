@@ -1,4 +1,5 @@
 {
+  "item.elementera.fresh_water_bucket": "fresh_water_bucket",
   "item.elementera.protium": "protium",
   "item.elementera.deuterium": "deuterium",
   "item.elementera.tritium": "tritium",
@@ -126,5 +127,8 @@
   "carbon.disable.all": "carbon choose enable(game will restart)",
   "nitrogen.disable.all": "nitrogen choose enable(game will restart)",
   "oxygen.disable.all": "oxygen choose enable(game will restart)",
-  "fluorine.disable.all": "fluorine choose enable(game will restart)"
+  "fluorine.disable.all": "fluorine choose enable(game will restart)",
+
+  "block.minecraft.water": "Seawater",
+  "item.minecraft.water_bucket": "Seawater Bucket"
 }

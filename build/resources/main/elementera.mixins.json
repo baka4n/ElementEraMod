@@ -7,10 +7,12 @@
   ],
   "client": [
     "ElementMixin",
-    "SelectWorldScreenMixin",
-    "MultiplayerScreenMixin",
     "GameOptionsScreenMixin",
-    "LanguageOptionsScreenMixin"
+    "LanguageOptionsScreenMixin",
+    "MultiplayerScreenMixin",
+    "SelectWorldScreenMixin"
+  ],
+  "server": [
   ],
   "injectors": {
     "defaultRequire": 1

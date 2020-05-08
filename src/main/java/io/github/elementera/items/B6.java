@@ -1,11 +1,29 @@
 package io.github.elementera.items;
 
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.world.World;
+
+import java.util.Calendar;
+import java.util.List;
 
 import static io.github.elementera.items.Public.NONMETALS;
 
 class B6 extends Item {
-    public B6() { super(new Settings().group(NONMETALS).maxCount(16)); }
+    public B6() {
+        super(new Settings().group(NONMETALS).maxCount(16));
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(1, new TranslatableText(""));
+        int i = 60 - Calendar.SECOND;
+        tooltip.set(1, new TranslatableText(String.valueOf(i)));
+    }
+
 }class B7 extends Item {
     public B7() { super(new Settings().group(NONMETALS).maxCount(16)); }
 }class B8 extends Item {

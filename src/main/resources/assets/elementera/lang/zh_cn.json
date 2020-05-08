@@ -1,4 +1,5 @@
 {
+  "item.elementera.fresh_water_bucket": "淡水桶",
   "item.elementera.protium": "氢",
   "item.elementera.deuterium": "氘",
   "item.elementera.tritium": "氚",
@@ -126,5 +127,8 @@
   "carbon.disable.all": "是否取消碳同位素生成(重启后生效)",
   "nitrogen.disable.all": "是否取消氮同位素生成(重启后生效)",
   "oxygen.disable.all": "是否取消氧同位素生成(重启后生效)",
-  "fluorine.disable.all": "是否取消氟同位素生成(重启后生效)"
+  "fluorine.disable.all": "是否取消氟同位素生成(重启后生效)",
+
+  "block.minecraft.water": "海水",
+  "item.minecraft.water_bucket": "海水桶"
 }

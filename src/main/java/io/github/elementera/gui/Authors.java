@@ -7,6 +7,8 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.*;
+
+import static io.github.elementera.config.Config.getProperties;
 import static io.github.elementera.gui.ItemDisable.OpenGui;
 
 public class Authors extends Screen {
@@ -19,7 +21,8 @@ public class Authors extends Screen {
     public void MYButton(int x, int y, int widget, int height, String string, ButtonWidget.PressAction onPress) { this.addButton(new ButtonWidget(x, y, widget, height, new TranslatableText(string), onPress)); }
     @Override
     public void render(MatrixStack m, int X, int Y, float f) {
-        renderBackground(m, X);draw(m, "mouseX", "mouseY", X, Y, 5, 5, 0xFFFFFFFF);
+        renderBackground(m, X);
+        if (getProperties("titleScreen_mouseY_hide").equals("no")) draw(m, "mouseX", "mouseY", X, Y, 5, 5, 0xFFFFFFFF);
         tooltip(m, "authors.info", 1, "baka4n", 21, "squidCraft() -> Team", 41);
         super.render(m, X, Y, f);super.init();
     }

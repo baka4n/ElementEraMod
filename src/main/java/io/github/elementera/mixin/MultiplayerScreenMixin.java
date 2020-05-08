@@ -9,6 +9,8 @@ import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import static io.github.elementera.config.Config.getProperties;
+
 @Mixin(MultiplayerScreen.class)
 public abstract class MultiplayerScreenMixin extends Screen {
     @Shadow public abstract void render(MatrixStack matrices, int mouseX, int mouseY, float delta);
@@ -18,8 +20,8 @@ public abstract class MultiplayerScreenMixin extends Screen {
      */
     @Inject(method = "render", at = @At("RETURN"))
     protected void render(MatrixStack m, int mouseX, int mouseY, float f, CallbackInfo info) {
-        a(m, "mouseX", mouseX, 5, 5, 0xFFFFFFFF);
-        a(m, "mouseY", mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(m, "mouseX", mouseX, 5, 5, 0xFFFFFFFF);
+        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(m, "mouseY", mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
     }
 
     public MultiplayerScreenMixin() {

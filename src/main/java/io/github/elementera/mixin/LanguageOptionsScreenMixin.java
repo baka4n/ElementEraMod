@@ -12,6 +12,8 @@ import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import static io.github.elementera.config.Config.getProperties;
+
 @Mixin(LanguageOptionsScreen.class)
 @Environment(EnvType.CLIENT)
 public class LanguageOptionsScreenMixin extends GameOptionsScreen {
@@ -31,8 +33,8 @@ public class LanguageOptionsScreenMixin extends GameOptionsScreen {
      */
     @Inject(method = "render", at=@At("RETURN"))
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float f, CallbackInfo info) {
-        a(matrixStack, "mouseX", mouseX, 5, 5, 0xFFFFFFFF);
-        a(matrixStack, "mouseY", mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(matrixStack, "mouseX", mouseX, 5, 5, 0xFFFFFFFF);
+        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(matrixStack, "mouseY", mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
     }
     private void a(MatrixStack m, String s,int k, int x, int y, int c) { this.textRenderer.draw(m, I18n.translate(s)+":" + k , x, y, c); }
 }

@@ -10,6 +10,8 @@ import org.spongepowered.asm.mixin.*;
 
 import java.util.List;
 
+import static io.github.elementera.config.Config.getProperties;
+
 @Mixin(SelectWorldScreen.class)
 public class SelectWorldScreenMixin extends Screen {
     protected final Screen parent;
@@ -37,8 +39,8 @@ public class SelectWorldScreenMixin extends Screen {
         this.levelList.render(m, mouseX, mouseY, delta);
         this.searchBox.render(m, mouseX, mouseY, delta);
         this.drawCenteredText(m, this.textRenderer, this.title, this.width / 2, 8, 16777215);
-        a(m, "mouseX", mouseX, 5, 5, 0xFFFFFFFF);
-        a(m, "mouseY", mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(m, "mouseX", mouseX, 5, 5, 0xFFFFFFFF);
+        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(m, "mouseY", mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
         super.render(m, mouseX, mouseY, delta);
         if (this.tooltipText != null) {
             this.renderTooltip(m, this.tooltipText, mouseX, mouseY);

@@ -1,5 +1,5 @@
 #Save Configs File.
-#Wed May 06 14:11:27 CST 2020
+#Fri May 08 15:43:48 CST 2020
 helium_2=true
 helium_3=true
 helium_4=true
@@ -83,7 +83,6 @@ fluorine_24=true
 fluorine_25=true
 fluorine_26=true
 fluorine_27=true
-fluorine_28=true
 fluorine_29=true
 fluorine_30=true
 fluorine_31=true
@@ -93,3 +92,4 @@ protium=true
 boron_13=true
 boron_6=true
 boron_19=true
+fluorine_28=true

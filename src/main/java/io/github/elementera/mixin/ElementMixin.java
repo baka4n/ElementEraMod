@@ -40,8 +40,8 @@ public abstract class ElementMixin extends Screen {
 	 */
 	@Inject(method = "render", at = @At("RETURN"))
 	protected void render(MatrixStack m, int X, int Y, float delta, CallbackInfo info) {
-		if ("no".equals(getProperties("titleScreen_mouseX_hide"))) draw(m, "mouseX", X, 5, 5);
-		if ("no".equals(getProperties("titleScreen_mouseY_hide"))) draw(m, "mouseY", Y, 5, 5 + textRenderer.fontHeight);
+		if (getProperties("titleScreen_mouseX_hide").equals("no")) draw(m, "mouseX", X, 5, 5);
+		if (getProperties("titleScreen_mouseY_hide").equals("no")) draw(m, "mouseY", Y, 5, 5 + textRenderer.fontHeight);
 	}
 
 	/**
@@ -77,7 +77,7 @@ public abstract class ElementMixin extends Screen {
 				MYButton(this.width / 2, y + spacingY, 100, 20, "menu.multiplayer", (buttonWidget) -> OpenGui(new MultiplayerScreen(this)));
 				MYButton(this.width / 2 - 100, y + spacingY * 2, 200, 20, "menu.online", (buttonWidget) -> this.switchToRealms());
 			}
-		} else {
+		} else if (getProperties("eula").equals("false")){
 			MYButton(this.width / 2 - 100, y, 200, 20, "menu.singleplayer", (buttonWidget) -> OpenGui(new SelectWorldScreen(this)));
 			MYButton(this.width / 2 - 100, y + spacingY, 200, 20, "menu.multiplayer", (buttonWidget) -> { assert this.client != null;if (this.client.options.skipMultiplayerWarning) OpenGui(new MultiplayerScreen(this));else OpenGui(new MultiplayerWarningScreen(this)); });
 			MYButton(this.width / 2 - 100, y + spacingY * 2, 200, 20, "menu.online", (buttonWidget) -> this.switchToRealms());
