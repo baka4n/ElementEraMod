@@ -1,18 +1,29 @@
 package io.github.elementera;
 
-import io.github.elementera.config.*;
+import io.github.elementera.config.Config;
+import io.github.elementera.config.RemoveItemConfig;
 import io.github.elementera.energy.ElementAmpere;
 import io.github.elementera.items.Public;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.FluidBlock;
 import net.minecraft.fluid.WaterFluid;
-import net.minecraft.item.*;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.BucketItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import org.apache.logging.log4j.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.UUID;
 
 import static io.github.elementera.Elementera.log;
 import static io.github.elementera.Proxies.registerItem;
@@ -20,9 +31,6 @@ import static io.github.elementera.config.RemoveItemConfig.pr;
 import static io.github.elementera.items.Public.*;
 import static java.lang.Boolean.parseBoolean;
 import static java.lang.Thread.sleep;
-
-/*import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;*/
 
 /**
  * @author baka4n
@@ -151,9 +159,11 @@ class ModItems {
 }
 
 class ModBlocks implements Loggers {
+
 	public ModBlocks() {
+
 	}
-}/*class BlockRegister implements Loggers {
+}class BlockRegister implements Loggers {
 	public static void registerBlock(String modid, String blockName, Block block, Item.Settings settings) {
 		Registry.register(Registry.BLOCK, new Identifier(modid, blockName), block);
 		blockreg.info("regblock " + blockName);
@@ -165,11 +175,11 @@ class ModBlocks implements Loggers {
 		Registry.register(Registry.ITEM, identifier, new BlockItem(block, settings));
 		blockreg.info("register container!");
 	}
-}*/
+}
 class ModFluids {
 	public static WaterFluid FRESH_WATER = new WaterFluid.Still();
 	public static WaterFluid FLOWING_FRESH_WATER = new WaterFluid.Flowing();
-	public static Block FRESHWATER = new FluidBlock(FRESH_WATER, FabricBlockSettings.copy(Blocks.WATER)){};
+	public static Block FRESHWATER = new FluidBlock(FRESH_WATER, FabricBlockSettings.copyOf(Blocks.WATER)){};
 	public static final Item BUCKET_FRESHWATER = new BucketItem(FRESH_WATER, new Item.Settings().maxCount(1).group(ItemGroup.MISC));
 	public ModFluids() {
 		registerFluids("fresh_water", FRESH_WATER, FLOWING_FRESH_WATER, FRESHWATER, BUCKET_FRESHWATER);
