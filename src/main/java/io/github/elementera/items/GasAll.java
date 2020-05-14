@@ -7,3 +7,13 @@ public class GasAll extends Item {
         super(settings);
     }
 }
+class NonMetalsAll extends Item {
+    public NonMetalsAll(Settings settings) {
+        super(settings);
+    }
+}
+class MetalsAll extends Item {
+    public MetalsAll(Settings settings) {
+        super(settings);
+    }
+}

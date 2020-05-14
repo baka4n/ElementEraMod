@@ -134,10 +134,14 @@ class ModItems {
 		chooseRegTwo("fluorine_21", "fluorine_22", F21, F22); chooseRegTwo("fluorine_23", "fluorine_24", F23, F24);
 		chooseRegTwo("fluorine_25", "fluorine_26", F25, F26); chooseRegTwo("fluorine_27", "fluorine_28", F27, F28);
 		chooseRegTwo("fluorine_29", "fluorine_30", F29, F30); chooseReg("fluorine_31", F31);
-		registerItem(MODID, "fresh_water_bucket", FRESH_WATER); registerItem(MODID, "neon_17", Ne17);
-		registerItem(MODID, "NEON_18", Ne18); registerItem(MODID, "NEON_19", Ne19);
-		registerItem(MODID, "NEON_20", Ne20); registerItem(MODID, "NEON_21", Ne21);
+		regI("fresh_water_bucket", FRESH_WATER); regI("neon_17", Ne17); regI("neon_18", Ne18); regI("neon_19", Ne19);
+		regI("neon_20", Ne20); regI("neon_21", Ne21); regI("lithium_8", Li8); regI("lithium_9", Li9);
+		regI("lithium_11", Li11);
 		log("items register", "register all item success!");
+	}
+
+	public static void regI(String s, Item i) {
+		registerItem(MODID, s, i);
 	}
 }class ItemsRegister {
 
