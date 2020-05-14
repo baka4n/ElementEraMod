@@ -7,7 +7,8 @@ import static io.github.elementera.Elementera.log;
 public class Config {
     public static final String s = File.separator + File.separator;
     public static final MyProperties myproperties = new MyProperties();
-    public Config() {
+
+    public static void config() {
         mkDirs("config" + s + "elementera"); mkDirs("config" + s + "elementera" + s + "GUI");
         try { myproperties.load(new BufferedInputStream(new FileInputStream("config" + s + "elementera" + s + "GUI" + s + "config.ee")));
         } catch (FileNotFoundException e) {

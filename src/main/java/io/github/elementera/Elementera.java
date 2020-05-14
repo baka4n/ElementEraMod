@@ -1,13 +1,17 @@
 package io.github.elementera;
 
-import io.github.elementera.config.Config;
 import io.github.elementera.config.RemoveItemConfig;
 import io.github.elementera.energy.ElementAmpere;
+import io.github.elementera.items.MachineBlock;
 import io.github.elementera.items.Public;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
@@ -17,9 +21,13 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.function.ToIntFunction;
 
 import static io.github.elementera.Elementera.log;
+import static io.github.elementera.ItemsRegister.registerItem;
+import static io.github.elementera.Proxies.proxyS;
 import static io.github.elementera.Proxies.registerItem;
+import static io.github.elementera.config.Config.config;
 import static io.github.elementera.config.RemoveItemConfig.pr;
 import static io.github.elementera.items.Public.*;
 import static java.lang.Boolean.parseBoolean;
@@ -39,18 +47,18 @@ public class Elementera implements ModInitializer {
 		proxy();
 		log(s, "element era mods OnInitializes!");
 	}
-	public static void proxy() { new Proxies(); log(s, "proxy oninitialize"); }
+	public static void proxy() { proxyS(); log(s, "proxy oninitialize"); }
 }
 class Proxies {
 	public static final String s = "proxy";
-	public Proxies() {
-		modBlock(); config(); publicS(); energy();
+	public static void proxyS() {
+		modBlock(); configs(); publicS(); energy();
 		removeItemConfig();if (removeItemConfig()) modItem();
 		fluids();
 	}
-	public static void modItem() { new ModItems(); log(s, "moditem register"); }
+	public static void modItem() { ModItems.registerItemAll(); log(s, "moditem register"); }
 	public static void modBlock() { new ModBlocks(); log(s, "modblock register");}
-	public static void config() { new Config(); log(s, "config register"); }
+	public static void configs() { config(); log(s, "config register"); }
 	public static boolean removeItemConfig() {  new RemoveItemConfig(); return true; }
 	public static void publicS() { new Public(); log(s, "public register"); }
 	public static void registerItem(String itemName, Item item) {
@@ -101,7 +109,7 @@ class ModItems {
 	public static void chooseReg(String s1, Item i) { if (parseBoolean(pr.getProperty(s1))) registerItem(s1, i); }
 	public static void chooseRegTwo(String s1, String s2, Item i1, Item i2) { chooseReg(s1, i1); chooseReg(s2, i2); }
 	public static void chooseRegFour(String s1, String s2, String s3, String s4, Item i1, Item i2, Item i3, Item i4) { chooseRegTwo(s1, s2, i1, i2); chooseRegTwo(s3, s4, i3, i4); }
-	public ModItems() {
+	public static void registerItemAll() {
 		chooseRegFour("protium", "helium_4", "lithium_7", "beryllium_8", PROTIUM, He4, Li7, Be8);
 		chooseRegTwo("carbon_12", "fluorine_19", C12, F19);
 		chooseRegFour("helium_5", "deuterium", "tritium", "helium_2", He5, DEUTERIUM, TRITIUM, He2);
@@ -126,9 +134,13 @@ class ModItems {
 		chooseRegTwo("fluorine_21", "fluorine_22", F21, F22); chooseRegTwo("fluorine_23", "fluorine_24", F23, F24);
 		chooseRegTwo("fluorine_25", "fluorine_26", F25, F26); chooseRegTwo("fluorine_27", "fluorine_28", F27, F28);
 		chooseRegTwo("fluorine_29", "fluorine_30", F29, F30); chooseReg("fluorine_31", F31);
-		ItemsRegister.registerItem(MODID, "fresh_water_bucket", FRESH_WATER);log("items register", "register all item success!");
+		registerItem(MODID, "fresh_water_bucket", FRESH_WATER); registerItem(MODID, "neon_17", Ne17);
+		registerItem(MODID, "NEON_18", Ne18); registerItem(MODID, "NEON_19", Ne19);
+		registerItem(MODID, "NEON_20", Ne20); registerItem(MODID, "NEON_21", Ne21);
+		log("items register", "register all item success!");
 	}
 }class ItemsRegister {
+
 	public static void registerItem(String modid,String itemName,Item item) {
 		Registry.register(Registry.ITEM, new Identifier(modid, itemName), item);
 		log("items register", "register " + itemName);
@@ -155,7 +167,13 @@ class ModItems {
 class ModBlocks implements Loggers {
 
 	public ModBlocks() {
-
+		register(new Identifier("elementera","distillation_machine"), new MachineBlock(AbstractBlock.Settings.of(Material.STONE).strength(3.5F).lightLevel(createLightLevelFromBlockState(13))));
+	}
+	private static void register(Identifier id, Block block) {
+		Registry.register(Registry.BLOCK, id, block);
+	}
+	private static ToIntFunction<BlockState> createLightLevelFromBlockState(int litLevel) {
+		return (blockState) -> (Boolean)blockState.get(Properties.LIT) ? litLevel : 0;
 	}
 }class BlockRegister implements Loggers {
 	public static void registerBlock(String modid, String blockName, Block block, Item.Settings settings) {

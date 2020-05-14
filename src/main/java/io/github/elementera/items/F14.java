@@ -36,11 +36,5 @@ public class F14 extends Item {
     public F27() { super(new Settings().group(g).maxCount(16)); }
 }class F28 extends Item {
     public F28() { super(new Settings().group(g).maxCount(16)); }
-}class F29 extends Item {
-    public F29() { super(new Settings().group(g).maxCount(16)); }
-}class F30 extends Item {
-    public F30() { super(new Settings().group(g).maxCount(16)); }
-}class F31 extends Item {
-    public F31() { super(new Settings().group(g).maxCount(16)); }
 }
 

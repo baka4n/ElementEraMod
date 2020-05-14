@@ -53,14 +53,25 @@ public class Public implements Loggers {
 	public static final Item O24 = new O24();public static final Item F14 = new F14();
 	public static final Item F15 = new F15();public static final Item F16 = new F16();
 	public static final Item F17 = new F17();public static final Item F18 = new F18();
-	public static final Item F19 = new F19();public static final Item F20 = new F20();
-	public static final Item F21 = new F21();public static final Item F22 = new F22();
-	public static final Item F23 = new F23();public static final Item F24 = new F24();
-	public static final Item F25 = new F25();public static final Item F26 = new F26();
-	public static final Item F27 = new F27();public static final Item F28 = new F28();
-	public static final Item F29 = new F29();public static final Item F30 = new F30();
-	public static final Item F31 = new F31();public static final Item FRESH_WATER = new MyBucket(new Item.Settings().recipeRemainder(BUCKET).maxCount(1).group(MISC));
+	public static final Item F19;public static final Item F20;
+	public static final Item F21;  public static final Item F22;  public static final Item F23;  public static final Item F24;
+	public static final Item F25;  public static final Item F26;  public static final Item F27;  public static final Item F28;
+	public static final Item F29;  public static final Item F30;  public static final Item F31;  public static final Item Ne17;
+	public static final Item Ne18; public static final Item Ne19; public static final Item Ne20; public static final Item Ne21;
+	public static final Item FRESH_WATER = new MyBucket(new Item.Settings().recipeRemainder(BUCKET).maxCount(1).group(MISC));
 	public static final String MODID = "elementera";
+	static {
+		Item.Settings gas_setting = new Item.Settings().group(Public.GAS).maxCount(16);
+		F19 = new GasAll(gas_setting);  F20 = new GasAll(gas_setting);
+		F21 = new GasAll(gas_setting);  F22 = new GasAll(gas_setting);
+		F23 = new GasAll(gas_setting);  F24 = new GasAll(gas_setting);
+		F25 = new GasAll(gas_setting);  F26 = new GasAll(gas_setting);
+		F27 = new GasAll(gas_setting);  F28 = new GasAll(gas_setting);
+		F29 = new GasAll(gas_setting);  F30 = new GasAll(gas_setting);
+		F31 = new GasAll(gas_setting);  Ne17 = new GasAll(gas_setting);
+		Ne18 = new GasAll(gas_setting); Ne19 = new GasAll(gas_setting);
+		Ne20 = new GasAll(gas_setting); Ne21 = new GasAll(gas_setting);
+	}
 	public static final ItemGroup GAS = FabricItemGroupBuilder.create(
 			new Identifier(MODID, "gas")).icon(() -> new ItemStack(AIR))
 			.appendItems(itemStacks -> {
