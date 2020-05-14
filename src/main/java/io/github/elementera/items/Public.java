@@ -8,6 +8,7 @@ import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static net.minecraft.item.ItemGroup.MISC;
 import static net.minecraft.item.Items.*;
 
 public class Public implements Loggers {
@@ -58,7 +59,7 @@ public class Public implements Loggers {
 	public static final Item F25 = new F25();public static final Item F26 = new F26();
 	public static final Item F27 = new F27();public static final Item F28 = new F28();
 	public static final Item F29 = new F29();public static final Item F30 = new F30();
-	public static final Item F31 = new F31();
+	public static final Item F31 = new F31();public static final Item FRESH_WATER = new MyBucket(new Item.Settings().recipeRemainder(BUCKET).maxCount(1).group(MISC));
 	public static final String MODID = "elementera";
 	public static final ItemGroup GAS = FabricItemGroupBuilder.create(
 			new Identifier(MODID, "gas")).icon(() -> new ItemStack(AIR))

@@ -20,13 +20,13 @@ public abstract class MultiplayerScreenMixin extends Screen {
      */
     @Inject(method = "render", at = @At("RETURN"))
     protected void render(MatrixStack m, int mouseX, int mouseY, float f, CallbackInfo info) {
-        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(m, "mouseX", mouseX, 5, 5, 0xFFFFFFFF);
-        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(m, "mouseY", mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
+        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(m, "mouseX", mouseX, 5);
+        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(m, "mouseY", mouseY, 5 + textRenderer.fontHeight);
     }
 
     public MultiplayerScreenMixin() {
         super(new TranslatableText("multiplayer.title", new Object[0]));
     }
 
-    private void a(MatrixStack m, String s,int k, int x, int y, int c) { this.textRenderer.draw(m, I18n.translate(s)+":" + k , x, y, c); }
+    private void a(MatrixStack m, String s,int k, int y) { this.textRenderer.draw(m, I18n.translate(s)+":" + k , 5, y, 0xFFFFFFFF); }
 }

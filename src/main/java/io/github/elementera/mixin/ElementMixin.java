@@ -32,7 +32,7 @@ public abstract class ElementMixin extends Screen {
 	@Shadow private int copyrightTextX;
 	@Shadow private int copyrightTextWidth;
 	@Shadow public abstract void render(MatrixStack matrices, int mouseX, int mouseY, float delta);
-	protected ElementMixin(Text title) {
+	protected ElementMixin() {
 		super(new TranslatableText("narrator.screen.title"));
 	}
 	/**
@@ -46,8 +46,6 @@ public abstract class ElementMixin extends Screen {
 
 	/**
 	 * @author baka4n
-	 * @param y
-	 * @param spacingY
 	 * @reason Overwrite initWidgetsNormal.
 	   		by TitleScreen.class int y!
 				by spacingY;
@@ -142,7 +140,6 @@ public abstract class ElementMixin extends Screen {
 	}
 	/**
 	 * @author baka4n
-	 * @param delete
 	 * @reason import for minecraft
 	 */
 	@Overwrite
@@ -169,8 +166,8 @@ public abstract class ElementMixin extends Screen {
 		assert this.client != null;
 		this.client.openScreen(this);
 	}
-	public void draw(MatrixStack m, String s1, int X, int x, int y) {
-		TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;textRenderer.draw(m, translate(s1) + ": " + X, x, y, 0xFFFFFFFF);
+	public void draw(MatrixStack m, String s1, int a, int x, int y) {
+		TextRenderer textRenderer = MinecraftClient.getInstance().textRenderer;textRenderer.draw(m, translate(s1) + ": " + a, x, y, 0xFFFFFFFF);
 	}
 	public void MYButton(int x, int y, int widget, int height, String string, ButtonWidget.PressAction onPress) { this.addButton(new ButtonWidget(x, y, widget, height, new TranslatableText(string), onPress)); }
 }

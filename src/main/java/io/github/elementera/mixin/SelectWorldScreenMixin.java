@@ -27,24 +27,20 @@ public class SelectWorldScreenMixin extends Screen {
     /**
      * @author baka4n
      * <p> minecraft render</p>
-     * @param m
-     * @param mouseX
-     * @param mouseY
-     * @param delta
      * @reason import for minecraft add mouseX and mouseY
      */
     @Overwrite
-    public void render(MatrixStack m, int mouseX, int mouseY, float delta) {
+    public void render(MatrixStack m, int X, int Y, float delta) {
         this.tooltipText = null;
-        this.levelList.render(m, mouseX, mouseY, delta);
-        this.searchBox.render(m, mouseX, mouseY, delta);
+        this.levelList.render(m, X, Y, delta);
+        this.searchBox.render(m, X, Y, delta);
         this.drawCenteredText(m, this.textRenderer, this.title, this.width / 2, 8, 16777215);
-        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(m, "mouseX", mouseX, 5, 5, 0xFFFFFFFF);
-        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(m, "mouseY", mouseY, 5, 5 + textRenderer.fontHeight, 0xFFFFFFFF);
-        super.render(m, mouseX, mouseY, delta);
+        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(m, "mouseX", X, 5);
+        if (getProperties("titleScreen_mouseY_hide").equals("no")) a(m, "mouseY", Y, 5 + textRenderer.fontHeight);
+        super.render(m, X, Y, delta);
         if (this.tooltipText != null) {
-            this.renderTooltip(m, this.tooltipText, mouseX, mouseY);
+            this.renderTooltip(m, this.tooltipText, X, Y);
         }
     }
-    private void a(MatrixStack m, String s,int k, int x, int y, int c) { this.textRenderer.draw(m, I18n.translate(s)+":" + k , x, y, c); }
+    private void a(MatrixStack m, String s,int k, int y) { this.textRenderer.draw(m, I18n.translate(s)+":" + k , 5, y, 0xFFFFFFFF); }
 }

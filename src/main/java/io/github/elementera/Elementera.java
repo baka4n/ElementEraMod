@@ -5,15 +5,9 @@ import io.github.elementera.config.RemoveItemConfig;
 import io.github.elementera.energy.ElementAmpere;
 import io.github.elementera.items.Public;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FluidBlock;
-import net.minecraft.fluid.WaterFluid;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
@@ -23,7 +17,6 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.UUID;
 
 import static io.github.elementera.Elementera.log;
 import static io.github.elementera.Proxies.registerItem;
@@ -132,7 +125,8 @@ class ModItems {
 		chooseRegTwo("fluorine_16", "fluorine_17", F16, F17); chooseRegTwo("fluorine_18", "fluorine_20", F18, F20);
 		chooseRegTwo("fluorine_21", "fluorine_22", F21, F22); chooseRegTwo("fluorine_23", "fluorine_24", F23, F24);
 		chooseRegTwo("fluorine_25", "fluorine_26", F25, F26); chooseRegTwo("fluorine_27", "fluorine_28", F27, F28);
-		chooseRegTwo("fluorine_29", "fluorine_30", F29, F30); chooseReg("fluorine_31", F31);log("items register", "register all item success!");
+		chooseRegTwo("fluorine_29", "fluorine_30", F29, F30); chooseReg("fluorine_31", F31);
+		ItemsRegister.registerItem(MODID, "fresh_water_bucket", FRESH_WATER);log("items register", "register all item success!");
 	}
 }class ItemsRegister {
 	public static void registerItem(String modid,String itemName,Item item) {
@@ -174,23 +168,5 @@ class ModBlocks implements Loggers {
 		Registry.register(Registry.BLOCK, identifier, block);
 		Registry.register(Registry.ITEM, identifier, new BlockItem(block, settings));
 		blockreg.info("register container!");
-	}
-}
-class ModFluids {
-	public static WaterFluid FRESH_WATER = new WaterFluid.Still();
-	public static WaterFluid FLOWING_FRESH_WATER = new WaterFluid.Flowing();
-	public static Block FRESHWATER = new FluidBlock(FRESH_WATER, FabricBlockSettings.copyOf(Blocks.WATER)){};
-	public static final Item BUCKET_FRESHWATER = new BucketItem(FRESH_WATER, new Item.Settings().maxCount(1).group(ItemGroup.MISC));
-	public ModFluids() {
-		registerFluids("fresh_water", FRESH_WATER, FLOWING_FRESH_WATER, FRESHWATER, BUCKET_FRESHWATER);
-	}
-	public void registerFluids(String fluidID, WaterFluid stillFluid, WaterFluid flowingFluid, Block fluidBlock, Item item) {
-		registerFluid(MODID, fluidID, stillFluid, flowingFluid, fluidBlock, item);
-	}
-	public static void registerFluid(String modid, String fluidID, WaterFluid stillFluid, WaterFluid flowingFluid, Block fluidBlock, Item item) {
-		Registry.register(Registry.FLUID, new Identifier(modid, fluidID), stillFluid);
-		Registry.register(Registry.FLUID, new Identifier(modid, "flowing_" + fluidID), flowingFluid);
-		Registry.register(Registry.BLOCK, new Identifier(modid, fluidID), fluidBlock);
-		Registry.register(Registry.ITEM, new Identifier(modid, fluidID + "_bucket"), item);
 	}
 }

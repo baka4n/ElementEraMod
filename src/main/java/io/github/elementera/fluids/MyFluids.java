@@ -1,66 +1,60 @@
+/*
 package io.github.elementera.fluids;
 
+import io.github.elementera.ModFluids;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.FluidBlock;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.fluid.FlowableFluid;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
+import net.minecraft.fluid.*;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.state.StateManager.Builder;
+import net.minecraft.state.StateManager;
 import net.minecraft.tag.FluidTags;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public abstract class FreshWaterFluid extends FlowableFluid {
-    public FreshWaterFluid() {
+import static io.github.elementera.ModFluids.*;
+import static net.minecraft.block.Blocks.WATER;
+import static net.minecraft.particle.ParticleTypes.*;
+import static net.minecraft.sound.SoundCategory.BLOCKS;
+import static net.minecraft.sound.SoundEvents.BLOCK_WATER_AMBIENT;
+import static net.minecraft.util.math.Direction.DOWN;
+
+public abstract class MyFluids extends WaterFluid {
+    public MyFluids() {
     }
 
     public Fluid getFlowing() {
-        return Fluids.FLOWING_WATER;
+        return FLOWING_FRESH_WATER;
     }
 
     public Fluid getStill() {
-        return Fluids.WATER;
+        return FRESH_WATER;
     }
 
     public Item getBucketItem() {
-        return Items.WATER_BUCKET;
+        return ModFluids.BUCKET_FRESHWATER;
     }
 
     @Environment(EnvType.CLIENT)
     public void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
         if (!state.isStill() && !state.get(FALLING)) {
-            if (random.nextInt(64) == 0) {
-                world.playSound((double)pos.getX() + 0.5D, (double)pos.getY() + 0.5D, (double)pos.getZ() + 0.5D, SoundEvents.BLOCK_WATER_AMBIENT, SoundCategory.BLOCKS, random.nextFloat() * 0.25F + 0.75F, random.nextFloat() + 0.5F, false);
-            }
-        } else if (random.nextInt(10) == 0) {
-            world.addParticle(ParticleTypes.UNDERWATER, (double)pos.getX() + (double)random.nextFloat(), (double)pos.getY() + (double)random.nextFloat(), (double)pos.getZ() + (double)random.nextFloat(), 0.0D, 0.0D, 0.0D);
-        }
-
+            if (random.nextInt(64) == 0)
+                world.playSound((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D, BLOCK_WATER_AMBIENT, BLOCKS, random.nextFloat() * 0.25F + 0.75F, random.nextFloat() + 0.5F, false);
+        } else if (random.nextInt(10) == 0)
+            world.addParticle(UNDERWATER, (double) pos.getX() + (double) random.nextFloat(), (double) pos.getY() + (double) random.nextFloat(), (double) pos.getZ() + (double) random.nextFloat(), 0.0D, 0.0D, 0.0D);
     }
 
     @Nullable
     @Environment(EnvType.CLIENT)
     public ParticleEffect getParticle() {
-        return ParticleTypes.DRIPPING_WATER;
+        return DRIPPING_WATER;
     }
 
     protected boolean isInfinite() {
@@ -77,11 +71,11 @@ public abstract class FreshWaterFluid extends FlowableFluid {
     }
 
     public BlockState toBlockState(FluidState state) {
-        return Blocks.WATER.getDefaultState().with(FluidBlock.LEVEL, method_15741(state));
+        return WATER.getDefaultState().with(FluidBlock.LEVEL, method_15741(state));
     }
 
     public boolean matchesType(Fluid fluid) {
-        return fluid == Fluids.WATER || fluid == Fluids.FLOWING_WATER;
+        return fluid == FRESH_WATER || fluid == FLOWING_FRESH_WATER;
     }
 
     public int getLevelDecreasePerBlock(WorldView world) {
@@ -93,18 +87,18 @@ public abstract class FreshWaterFluid extends FlowableFluid {
     }
 
     public boolean canBeReplacedWith(FluidState state, BlockView world, BlockPos pos, Fluid fluid, Direction direction) {
-        return direction == Direction.DOWN && !fluid.isIn(FluidTags.WATER);
+        return direction == DOWN && !fluid.isIn(FluidTags.WATER);
     }
 
     protected float getBlastResistance() {
         return 100.0F;
     }
 
-    public static class Flowing extends net.minecraft.fluid.WaterFluid {
+    public static class Flowing extends WaterFluid {
         public Flowing() {
         }
 
-        protected void appendProperties(Builder<Fluid, FluidState> builder) {
+        protected void appendProperties(StateManager.Builder<Fluid, FluidState> builder) {
             super.appendProperties(builder);
             builder.add(LEVEL);
         }
@@ -118,7 +112,7 @@ public abstract class FreshWaterFluid extends FlowableFluid {
         }
     }
 
-    public static class Still extends net.minecraft.fluid.WaterFluid {
+    public static class Still extends WaterFluid {
         public Still() {
         }
 
@@ -131,4 +125,4 @@ public abstract class FreshWaterFluid extends FlowableFluid {
         }
     }
 }
-
+*/
