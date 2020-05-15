@@ -112,10 +112,10 @@ class ModItems {
 	public static void registerItemAll() {
 		chooseRegFour("protium", "helium_4", "lithium_7", "beryllium_8", PROTIUM, He4, Li7, Be8);
 		chooseRegTwo("carbon_12", "fluorine_19", C12, F19);
-		chooseRegFour("helium_5", "deuterium", "tritium", "helium_2", He5, DEUTERIUM, TRITIUM, He2);
+		chooseRegTwo("helium_5", "deuterium", He5, DEUTERIUM); chooseReg("tritium", TRITIUM);
 		chooseRegFour("helium_3", "helium_6", "helium_7", "helium_8", He3, He6, He7, He8);
 		chooseRegTwo("helium_9", "helium_10", He9, He10); chooseRegTwo("lithium_6", "beryllium_7", Li6, Be7);
-		chooseRegTwo("beryllium_9", "beryllium_10", Be9, Be10); chooseRegTwo("boron_6", "boron_7", B6, B7);
+		chooseRegTwo("beryllium_9", "beryllium_10", Be9, Be10); chooseReg("boron_7", B7);
 		chooseRegTwo("boron_8", "boron_9", B8, B9); chooseRegTwo("boron_10", "boron_11", B10, B11);
 		chooseRegTwo("boron_12", "boron_13", B12, B13); chooseRegTwo("boron_14", "boron_15", B14, B15);
 		chooseRegTwo("boron_16", "boron_17", B16, B17); chooseRegTwo("boron_18", "boron_19", B18, B19);
@@ -134,7 +134,7 @@ class ModItems {
 		chooseRegTwo("fluorine_21", "fluorine_22", F21, F22); chooseRegTwo("fluorine_23", "fluorine_24", F23, F24);
 		chooseRegTwo("fluorine_25", "fluorine_26", F25, F26); chooseRegTwo("fluorine_27", "fluorine_28", F27, F28);
 		chooseRegTwo("fluorine_29", "fluorine_30", F29, F30); chooseReg("fluorine_31", F31);
-		regI("fresh_water_bucket", FRESH_WATER); regI("neon_17", Ne17); regI("neon_18", Ne18); regI("neon_19", Ne19);
+		regI("fresh_water_bucket", FRESH_WATER); regI("neon_16", Ne16); regI("neon_17", Ne17); regI("neon_18", Ne18); regI("neon_19", Ne19);
 		regI("neon_20", Ne20); regI("neon_21", Ne21); regI("lithium_8", Li8); regI("lithium_9", Li9);
 		regI("lithium_11", Li11);
 		log("items register", "register all item success!");

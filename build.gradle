@@ -12,12 +12,12 @@ group = project.maven_group
 
 dependencies {
 	//to change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:20w20b"
-	mappings "net.fabricmc:yarn:20w20b+build.1:v2"
-	modImplementation "net.fabricmc:fabric-loader:0.8.2+build.194"
+	minecraft "com.mojang:minecraft:${project.mc_ver}"
+	mappings "net.fabricmc:yarn:${project.mc_ver}+build.${project.yarn_build}:v2"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_ver}+build.${project.loader_build}"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:0.10.9+build.346-1.16"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.api_ver}+build.${project.api_build}"
 
 	// Mod Compile Only, development used, client un load it.
 	compileOnly 'org.jetbrains:annotations:18.0.0'
