@@ -4,6 +4,6 @@ run/backups
 run/resourcepacks
 run/saves
 run/logs
-
+build/classes
 .idea/
 .gradle/
