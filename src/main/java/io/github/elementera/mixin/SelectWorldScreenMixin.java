@@ -1,5 +1,7 @@
 package io.github.elementera.mixin;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.world.*;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -13,6 +15,7 @@ import java.util.List;
 import static io.github.elementera.config.Config.getProperties;
 
 @Mixin(SelectWorldScreen.class)
+@Environment(EnvType.CLIENT)
 public class SelectWorldScreenMixin extends Screen {
     protected final Screen parent;
     @Shadow private List<Text> tooltipText;

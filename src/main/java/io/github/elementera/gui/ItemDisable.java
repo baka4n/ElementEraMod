@@ -1,5 +1,7 @@
 package io.github.elementera.gui;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -10,7 +12,7 @@ import static io.github.elementera.Elementera.log;
 import static io.github.elementera.config.Config.s;
 import static io.github.elementera.config.RemoveItemConfig.pr;
 import static io.github.elementera.gui.ItemDisable.*;
-
+@Environment(EnvType.CLIENT)
 public class ItemDisable extends Screen {
     private final Screen screen;
     protected ItemDisable(Screen screen) {
@@ -61,6 +63,7 @@ public class ItemDisable extends Screen {
         MinecraftClient.getInstance().openScreen(screen);
     }
 }
+@Environment(EnvType.CLIENT)
 class HydrogenGui extends Screen {
     private final Screen screen;
     public HydrogenGui(Screen screen) {
@@ -91,6 +94,7 @@ class HydrogenGui extends Screen {
         MYButton(x1, y, width, 20, a, HydrogenGui::onPress); MYButton(x2, y, 20, 20, b, (buttonWidget) -> save(s1, finalb, screen));
     }
 }
+@Environment(EnvType.CLIENT)
 class HeliumGui extends Screen {
     private final Screen screen;
     protected HeliumGui(Screen screen) { super(new LiteralText(""));this.screen = screen; }
@@ -126,6 +130,7 @@ class HeliumGui extends Screen {
         MYButton(x1, y, width, 20, a, HeliumGui::onPress); MYButton(x2, y, 20, 20, b, (buttonWidget) -> save(s1, finalb, screen));
     }
 }
+@Environment(EnvType.CLIENT)
 class LithiumGui extends Screen {
     private final Screen screen;
     protected LithiumGui(Screen screen) { super(new LiteralText(""));this.screen = screen; }
@@ -152,6 +157,7 @@ class LithiumGui extends Screen {
         MYButton(x1, y, width, 20, a, LithiumGui::onPress); MYButton(x2, y, 20, 20, b, (buttonWidget) -> save(s1, finalb, screen));
     }
 }
+@Environment(EnvType.CLIENT)
 class BerylliumGui extends Screen {
     private final Screen screen;
     public BerylliumGui(Screen screen) {
@@ -184,6 +190,7 @@ class BerylliumGui extends Screen {
         MYButton(x1, y, width, 20, a, BerylliumGui::onPress); MYButton(x2, y, 20, 20, b, (buttonWidget) -> save(s1, finalb, screen));
     }
 }
+@Environment(EnvType.CLIENT)
 class BoronGui extends Screen {
     private final Screen screen;
     public void MYButton(int x, int y, int widget, int height, String string, ButtonWidget.PressAction onPress) { this.addButton(new ButtonWidget(x, y, widget, height, new TranslatableText(string), onPress)); }
@@ -217,6 +224,7 @@ class BoronGui extends Screen {
         MYButton(x1, y, width, 20, a, BoronGui::onPress); MYButton(x2, y, 20, 20, b, (buttonWidget) -> save(s1, finalb, screen));
     }
 }
+@Environment(EnvType.CLIENT)
 class CarbonGui extends Screen {
     private final Screen screen;
     public CarbonGui(Screen screen) {
@@ -254,6 +262,7 @@ class CarbonGui extends Screen {
         MYButton(x1, y, width, 20, a, CarbonGui::onPress); MYButton(x2, y, 20, 20, b, (buttonWidget) -> save(s1, finalb, screen));
     }
 }
+@Environment(EnvType.CLIENT)
 class NitrogenGui extends Screen {
     private final Screen screen;
     public NitrogenGui(Screen screen) {
@@ -291,6 +300,7 @@ class NitrogenGui extends Screen {
         MYButton(x1, y, width, 20, a, NitrogenGui::onPress); MYButton(x2, y, 20, 20, b, (buttonWidget) -> save(s1, finalb, screen));
     }
 }
+@Environment(EnvType.CLIENT)
 class NitrogenGui2 extends Screen {
     private final Screen screen;
     public NitrogenGui2(Screen sceen) {
@@ -322,6 +332,7 @@ class NitrogenGui2 extends Screen {
         MYButton(x1, y, width, 20, a, NitrogenGui2::onPress); MYButton(x2, y, 20, 20, b, (buttonWidget) -> save(s1, finalb, screen));
     }
 }
+@Environment(EnvType.CLIENT)
 class Oxygen extends Screen {
     private final Screen screen;
     public Oxygen(Screen screen) {
@@ -358,6 +369,7 @@ class Oxygen extends Screen {
         MYButton(x1, y, width, 20, a, Oxygen::onPress); MYButton(x2, y, 20, 20, b, (buttonWidget) -> save(s1, finalb, screen));
     }
 }
+@Environment(EnvType.CLIENT)
 class FluorineGui extends Screen {
     private final Screen screen;
     public FluorineGui(Screen screen) {
@@ -395,6 +407,7 @@ class FluorineGui extends Screen {
         MYButton(x1, y, width, 20, a, FluorineGui::onPress); MYButton(x2, y, 20, 20, b, (buttonWidget) -> save(s1, finalb, screen));
     }
 }
+@Environment(EnvType.CLIENT)
 class FluorineGui2 extends Screen {
     private final Screen screen;
     public FluorineGui2(Screen screen) {

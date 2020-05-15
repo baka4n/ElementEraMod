@@ -1,6 +1,8 @@
 package io.github.elementera.mixin;
 
 import io.github.elementera.gui.Authors;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.*;
@@ -26,6 +28,7 @@ import static java.lang.Integer.parseInt;
 import static net.minecraft.client.resource.language.I18n.translate;
 
 @Mixin(TitleScreen.class)
+@Environment(EnvType.CLIENT)
 public abstract class ElementMixin extends Screen {
 	public Logger logger = LogManager.getLogger("ElementMixin");
 	@Shadow private Screen realmsNotificationGui;

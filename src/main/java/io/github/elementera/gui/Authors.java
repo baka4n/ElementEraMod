@@ -1,5 +1,7 @@
 package io.github.elementera.gui;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.Screen;
@@ -10,7 +12,7 @@ import net.minecraft.text.*;
 
 import static io.github.elementera.config.Config.getProperties;
 import static io.github.elementera.gui.ItemDisable.OpenGui;
-
+@Environment(EnvType.CLIENT)
 public class Authors extends Screen {
     public static org.apache.logging.log4j.Logger logger= org.apache.logging.log4j.LogManager.getLogger("test");
     private final Screen screen;

@@ -1,5 +1,7 @@
 package io.github.elementera.mixin;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.resource.language.I18n;
@@ -12,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import static io.github.elementera.config.Config.getProperties;
 
 @Mixin(MultiplayerScreen.class)
+@Environment(EnvType.CLIENT)
 public abstract class MultiplayerScreenMixin extends Screen {
     @Shadow public abstract void render(MatrixStack matrices, int mouseX, int mouseY, float delta);
 
