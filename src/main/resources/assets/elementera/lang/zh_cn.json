@@ -131,4 +131,11 @@
 
   "block.minecraft.water": "海水",
   "item.minecraft.water_bucket": "海水桶"
+  
+  "advencements.h.title": "氢气!",
+  "advencements.h.descr": "获得一试管氢气",
+  "advencements.he.title": "懒货",
+  "advencements.he.descr": "这家伙真懒",
+  "advencements.li.title": "金属中的氢气",
+  "advencements.li.descr": "听说锂会飘在石蜡油上……"
 }
