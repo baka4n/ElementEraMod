@@ -130,5 +130,11 @@
   "fluorine.disable.all": "fluorine choose enable(game will restart)",
 
   "block.minecraft.water": "Seawater",
-  "item.minecraft.water_bucket": "Seawater Bucket"
+  "item.minecraft.water_bucket": "Seawater Bucket",
+  "advencements.h.title": "Hydrogen!",
+  "advencements.h.descr": "Get a test tube of hydrogen.",
+  "advencements.he.title": "Lounger",
+  "advencements.he.descr": "Hey guys,you are so lazy.",
+  "advencements.li.title": "The hydroden of the metal",
+  "advencements.li.descr": "I heard that lithium will float on paraffin oil ..."
 }
