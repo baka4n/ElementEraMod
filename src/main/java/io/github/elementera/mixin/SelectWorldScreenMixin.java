@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.*;
 
 import java.util.List;
 
-import static io.github.elementera.config.Config.getProperties;
+import static io.github.elementera.api.config.Config.getProperties;
 
 @Mixin(SelectWorldScreen.class)
 @Environment(EnvType.CLIENT)

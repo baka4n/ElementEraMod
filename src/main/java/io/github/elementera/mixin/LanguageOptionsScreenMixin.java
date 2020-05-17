@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static io.github.elementera.config.Config.getProperties;
+import static io.github.elementera.api.config.Config.getProperties;
 
 @Mixin(LanguageOptionsScreen.class)
 @Environment(EnvType.CLIENT)

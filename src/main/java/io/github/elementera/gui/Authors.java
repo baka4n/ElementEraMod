@@ -10,7 +10,7 @@ import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.*;
 
-import static io.github.elementera.config.Config.getProperties;
+import static io.github.elementera.api.config.Config.getProperties;
 import static io.github.elementera.gui.ItemDisable.OpenGui;
 @Environment(EnvType.CLIENT)
 public class Authors extends Screen {

@@ -9,8 +9,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.*;
 import java.io.*;
 import static io.github.elementera.Elementera.log;
-import static io.github.elementera.config.Config.s;
-import static io.github.elementera.config.RemoveItemConfig.pr;
+import static io.github.elementera.api.config.Config.s;
+import static io.github.elementera.api.config.移除物品.pr;
 import static io.github.elementera.gui.ItemDisable.*;
 @Environment(EnvType.CLIENT)
 public class ItemDisable extends Screen {

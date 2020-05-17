@@ -1,4 +1,4 @@
-package io.github.elementera.config;
+package io.github.elementera.api.config;
 
 import java.io.*;
 
@@ -6,7 +6,7 @@ import static io.github.elementera.Elementera.log;
 
 public class Config {
     public static final String s = File.separator + File.separator;
-    public static final MyProperties myproperties = new MyProperties();
+    public static final 有序排列对 myproperties = new 有序排列对();
 
     public static void config() {
         mkDirs("config" + s + "elementera"); mkDirs("config" + s + "elementera" + s + "GUI");

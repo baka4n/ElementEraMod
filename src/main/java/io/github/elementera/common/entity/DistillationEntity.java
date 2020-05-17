@@ -1,4 +1,4 @@
-package io.github.elementera.entity;
+package io.github.elementera.common.entity;
 
 import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.block.entity.BlockEntityType;

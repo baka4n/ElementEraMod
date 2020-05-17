@@ -1,4 +1,4 @@
-package io.github.elementera.blocks;
+package io.github.elementera.common.blocks;
 
 import net.minecraft.block.Block;
 

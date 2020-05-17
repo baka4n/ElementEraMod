@@ -1,4 +1,4 @@
-package io.github.elementera.items;
+package io.github.elementera.common.items;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

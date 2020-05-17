@@ -1,4 +1,4 @@
-package io.github.elementera.config;
+package io.github.elementera.api.config;
 
 public class Config {
 

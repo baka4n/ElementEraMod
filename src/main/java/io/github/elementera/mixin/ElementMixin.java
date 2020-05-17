@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.io.*;
 
 import static com.google.common.util.concurrent.Runnables.doNothing;
-import static io.github.elementera.config.Config.getProperties;
+import static io.github.elementera.api.config.Config.getProperties;
 import static io.github.elementera.gui.ItemDisable.OpenGui;
 import static java.lang.Integer.parseInt;
 import static net.minecraft.client.resource.language.I18n.translate;

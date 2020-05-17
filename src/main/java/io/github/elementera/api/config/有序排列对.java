@@ -1,18 +1,18 @@
-package io.github.elementera.config;
+package io.github.elementera.api.config;
 
 import java.io.*;
 import java.util.*;
 
-public class MyProperties extends Properties {
+public class 有序排列对 extends Properties {
     private static final long serialVersionUID = 1L;
     private List<Object> keyList = new ArrayList<Object>();
 
     /**
      * 默认构造方法类
      */
-    public MyProperties() {
+    public 有序排列对() {
     }
-    public MyProperties(String path) {
+    public 有序排列对(String path) {
         try {
             InputStream is = new FileInputStream(path);
             this.load(is);

@@ -1,14 +1,14 @@
 package io.github.elementera.energy;
 
 import io.github.elementera.Loggers;
-import io.github.elementera.config.MyProperties;
+import io.github.elementera.api.config.有序排列对;
 import java.io.*;
-import static io.github.elementera.config.Config.*;
+import static io.github.elementera.api.config.Config.*;
 import static java.lang.Thread.sleep;
 
 public class ElementAmpere implements Loggers {
     public static final long b = 1L;
-    public static final MyProperties p = new MyProperties();
+    public static final 有序排列对 p = new 有序排列对();
     public ElementAmpere() {
         writter();
     }
