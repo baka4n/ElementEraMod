@@ -23,6 +23,7 @@ public class Public implements Loggers {
 	/*oxygen*/public static final Item O12, O13, O14, O15, O16, O17, O18, O19, O20, O21, O22, O23, O24, O25, O26, O27, O28;
 	/*fluorine*/public static final Item F14, F15, F16, F17, F18, F19, F20, F21, F22, F23, F24, F25, F26, F27, F28, F29, F30, F31;
 	/*neon*/public static final Item Ne16, Ne17, Ne18, Ne19, Ne20, Ne21, Ne22, Ne23, Ne24, Ne25, Ne26, Ne27, Ne28, Ne29, Ne30, Ne31, Ne32, Ne33, Ne34;
+	/*sodium*/public static final Item Na18, Na19;
 	/*bucket*/
 	public static final Item FRESH_WATER;
 	public static final String MODID = "elementera";
@@ -46,6 +47,7 @@ public class Public implements Loggers {
 		/*oxygen*/O12 = gas();  O13 = gas();  O14 = gas();  O15 = gas();  O16 = gas();  O17 = gas();  O18 = gas();  O19 = gas();O20 = gas();  O21 = gas();  O22 = gas();  O23 = gas();O24 = gas();  O25 = gas();  O26 = gas();  O27 = gas();O28 = gas();
 		/*fluorine*/F14 = gas();  F15 = gas();  F16 = gas();  F17 = gas();  F18 = gas();  F19 = gas();  F20 = gas();F21 = gas();  F22 = gas();  F23 = gas();  F24 = gas();F25 = gas();  F26 = gas();  F27 = gas();  F28 = gas();F29 = gas();  F30 = gas();  F31 = gas();
 		/*neon*/Ne16 = gas(); Ne17 = gas(); Ne18 = gas(); Ne19 = gas();  Ne20 = gas(); Ne21 = gas(); Ne22 = gas();  Ne23 = gas();  Ne24 = gas();  Ne25 = gas();  Ne26 = gas();  Ne27 = gas();  Ne28 = gas();  Ne29 = gas();  Ne30 = gas();  Ne31 = gas();  Ne32 = gas();  Ne33 = gas();  Ne34 = gas();
+		/*sodium*/Na18 = new MetalsAll(metals_set); Na19 = new MetalsAll(metals_set);
 	}
 
 	public static ArrayList<ItemStack> arr() {

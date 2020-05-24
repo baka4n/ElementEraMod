@@ -19,7 +19,7 @@ public class 移除物品 {
             /*nitrogen*/nitrogen_10 = "nitrogen_10", nitrogen_11 = "nitrogen_11", nitrogen_12 = "nitrogen_12", nitrogen_13 = "nitrogen_13", nitrogen_14 = "nitrogen_14", nitrogen_15 = "nitrogen_15", nitrogen_16 = "nitrogen_16", nitrogen_17 = "nitrogen_17", nitrogen_18 = "nitrogen_18", nitrogen_19 = "nitrogen_19", nitrogen_20 = "nitrogen_20", nitrogen_21 = "nitrogen_21", nitrogen_22 = "nitrogen_22", nitrogen_23 = "nitrogen_23", nitrogen_24 = "nitrogen_24", nitrogen_25 = "nitrogen_25",
             /*oxygen*/oxygen_12 = "oxygen_12", oxygen_13 = "oxygen_13", oxygen_14 = "oxygen_14", oxygen_15 = "oxygen_15", oxygen_16 = "oxygen_16", oxygen_17 = "oxygen_17", oxygen_18 = "oxygen_18", oxygen_19 = "oxygen_19", oxygen_20 = "oxygen_20", oxygen_21 = "oxygen_21", oxygen_22 = "oxygen_22", oxygen_23 = "oxygen_23", oxygen_24 = "oxygen_24", oxygen_25 = "oxygen_25", oxygen_26 = "oxygen_26", oxygen_27 = "oxygen_27", oxygen_28 = "oxygen_28",
             /*fluorine*/fluorine_14 = "fluorine_14", fluorine_15 = "fluorine_15", fluorine_16 = "fluorine_16", fluorine_17 = "fluorine_17", fluorine_18 = "fluorine_18", fluorine_19 = "fluorine_19", fluorine_20 = "fluorine_20", fluorine_21 = "fluorine_21", fluorine_22 = "fluorine_22", fluorine_23 = "fluorine_23", fluorine_24 = "fluorine_24", fluorine_25 = "fluorine_25", fluorine_26 = "fluorine_26", fluorine_27 = "fluorine_27", fluorine_28 = "fluorine_28", fluorine_29 = "fluorine_29", fluorine_30 = "fluorine_30", fluorine_31 = "fluorine_31",
-            /*neon*/neon_16 = "neon_16", neon_17 = "neon_17", neon_18 = "neon_18", neon_19 = "neon_19", neon_20 = "neon_20", neon_21 = "neon_21", neon_22 = "neon_22", neon_23 = "neon_23", neon_24 = "neon_24", neon_25 = "neon_25", neon_26 = "neon_26", neon_27 = "neon_27", neon_28 = "neon_28";
+            /*neon*/neon_16 = "neon_16", neon_17 = "neon_17", neon_18 = "neon_18", neon_19 = "neon_19", neon_20 = "neon_20", neon_21 = "neon_21", neon_22 = "neon_22", neon_23 = "neon_23", neon_24 = "neon_24", neon_25 = "neon_25", neon_26 = "neon_26", neon_27 = "neon_27", neon_28 = "neon_28",neon_29 = "neon_29", neon_30 = "neon_30", neon_31 = "neon_31", neon_32 = "neon_32", neon_33 = "neon_33", neon_34 = "neon_34", sodium_18 = "sodium_18", sodium_19 = "sodium_19";
     public 移除物品() {
         mkDirs("config"+ s +"elementera"); mkDirs("config" + s +"elementera" + s + "remove");
         try {
@@ -58,8 +58,8 @@ public class 移除物品 {
             putFour(neon_17, neon_18, neon_19, neon_20);
             putFour(neon_21, neon_22, neon_23, neon_24);
             putFour(neon_25, neon_26, neon_27, neon_28);
-            putFour("neon_27", "neon_28", "neon_29", "neon_30");
-            putFour("neon_31", "neon_32", "neon_33", "neon_34");
+            putFour(neon_29, neon_30, neon_31, neon_32);
+            putFour(neon_33, neon_34, sodium_18, sodium_19);
             putFour("sodium_18", "sodium_19", "sodium_20", "sodium_21");
             putFour("sodium_22", "sodium_23", "sodium_24", "sodium_25");
             putFour("sodium_26", "sodium_27", "sodium_28", "sodium_29");
