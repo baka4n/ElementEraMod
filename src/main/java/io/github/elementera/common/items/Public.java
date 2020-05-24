@@ -36,54 +36,16 @@ public class Public implements Loggers {
 		Settings nonmetals_set = new Settings().group(Public.NONMETALS).maxCount(16);
 		Settings metals_set = new Settings().group(Public.METALS).maxCount(16);
 		FRESH_WATER = new MyBucket(myBucket);
-		// hydrogen
-		PROTIUM = gas();   DEUTERIUM = gas(); TRITIUM = gas();
-		H4 = gas();  H5 = gas(); H6 = gas(); H7 = gas();
-		// helium
-		He3 = gas();  He4 = gas();  He5 = gas();  He6 = gas();
-		He7 = gas();  He8 = gas();  He9 = gas();  He10 = gas();
-		// lithium
-		Li4 = new MetalsAll(metals_set);  Li5 = new MetalsAll(metals_set);  Li6 = new MetalsAll(metals_set);  Li7 = new MetalsAll(metals_set);
-		Li8 = new MetalsAll(metals_set);  Li9 = new MetalsAll(metals_set);  Li10 = new MetalsAll(metals_set); Li11= new MetalsAll(metals_set);
-		Li12 = new MetalsAll(metals_set); Li13 = new MetalsAll(metals_set);
-		// beryllium
-		Be5 = new MetalsAll(metals_set); Be6 = new MetalsAll(metals_set); Be7 = new MetalsAll(metals_set);
-		Be8 = new MetalsAll(metals_set); Be9 = new MetalsAll(metals_set); Be10 = new MetalsAll(metals_set);
-		Be11 = new MetalsAll(metals_set); Be12 = new MetalsAll(metals_set); Be13 = new MetalsAll(metals_set);
-		Be14 = new MetalsAll(metals_set); Be15 = new MetalsAll(metals_set); Be16 = new MetalsAll(metals_set);
-		// boron
-		B7  = new NonMetalsAll(nonmetals_set);B8  = new NonMetalsAll(nonmetals_set); B9  = new NonMetalsAll(nonmetals_set);
-		B10 = new NonMetalsAll(nonmetals_set); B11 = new NonMetalsAll(nonmetals_set); B12 = new NonMetalsAll(nonmetals_set);
-		B13 = new NonMetalsAll(nonmetals_set); B14 = new NonMetalsAll(nonmetals_set); B15 = new NonMetalsAll(nonmetals_set);
-		B16 = new NonMetalsAll(nonmetals_set); B17 = new NonMetalsAll(nonmetals_set); B18 = new NonMetalsAll(nonmetals_set);
-		B19 = new NonMetalsAll(nonmetals_set); B20 = new NonMetalsAll(nonmetals_set); B21 = new NonMetalsAll(nonmetals_set);
-		// carbon
-		C8  = new NonMetalsAll(nonmetals_set); C9  = new NonMetalsAll(nonmetals_set); C10 = new NonMetalsAll(nonmetals_set);
-		C11 = new NonMetalsAll(nonmetals_set); C12 = new NonMetalsAll(nonmetals_set); C13 = new NonMetalsAll(nonmetals_set);
-		C14 = new NonMetalsAll(nonmetals_set); C15 = new NonMetalsAll(nonmetals_set); C16 = new NonMetalsAll(nonmetals_set);
-		C17 = new NonMetalsAll(nonmetals_set); C18 = new NonMetalsAll(nonmetals_set); C19 = new NonMetalsAll(nonmetals_set);
-		C20 = new NonMetalsAll(nonmetals_set); C21 = new NonMetalsAll(nonmetals_set); C22 = new NonMetalsAll(nonmetals_set);
-		C23 = new NonMetalsAll(nonmetals_set);
-		// nitrogen
-		N10 = gas();  N11 = gas();  N12 = gas();
-		N13 = gas();  N14 = gas();  N15 = gas();  N16 = gas();
-		N17 = gas();  N18 = gas();  N19 = gas();  N20 = gas();
-		N21 = gas();  N22 = gas();  N23 = gas();  N24 = gas();
-		N25 = gas();
-		// oxygen
-		O12 = gas();  O13 = gas();  O14 = gas();  O15 = gas();
-		O16 = gas();  O17 = gas();  O18 = gas();  O19 = gas();
-		O20 = gas();  O21 = gas();  O22 = gas();  O23 = gas();
-		O24 = gas();  O25 = gas();  O26 = gas();  O27 = gas();
-		O28 = gas();
-		// fluorine
-		F14 = gas();  F15 = gas();  F16 = gas();
-		F17 = gas();  F18 = gas();  F19 = gas();  F20 = gas();
-		F21 = gas();  F22 = gas();  F23 = gas();  F24 = gas();
-		F25 = gas();  F26 = gas();  F27 = gas();  F28 = gas();
-		F29 = gas();  F30 = gas();  F31 = gas();
-		// neon
-		Ne16 = gas(); Ne17 = gas(); Ne18 = gas(); Ne19 = gas();
+		/*hydrogen*/PROTIUM = gas();   DEUTERIUM = gas(); TRITIUM = gas();H4 = gas();  H5 = gas(); H6 = gas(); H7 = gas();
+		/*helium*/He3 = gas();  He4 = gas();  He5 = gas();  He6 = gas();He7 = gas();  He8 = gas();  He9 = gas();  He10 = gas();
+		/*lithium*/Li4 = new MetalsAll(metals_set);  Li5 = new MetalsAll(metals_set);  Li6 = new MetalsAll(metals_set);  Li7 = new MetalsAll(metals_set);Li8 = new MetalsAll(metals_set);  Li9 = new MetalsAll(metals_set);  Li10 = new MetalsAll(metals_set); Li11= new MetalsAll(metals_set);Li12 = new MetalsAll(metals_set); Li13 = new MetalsAll(metals_set);
+		/*beryllium*/Be5 = new MetalsAll(metals_set); Be6 = new MetalsAll(metals_set); Be7 = new MetalsAll(metals_set);Be8 = new MetalsAll(metals_set); Be9 = new MetalsAll(metals_set); Be10 = new MetalsAll(metals_set);Be11 = new MetalsAll(metals_set); Be12 = new MetalsAll(metals_set); Be13 = new MetalsAll(metals_set);Be14 = new MetalsAll(metals_set); Be15 = new MetalsAll(metals_set); Be16 = new MetalsAll(metals_set);
+		/*boron*/B7  = new NonMetalsAll(nonmetals_set);B8  = new NonMetalsAll(nonmetals_set); B9  = new NonMetalsAll(nonmetals_set);B10 = new NonMetalsAll(nonmetals_set); B11 = new NonMetalsAll(nonmetals_set); B12 = new NonMetalsAll(nonmetals_set);B13 = new NonMetalsAll(nonmetals_set); B14 = new NonMetalsAll(nonmetals_set); B15 = new NonMetalsAll(nonmetals_set);B16 = new NonMetalsAll(nonmetals_set); B17 = new NonMetalsAll(nonmetals_set); B18 = new NonMetalsAll(nonmetals_set);B19 = new NonMetalsAll(nonmetals_set); B20 = new NonMetalsAll(nonmetals_set); B21 = new NonMetalsAll(nonmetals_set);
+		/*carbon*/C8  = new NonMetalsAll(nonmetals_set); C9  = new NonMetalsAll(nonmetals_set); C10 = new NonMetalsAll(nonmetals_set);C11 = new NonMetalsAll(nonmetals_set); C12 = new NonMetalsAll(nonmetals_set); C13 = new NonMetalsAll(nonmetals_set);C14 = new NonMetalsAll(nonmetals_set); C15 = new NonMetalsAll(nonmetals_set); C16 = new NonMetalsAll(nonmetals_set);C17 = new NonMetalsAll(nonmetals_set); C18 = new NonMetalsAll(nonmetals_set); C19 = new NonMetalsAll(nonmetals_set);C20 = new NonMetalsAll(nonmetals_set); C21 = new NonMetalsAll(nonmetals_set); C22 = new NonMetalsAll(nonmetals_set);C23 = new NonMetalsAll(nonmetals_set);
+		/*nitrogen*/N10 = gas();  N11 = gas();  N12 = gas();N13 = gas();  N14 = gas();  N15 = gas();  N16 = gas();N17 = gas();  N18 = gas();  N19 = gas();  N20 = gas();N21 = gas();  N22 = gas();  N23 = gas();  N24 = gas();N25 = gas();
+		/*oxygen*/O12 = gas();  O13 = gas();  O14 = gas();  O15 = gas();O16 = gas();  O17 = gas();  O18 = gas();  O19 = gas();O20 = gas();  O21 = gas();  O22 = gas();  O23 = gas();O24 = gas();  O25 = gas();  O26 = gas();  O27 = gas();O28 = gas();
+		/*fluorine*/F14 = gas();  F15 = gas();  F16 = gas();F17 = gas();  F18 = gas();  F19 = gas();  F20 = gas();F21 = gas();  F22 = gas();  F23 = gas();  F24 = gas();F25 = gas();  F26 = gas();  F27 = gas();  F28 = gas();F29 = gas();  F30 = gas();  F31 = gas();
+		/*neon*/Ne16 = gas(); Ne17 = gas(); Ne18 = gas(); Ne19 = gas();
 		Ne20 = gas(); Ne21 = gas();
 	}
 

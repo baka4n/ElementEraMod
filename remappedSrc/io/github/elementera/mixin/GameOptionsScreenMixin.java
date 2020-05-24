@@ -1,4 +1,4 @@
-package io.github.elementera.mixin;
+package io.github.elementera.api.mixin;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

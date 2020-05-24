@@ -1,5 +1,5 @@
 #Remove Item Configs File.
-#Sun May 17 13:12:06 CST 2020
+#Sat May 23 21:19:55 CST 2020
 protium=true
 deuterium=true
 tritium=true
@@ -61,6 +61,9 @@ carbon_13=true
 carbon_14=true
 carbon_15=true
 carbon_16=true
+carbon_17=true
+carbon_18=true
+carbon_19=true
 carbon_20=true
 carbon_21=true
 carbon_22=true

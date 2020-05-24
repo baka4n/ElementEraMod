@@ -1,3 +1,0 @@
-v1	named	intermediary
-METHOD	io/github/elementera/mixin/ElementMixin	(II)V	initWidgetsNormal	method_2249
-METHOD	io/github/elementera/mixin/ElementMixin	()V	switchToRealms	method_2252

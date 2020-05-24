@@ -1,4 +1,4 @@
-package io.github.elementera.mixin;
+package io.github.elementera.api.mixin;
 
 import com.google.common.util.concurrent.Runnables;
 import io.github.elementera.Elementera;

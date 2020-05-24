@@ -1,4 +1,4 @@
-package io.github.elementera.mixin;
+package io.github.elementera.api.mixin;
 
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
