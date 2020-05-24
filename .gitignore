@@ -5,5 +5,6 @@ run/resourcepacks
 run/saves
 run/logs
 build/classes
+build/libs
 .idea/
 .gradle/
