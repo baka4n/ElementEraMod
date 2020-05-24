@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "elementera:item/gas/helium/helium_5"
-  }
-}
