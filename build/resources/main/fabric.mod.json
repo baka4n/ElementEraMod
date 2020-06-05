@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "elementera",
+  "version": "1.0.0",
+
+  "name": "Element Era Mod",
+  "description": "This is element era mod!",
+  "authors": [
+    "baka4n",
+    "squidCraftTeams"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/stepheninchina/ElementEraMod"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/elementera/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.elementera.Elementera"
+    ]
+  },
+  "mixins": [
+    "elementera.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.8.0",
+    "fabric": "*",
+    "minecraft": "1.16-rc.1"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
