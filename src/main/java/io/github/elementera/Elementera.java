@@ -2,6 +2,7 @@ package io.github.elementera;
 
 import io.github.elementera.api.common.items.RegisterItem;
 
+import static io.github.elementera.api.common.fluids.ABaseFluid.regF;
 import static io.github.elementera.api.config.CenterConfig.config;
 
 /**
@@ -29,6 +30,7 @@ public class Elementera implements net.fabricmc.api.ModInitializer {
 	public static void configs() {
 		config();
 		new RegisterItem();
+		regF();
 	}
 }
 

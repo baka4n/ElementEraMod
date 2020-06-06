@@ -1,10 +1,5 @@
 # fabric
-run/.mixin.out
-run/backups
-run/resourcepacks
-run/saves
-run/logs
-build/classes
-build/libs
+run/
+build/
 .idea/
 .gradle/
